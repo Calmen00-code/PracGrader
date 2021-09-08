@@ -10,6 +10,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.users.Admin;
+import com.calmen.pracgrader.users.AdminList;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 /***
  * Run the registration if the app is being run on the first time
@@ -17,11 +22,15 @@ import com.calmen.pracgrader.R;
 public class Registration extends AppCompatActivity {
     private EditText nameTxt, pinTxt, confirmPinTxt;
     private Button registerBtn;
+    private AdminList adminList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration_page);
+
+        adminList = new AdminList();
+        adminList.load(this);
 
         nameTxt = findViewById(R.id.usernameTxt);
         pinTxt = findViewById(R.id.pinTxt);
@@ -36,11 +45,20 @@ public class Registration extends AppCompatActivity {
                 // display error message when either name, pin, confirmPin is empty
                 if (msg.equals("")) {
                     msg = checkValidAttributes();
+                    // display error message when there is invalid input
                     if (msg.equals("")) {
-                        Toast.makeText(Registration.this, "Account created!",
-                                Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Registration.this, Login.class);
-                        startActivity(intent);
+                        if (checkDuplicateName(adminList.getAdmins(),
+                            nameTxt.getText().toString())) {
+                            Toast.makeText(Registration.this, "Name has been taken!",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Registration.this, "Account created!",
+                                    Toast.LENGTH_SHORT).show();
+                            adminList.addAdmin(new Admin(nameTxt.getText().toString(),
+                                    Integer.parseInt(pinTxt.getText().toString())));
+                            Intent intent = new Intent(Registration.this, Login.class);
+                            startActivity(intent);
+                        }
                     } else {
                         Toast.makeText(Registration.this, msg,
                                 Toast.LENGTH_SHORT).show();
@@ -84,4 +102,14 @@ public class Registration extends AppCompatActivity {
             }
         }
     }
+
+    public boolean checkDuplicateName(ArrayList<Admin> admins, String name) {
+        for (Admin admin: admins) {
+            if (admin.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

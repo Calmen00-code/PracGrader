@@ -6,23 +6,39 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.calmen.pracgrader.users.AdminList;
+import com.calmen.pracgrader.ui.Login;
 import com.calmen.pracgrader.ui.Registration;
 
+import java.io.Serializable;
+
 public class MainActivity extends AppCompatActivity {
-    public static final String PREFS_NAME = "MY_PREF_FILE";
+    private AdminList adminList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        adminList = new AdminList();
+        adminList.load(this);
 
-        // FIXME: Remove this after DB has been implemented
         Intent intent = new Intent(MainActivity.this, Registration.class);
         startActivity(intent);
 
-        // check if the app was first installed
         /*
+        if (adminList.isEmpty()) {
+            Intent intent = new Intent(MainActivity.this, Registration.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            startActivity(intent);
+        }*/
+
+        /*
+        // check if the app was first installed
+        public static final String PREFS_NAME = "MY_PREF_FILE";
+
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         if (settings.getBoolean("my_first_time", true)) {
             Intent intent = new Intent(MainActivity.this, Registration.class);
             startActivity(intent);

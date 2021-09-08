@@ -6,12 +6,15 @@ import android.database.CursorWrapper;
 import com.calmen.pracgrader.users.Admin;
 import com.calmen.pracgrader.database.DBSchema.AdminTable;
 
+import java.io.Serializable;
+
 public class DBCursor extends CursorWrapper {
     public DBCursor (Cursor cursor) { super(cursor); }
 
     public Admin getAdmin() {
         String name = getString(getColumnIndex(AdminTable.Cols.NAME));
+        int pin = getInt(getColumnIndex(AdminTable.Cols.PIN));
 
-        return new Admin(name);
+        return new Admin(name, pin);
     }
 }

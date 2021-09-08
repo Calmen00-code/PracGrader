@@ -6,7 +6,9 @@ import android.os.Bundle;
 
 import com.calmen.pracgrader.R;
 
-public class Login extends AppCompatActivity {
+import java.io.Serializable;
+
+public class Login extends AppCompatActivity implements Serializable {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

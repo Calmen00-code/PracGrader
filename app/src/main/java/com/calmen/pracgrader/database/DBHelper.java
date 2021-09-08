@@ -7,6 +7,8 @@ import com.calmen.pracgrader.database.DBSchema.AdminTable;
 
 import com.calmen.pracgrader.users.Admin;
 
+import java.io.Serializable;
+
 public class DBHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
     private static final String DATABASE_NAME = "pracgrader.db";
@@ -17,7 +19,8 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + AdminTable.NAME + "(" +
-                AdminTable.Cols.NAME + " TEXT);");
+                AdminTable.Cols.NAME + " TEXT," +
+                AdminTable.Cols.PIN + " INTEGER);");
     }
 
     @Override

@@ -5,6 +5,7 @@ public class DBSchema {
         public static final String NAME = "ADMINS";
         public static class Cols {
             public static final String NAME = "name";
+            public static final String PIN = "pin";
         }
     }
 }

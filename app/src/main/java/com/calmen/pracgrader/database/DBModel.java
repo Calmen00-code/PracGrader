@@ -8,6 +8,7 @@ import com.calmen.pracgrader.database.DBSchema.AdminTable;
 
 import com.calmen.pracgrader.users.Admin;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class DBModel {
@@ -25,7 +26,7 @@ public class DBModel {
 
     public ArrayList<Admin> getAllAdmins() {
         ArrayList<Admin> admins = new ArrayList<>();
-        Cursor cursor = db.query(AdminTable.NAME, null, null,null,null,null,null,);
+        Cursor cursor = db.query(AdminTable.NAME, null, null,null,null,null,null);
         DBCursor dbCursor = new DBCursor(cursor);
 
         try {

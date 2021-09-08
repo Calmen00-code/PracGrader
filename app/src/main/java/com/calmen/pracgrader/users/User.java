@@ -1,10 +1,14 @@
 package com.calmen.pracgrader.users;
 
-public class User {
-    private String name;
+import java.io.Serializable;
 
-    public User(String inName) {
+public class User implements Serializable {
+    private String name;
+    private int pin;
+
+    public User(String inName, int inPin) {
         this.name = inName;
+        this.pin = inPin;
     }
 
     public void setName(String name) {
@@ -13,5 +17,13 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public void setPin(int pin) {
+        this.pin = pin;
+    }
+
+    public int getPin() {
+        return pin;
     }
 }
