@@ -32,12 +32,13 @@ public class Registration extends AppCompatActivity {
                 String msg = "";
                 msg = checkEmptyAttributes();
                 // display error message when either name, pin, confirmPin is empty
-                if (msg = "") {
+                if (msg.equals("")) {
                     msg = checkValidAttributes();
-                    if (msg == "") {
+                    if (msg.equals("")) {
                         Toast.makeText(Registration.this, "Account created!",
                                 Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Registration.this, Login.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(Registration.this, msg,
                                 Toast.LENGTH_SHORT).show();
@@ -51,11 +52,11 @@ public class Registration extends AppCompatActivity {
     }
 
     public String checkEmptyAttributes() {
-        if (nameTxt.getText().toString() == "") {
+        if (nameTxt.getText().toString().equals("")) {
             return "Username is empty!";
-        } else if (pinTxt.getText().toString() == "") {
+        } else if (pinTxt.getText().toString().equals("")) {
             return "PIN is empty!";
-        } else if (confirmPinTxt.getText().toString() == "") {
+        } else if (confirmPinTxt.getText().toString().equals("")) {
             return "Re-enter PIN is empty!";
         } else {
             return "";
@@ -67,13 +68,17 @@ public class Registration extends AppCompatActivity {
             // ensures that the name is unique
             return "Name must consist of integer value!";
         } else if (!((pinTxt.getText().toString()).matches("[0-9]+"))) {
-            return "PIN must consist ONLY integer!";
+                return "PIN must consist ONLY integer!";
         } else {
-            if (!pinTxt.getText().toString().
-                    equals(confirmPinTxt.getText().toString())) {
-                return "PIN does not match!";
+            if (pinTxt.getText().toString().length() > 4) {
+                return "PIN exceeded 4 digits!";
             } else {
-                return "";
+                if (!pinTxt.getText().toString().
+                        equals(confirmPinTxt.getText().toString())) {
+                    return "PIN does not match!";
+                } else {
+                    return "";
+                }
             }
         }
     }
