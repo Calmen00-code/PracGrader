@@ -1,4 +1,4 @@
-package com.calmen.pracgrader;
+package com.calmen.pracgrader.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.calmen.pracgrader.R;
 
 /***
  * Run the registration if the app is being run on the first time

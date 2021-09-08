@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PracGrader">
         <activity
-            android:name=".Login"
+            android:name=".ui.Login"
             android:exported="true" />
         <activity
-            android:name=".Registration"
+            android:name=".ui.Registration"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
