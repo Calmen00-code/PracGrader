@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.users.Admin;
 import com.calmen.pracgrader.users.AdminList;
+import com.calmen.pracgrader.users.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -103,8 +104,8 @@ public class Registration extends AppCompatActivity {
         }
     }
 
-    public boolean checkDuplicateName(ArrayList<Admin> admins, String name) {
-        for (Admin admin: admins) {
+    public boolean checkDuplicateName(ArrayList<User> admins, String name) {
+        for (User admin: admins) {
             if (admin.getName().equals(name)) {
                 return true;
             }

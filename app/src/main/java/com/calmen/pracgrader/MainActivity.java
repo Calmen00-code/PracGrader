@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.calmen.pracgrader.ui.UserSelection;
 import com.calmen.pracgrader.users.AdminList;
 import com.calmen.pracgrader.ui.Login;
 import com.calmen.pracgrader.ui.Registration;
@@ -22,17 +23,13 @@ public class MainActivity extends AppCompatActivity {
         adminList = new AdminList();
         adminList.load(this);
 
-        Intent intent = new Intent(MainActivity.this, Registration.class);
-        startActivity(intent);
-
-        /*
         if (adminList.isEmpty()) {
             Intent intent = new Intent(MainActivity.this, Registration.class);
             startActivity(intent);
         } else {
-            Intent intent = new Intent(MainActivity.this, Login.class);
+            Intent intent = new Intent(MainActivity.this, UserSelection.class);
             startActivity(intent);
-        }*/
+        }
 
         /*
         // check if the app was first installed
@@ -46,5 +43,9 @@ public class MainActivity extends AppCompatActivity {
         } else {
             setContentView(R.layout.login_page);
         } */
+    }
+
+    public AdminList getAdminList() {
+        return adminList;
     }
 }

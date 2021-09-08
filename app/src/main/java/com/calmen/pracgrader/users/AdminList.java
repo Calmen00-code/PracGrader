@@ -11,8 +11,8 @@ import java.util.ArrayList;
 /***
  * Communicate with DB to modify Admin Table
  */
-public class AdminList {
-    ArrayList<Admin> admins;
+public class AdminList implements Serializable {
+    ArrayList<User> admins;
     DBModel dbModel;
 
     public AdminList() {
@@ -34,7 +34,7 @@ public class AdminList {
         }
     }
 
-    public ArrayList<Admin> getAdmins() {
+    public ArrayList<User> getAdmins() {
         return this.admins;
     }
 

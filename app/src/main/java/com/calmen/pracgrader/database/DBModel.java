@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.calmen.pracgrader.database.DBSchema.AdminTable;
 
 import com.calmen.pracgrader.users.Admin;
+import com.calmen.pracgrader.users.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,8 +25,8 @@ public class DBModel {
         db.insert(AdminTable.NAME, null, cv);
     }
 
-    public ArrayList<Admin> getAllAdmins() {
-        ArrayList<Admin> admins = new ArrayList<>();
+    public ArrayList<User> getAllAdmins() {
+        ArrayList<User> admins = new ArrayList<>();
         Cursor cursor = db.query(AdminTable.NAME, null, null,null,null,null,null);
         DBCursor dbCursor = new DBCursor(cursor);
 
