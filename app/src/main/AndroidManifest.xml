@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PracGrader">
         <activity
+            android:name=".ui.MenuPage"
+            android:exported="true" />
+        <activity
             android:name=".ui.UserSelection"
             android:exported="true" />
         <activity

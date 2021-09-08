@@ -2,6 +2,7 @@ package com.calmen.pracgrader.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -67,23 +68,32 @@ public class Login extends AppCompatActivity implements Serializable {
             AdminList adminList = new AdminList();
             adminList.load(this);
             users = adminList.getAdmins();
-            if (isNameExist(users)) {
-                // proceed to check for password
-
-            } else {
+            User user = getUserByName(users);
+            if (user == null) {
                 Toast.makeText(this, "Username does not exist!",
                         Toast.LENGTH_SHORT).show();
+            } else {
+                String pin = pinTxt.getText().toString();
+                if (pinTxt.getText().toString().equals(pin)) {
+                    // successfully login
+                    Intent intent = new Intent(Login.this, MenuPage.class);
+                    intent.putExtra("Roles", ADMIN);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(Login.this, "PIN is incorrect!",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
 
-    public boolean isNameExist(List<User> users) {
+    public User getUserByName(List<User> users) {
         for (User user: users) {
             if (user.getName().equals(userNameTxt
                     .getText().toString())) {
-                return true;
+                return user;
             }
         }
-        return false;
+        return null;
     }
 }
