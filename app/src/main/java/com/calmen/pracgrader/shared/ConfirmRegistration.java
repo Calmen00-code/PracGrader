@@ -18,7 +18,13 @@ public class ConfirmRegistration extends AppCompatActivity {
         Button yesRegBtn = findViewById(R.id.yesRegBtn);
         Button noRegBtn = findViewById(R.id.noRegBtn);
 
-        // TODO: Action for yes and no
+        yesRegBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         noRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

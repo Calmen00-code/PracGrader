@@ -22,7 +22,7 @@ import java.util.ArrayList;
 /***
  * Run the registration if the app is being run on the first time
  */
-public class AdminRegistration extends AppCompatActivity {
+public class AdminRegistration extends AppCompatActivity implements UserRegistration {
     private EditText nameTxt, pinTxt, confirmPinTxt;
     private Button registerBtn;
     private AdminList adminList;
@@ -85,5 +85,25 @@ public class AdminRegistration extends AppCompatActivity {
         } else {
             return "";
         }
+    }
+
+    @Override
+    public EditText getUsername() {
+        return nameTxt;
+    }
+
+    @Override
+    public EditText getEmail() {
+        return null;
+    }
+
+    @Override
+    public EditText getPin() {
+        return pinTxt;
+    }
+
+    @Override
+    public EditText getPinTwo() {
+        return confirmPinTxt;
     }
 }

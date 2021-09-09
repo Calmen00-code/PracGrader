@@ -19,6 +19,7 @@ import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.shared.ConfirmRegistration;
 import com.calmen.pracgrader.shared.Validation;
 import com.calmen.pracgrader.ui.InstructorRegistration;
+import com.calmen.pracgrader.ui.UserRegistration;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -57,6 +58,18 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
                     if (msg.equals("")) {
                         // proceed to ask confirmation to register instructor
                         Intent intent = new Intent(view.getContext(), ConfirmRegistration.class);
+                        String name = getName();
+                        String username = getUsername();
+                        String email = getEmail();
+                        String pin = getPin();
+                        String pinTwo = getPinTwo();
+
+                        intent.putExtra("Name", name);
+                        intent.putExtra("Username", username);
+                        intent.putExtra("Email", email);
+                        intent.putExtra("Pin", pin);
+                        intent.putExtra("PinTwo", pinTwo);
+
                         view.getContext().startActivity(intent);
                     } else {
                         Toast.makeText(view.getContext(), msg, Toast.LENGTH_SHORT).show();
@@ -77,11 +90,11 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
      * @return empty string if all attributes is not empty
      */
     public String checkEmptyAttributes() {
-        EditText name = ((InstructorRegistration) (this.countryView.getActivity())).getInstructorName();
-        EditText username = ((InstructorRegistration) (this.countryView.getActivity())).getInstructorUsername();
-        EditText email = ((InstructorRegistration) (this.countryView.getActivity())).getInstructorEmail();
-        EditText pin = ((InstructorRegistration) (this.countryView.getActivity())).getInstructorPin();
-        EditText pinTwo = ((InstructorRegistration) (this.countryView.getActivity())).getInstructorPinTwo();
+        EditText name = ((UserRegistration) (this.countryView.getActivity())).getUsername();
+        EditText username = ((UserRegistration) (this.countryView.getActivity())).getUsername();
+        EditText email = ((UserRegistration) (this.countryView.getActivity())).getEmail();
+        EditText pin = ((UserRegistration) (this.countryView.getActivity())).getPin();
+        EditText pinTwo = ((UserRegistration) (this.countryView.getActivity())).getPinTwo();
 
         if (name.getText().toString().equals("")) {
             return "Name is empty!";
@@ -98,11 +111,14 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
         }
     }
 
+    /**
+     * @return empty when all the attributes is valid
+     */
     public String checkValidAttributes() {
-        EditText username = ((InstructorRegistration) (this.countryView.getActivity())).getInstructorUsername();
-        EditText email = ((InstructorRegistration) (this.countryView.getActivity())).getInstructorEmail();
-        EditText pin = ((InstructorRegistration) (this.countryView.getActivity())).getInstructorPin();
-        EditText pinTwo = ((InstructorRegistration) (this.countryView.getActivity())).getInstructorPinTwo();
+        EditText username = ((UserRegistration) (this.countryView.getActivity())).getUsername();
+        EditText email = ((UserRegistration) (this.countryView.getActivity())).getEmail();
+        EditText pin = ((UserRegistration) (this.countryView.getActivity())).getPin();
+        EditText pinTwo = ((UserRegistration) (this.countryView.getActivity())).getPinTwo();
 
         String msg = Validation.checkValidAttributes(username, pin, pinTwo);
         if (msg.equals("")) {
@@ -118,5 +134,25 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
         } else {
             return msg;
         }
+    }
+
+    public String getName() {
+        return ((UserRegistration) (this.countryView.getActivity())).getUsername().toString();
+    }
+
+    public String getUsername() {
+        return ((UserRegistration) (this.countryView.getActivity())).getUsername().toString();
+    }
+
+    public String getEmail() {
+        return ((UserRegistration) (this.countryView.getActivity())).getEmail().toString();
+    }
+
+    public String getPin() {
+        return ((UserRegistration) (this.countryView.getActivity())).getPin().toString();
+    }
+
+    public String getPinTwo() {
+        return ((UserRegistration) (this.countryView.getActivity())).getPinTwo().toString();
     }
 }

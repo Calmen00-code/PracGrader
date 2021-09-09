@@ -13,7 +13,7 @@ import com.calmen.pracgrader.ui.country_recycler.CountryView;
 
 import java.util.ArrayList;
 
-public class InstructorRegistration extends AppCompatActivity {
+public class InstructorRegistration extends AppCompatActivity implements UserRegistration {
     public static final int[] DRAWABLES = {
         0, // No country
         R.drawable.flag_my, R.drawable.flag_us, R.drawable.flag_au,
@@ -74,15 +74,23 @@ public class InstructorRegistration extends AppCompatActivity {
         return instructorName;
     }
 
-    public EditText getInstructorPin() {
+    @Override
+    public EditText getUsername() {
+        return instructorUsername;
+    }
+
+    @Override
+    public EditText getEmail() {
+        return instructorEmail;
+    }
+
+    @Override
+    public EditText getPin() {
         return instructorPin;
     }
 
-    public EditText getInstructorPinTwo() {
+    @Override
+    public EditText getPinTwo() {
         return instructorPinTwo;
-    }
-
-    public EditText getInstructorUsername() {
-        return instructorUsername;
     }
 }
