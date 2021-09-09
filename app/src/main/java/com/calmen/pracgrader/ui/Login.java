@@ -80,7 +80,6 @@ public class Login extends AppCompatActivity implements Serializable {
                     intent.putExtra("Roles", ADMIN);
                     startActivity(intent);
                 } else {
-                    System.out.println("PIN:" + user.getPin());
                     Toast.makeText(Login.this, "PIN is incorrect!",
                             Toast.LENGTH_SHORT).show();
                 }

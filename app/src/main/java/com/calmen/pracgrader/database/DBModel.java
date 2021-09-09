@@ -22,6 +22,7 @@ public class DBModel {
     public void addAdmin(Admin admin) {
         ContentValues cv = new ContentValues();
         cv.put(AdminTable.Cols.NAME, admin.getName());
+        cv.put(AdminTable.Cols.PIN, admin.getPin());
         db.insert(AdminTable.NAME, null, cv);
     }
 

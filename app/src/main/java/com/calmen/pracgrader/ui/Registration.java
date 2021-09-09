@@ -58,6 +58,7 @@ public class Registration extends AppCompatActivity {
                             adminList.addAdmin(new Admin(nameTxt.getText().toString(),
                                     Integer.parseInt(pinTxt.getText().toString())));
                             Intent intent = new Intent(Registration.this, Login.class);
+                            intent.putExtra("Roles", Login.ADMIN);
                             startActivity(intent);
                         }
                     } else {
