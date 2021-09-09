@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.ui.feature_recycler.FeatureRecyclerAdapter;
-import com.calmen.pracgrader.users.Admin;
 
 import java.util.ArrayList;
 

@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.calmen.pracgrader.R;
-import com.calmen.pracgrader.users.User;
 
 public class UserSelection extends AppCompatActivity {
 

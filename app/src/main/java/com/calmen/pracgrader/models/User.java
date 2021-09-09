@@ -1,4 +1,4 @@
-package com.calmen.pracgrader.users;
+package com.calmen.pracgrader.models;
 
 import java.io.Serializable;
 

@@ -25,7 +25,7 @@
             android:name=".ui.Login"
             android:exported="true" />
         <activity
-            android:name=".ui.Registration"
+            android:name=".ui.AdminRegistration"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

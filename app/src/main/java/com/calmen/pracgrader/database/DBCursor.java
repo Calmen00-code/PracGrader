@@ -3,10 +3,8 @@ package com.calmen.pracgrader.database;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
-import com.calmen.pracgrader.users.Admin;
+import com.calmen.pracgrader.models.Admin;
 import com.calmen.pracgrader.database.DBSchema.AdminTable;
-
-import java.io.Serializable;
 
 public class DBCursor extends CursorWrapper {
     public DBCursor (Cursor cursor) { super(cursor); }

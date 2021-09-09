@@ -6,10 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.calmen.pracgrader.database.DBSchema.AdminTable;
 
-import com.calmen.pracgrader.users.Admin;
-import com.calmen.pracgrader.users.User;
+import com.calmen.pracgrader.models.Admin;
+import com.calmen.pracgrader.models.User;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class DBModel {

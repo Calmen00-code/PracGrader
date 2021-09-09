@@ -12,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.ui.InstructorSettings;
 import com.calmen.pracgrader.ui.Login;
-import com.calmen.pracgrader.users.Admin;
-import com.calmen.pracgrader.users.User;
+import com.calmen.pracgrader.models.Admin;
 
 import java.util.ArrayList;
 

@@ -1,16 +1,50 @@
 package com.calmen.pracgrader.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.models.Country;
+import com.calmen.pracgrader.ui.country_recycler.CountryView;
+
+import java.util.ArrayList;
 
 public class InstructorRegistration extends AppCompatActivity {
+    public static final int[] DRAWABLES = {
+        0, // No country
+        R.drawable.flag_my, R.drawable.flag_au, R.drawable.flag_us,
+                R.drawable.flag_ca, R.drawable.flag_hk
+    };
+
+    private ArrayList<Country> countries;
+
+    public InstructorRegistration() {
+        countries = new ArrayList<Country>();
+        countries.add(new Country("Malaysia", R.drawable.flag_my));
+        countries.add(new Country("Australia", R.drawable.flag_au));
+        countries.add(new Country("United States", R.drawable.flag_us));
+        countries.add(new Country("Canada", R.drawable.flag_ca));
+        countries.add(new Country("Hong Kong", R.drawable.flag_hk));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.instructor_registration_page);
+
+        FragmentManager fm = getSupportFragmentManager();
+        CountryView countryView = (CountryView) fm.findFragmentById(R.id.f_container_flag);
+
+        if (countryView == null) {
+            countryView = new CountryView();
+            fm.beginTransaction()
+                    .add(R.id.f_container_flag, countryView).commit();
+        }
+    }
+
+    public ArrayList<Country> getCountries() {
+        return countries;
     }
 }

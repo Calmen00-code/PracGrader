@@ -1,9 +1,8 @@
-package com.calmen.pracgrader.users;
+package com.calmen.pracgrader.models;
 
 import android.content.Context;
 
 import com.calmen.pracgrader.database.DBModel;
-import com.calmen.pracgrader.users.Admin;
 
 import java.io.Serializable;
 import java.util.ArrayList;

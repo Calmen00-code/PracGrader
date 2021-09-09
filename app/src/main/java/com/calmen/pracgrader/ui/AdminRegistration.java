@@ -10,16 +10,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.calmen.pracgrader.R;
-import com.calmen.pracgrader.users.Admin;
-import com.calmen.pracgrader.users.AdminList;
-import com.calmen.pracgrader.users.User;
+import com.calmen.pracgrader.models.Admin;
+import com.calmen.pracgrader.models.AdminList;
+import com.calmen.pracgrader.models.User;
 
 import java.util.ArrayList;
 
 /***
  * Run the registration if the app is being run on the first time
  */
-public class Registration extends AppCompatActivity {
+public class AdminRegistration extends AppCompatActivity {
     private EditText nameTxt, pinTxt, confirmPinTxt;
     private Button registerBtn;
     private AdminList adminList;
@@ -49,23 +49,23 @@ public class Registration extends AppCompatActivity {
                     if (msg.equals("")) {
                         if (checkDuplicateName(adminList.getAdmins(),
                             nameTxt.getText().toString())) {
-                            Toast.makeText(Registration.this, "Name has been taken!",
+                            Toast.makeText(AdminRegistration.this, "Name has been taken!",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(Registration.this, "Account created!",
+                            Toast.makeText(AdminRegistration.this, "Account created!",
                                     Toast.LENGTH_SHORT).show();
                             adminList.addAdmin(new Admin(nameTxt.getText().toString(),
                                     Integer.parseInt(pinTxt.getText().toString())));
-                            Intent intent = new Intent(Registration.this, Login.class);
+                            Intent intent = new Intent(AdminRegistration.this, Login.class);
                             intent.putExtra("Roles", Login.ADMIN);
                             startActivity(intent);
                         }
                     } else {
-                        Toast.makeText(Registration.this, msg,
+                        Toast.makeText(AdminRegistration.this, msg,
                                 Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(Registration.this, msg,
+                    Toast.makeText(AdminRegistration.this, msg,
                             Toast.LENGTH_SHORT).show();
                 }
             }

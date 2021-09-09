@@ -3,15 +3,11 @@ package com.calmen.pracgrader;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.calmen.pracgrader.ui.UserSelection;
-import com.calmen.pracgrader.users.AdminList;
-import com.calmen.pracgrader.ui.Login;
-import com.calmen.pracgrader.ui.Registration;
-
-import java.io.Serializable;
+import com.calmen.pracgrader.models.AdminList;
+import com.calmen.pracgrader.ui.AdminRegistration;
 
 public class MainActivity extends AppCompatActivity {
     private AdminList adminList;
@@ -24,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         adminList.load(this);
 
         if (adminList.isEmpty()) {
-            Intent intent = new Intent(MainActivity.this, Registration.class);
+            Intent intent = new Intent(MainActivity.this, AdminRegistration.class);
             startActivity(intent);
         } else {
             Intent intent = new Intent(MainActivity.this, UserSelection.class);

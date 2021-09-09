@@ -5,10 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.calmen.pracgrader.database.DBSchema.AdminTable;
 
-import com.calmen.pracgrader.users.Admin;
-
-import java.io.Serializable;
-
 public class DBHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
     private static final String DATABASE_NAME = "pracgrader.db";

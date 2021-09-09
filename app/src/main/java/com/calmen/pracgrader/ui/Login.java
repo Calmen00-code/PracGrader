@@ -10,9 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.calmen.pracgrader.R;
-import com.calmen.pracgrader.users.Admin;
-import com.calmen.pracgrader.users.AdminList;
-import com.calmen.pracgrader.users.User;
+import com.calmen.pracgrader.models.AdminList;
+import com.calmen.pracgrader.models.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
