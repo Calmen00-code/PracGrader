@@ -1,6 +1,7 @@
 package com.calmen.pracgrader.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 
@@ -12,5 +13,17 @@ public class MenuPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_page);
+
+        String roles = (String) getIntent().getSerializableExtra("Roles");
+        FragmentManager fm = getSupportFragmentManager();
+
+        if (roles.equals(Login.ADMIN)) {
+            AdminMenu adminMenu = (AdminMenu) fm.findFragmentById(R.id.frag_menu);
+            if (adminMenu == null) {
+                adminMenu = new AdminMenu();
+                fm.beginTransaction()
+                        .add(R.id.frag_menu, adminMenu).commit();
+            }
+        }
     }
 }

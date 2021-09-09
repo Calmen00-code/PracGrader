@@ -73,13 +73,14 @@ public class Login extends AppCompatActivity implements Serializable {
                 Toast.makeText(this, "Username does not exist!",
                         Toast.LENGTH_SHORT).show();
             } else {
-                String pin = pinTxt.getText().toString();
-                if (pinTxt.getText().toString().equals(pin)) {
+                int pin = Integer.parseInt(pinTxt.getText().toString());
+                if (pin == user.getPin()) {
                     // successfully login
                     Intent intent = new Intent(Login.this, MenuPage.class);
                     intent.putExtra("Roles", ADMIN);
                     startActivity(intent);
                 } else {
+                    System.out.println("PIN:" + user.getPin());
                     Toast.makeText(Login.this, "PIN is incorrect!",
                             Toast.LENGTH_SHORT).show();
                 }
