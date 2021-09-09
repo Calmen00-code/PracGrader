@@ -4,9 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_ad.xml" value="0.15520833333333334" />
+        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_ae.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_af.xml" value="0.15885416666666666" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_au.xml" value="0.15885416666666666" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_bd.xml" value="0.15520833333333334" />
+        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_bf.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_br.xml" value="0.15885416666666666" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_ca.xml" value="0.15520833333333334" />
+        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_ch.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_cn.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_cz.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_dk.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_es.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_fr.xml" value="0.15885416666666666" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_ge.xml" value="0.15520833333333334" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_gr.xml" value="0.15520833333333334" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/drawable/flag_hk.xml" value="0.15520833333333334" />
@@ -17,6 +27,7 @@
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/activity_menu_page.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/activity_user_selection.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/admin_registration_page.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/confirm_registration_page.xml" value="0.264" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/country_row.xml" value="0.536" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/country_view.xml" value="0.1390625" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/features_row.xml" value="0.536" />

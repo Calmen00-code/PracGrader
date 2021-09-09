@@ -17,7 +17,8 @@ public class InstructorRegistration extends AppCompatActivity {
     public static final int[] DRAWABLES = {
         0, // No country
         R.drawable.flag_my, R.drawable.flag_us, R.drawable.flag_au,
-                R.drawable.flag_ca, R.drawable.flag_hk
+            R.drawable.flag_ca, R.drawable.flag_hk, R.drawable.flag_dk,
+            R.drawable.flag_fr
     };
 
     public ArrayList<Country> countries;
@@ -32,6 +33,8 @@ public class InstructorRegistration extends AppCompatActivity {
         countries.add(new Country("Australia", R.drawable.flag_au));
         countries.add(new Country("Canada", R.drawable.flag_ca));
         countries.add(new Country("Hong Kong", R.drawable.flag_hk));
+        countries.add(new Country("Denmark", R.drawable.flag_dk));
+        countries.add(new Country("France", R.drawable.flag_fr));
     }
 
     @Override
@@ -44,7 +47,6 @@ public class InstructorRegistration extends AppCompatActivity {
         instructorEmail = findViewById(R.id.instructorEmailTxt);
         instructorPin = findViewById(R.id.pinInstructorTxt);
         instructorPinTwo = findViewById(R.id.pinInstructorTxt2);
-        instructorRegisterBtn = findViewById(R.id.registerInstructorBtn);
 
         FragmentManager fm = getSupportFragmentManager();
         CountryView countryView = (CountryView) fm.findFragmentById(R.id.f_container_flag);

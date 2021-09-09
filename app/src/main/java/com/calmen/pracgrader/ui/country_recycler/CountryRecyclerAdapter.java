@@ -1,6 +1,7 @@
 package com.calmen.pracgrader.ui.country_recycler;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Country;
 import com.calmen.pracgrader.models.Instructor;
+import com.calmen.pracgrader.shared.ConfirmRegistration;
 import com.calmen.pracgrader.shared.Validation;
 import com.calmen.pracgrader.ui.InstructorRegistration;
 
@@ -53,7 +55,11 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
                 if (msg.equals("")) {
                     msg = checkValidAttributes();
                     if (msg.equals("")) {
-                        // TODO: proceed to ask confirmation to register instructor
+                        // proceed to ask confirmation to register instructor
+                        Intent intent = new Intent(view.getContext(), ConfirmRegistration.class);
+                        view.getContext().startActivity(intent);
+                    } else {
+                        Toast.makeText(view.getContext(), msg, Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(view.getContext(), msg, Toast.LENGTH_SHORT).show();
