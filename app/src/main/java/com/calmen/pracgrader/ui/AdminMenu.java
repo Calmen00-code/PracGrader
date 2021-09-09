@@ -24,6 +24,7 @@ public class AdminMenu extends Fragment {
     public AdminMenu() {
         adminMenus = new ArrayList<String>();
         adminMenus.add("Instructor");
+        adminMenus.add("Student");
         adminMenus.add("Practical");
         adminMenus.add("Marking/Grading");
         adminMenus.add("View Instructor List");

@@ -1,5 +1,7 @@
 package com.calmen.pracgrader.ui;
 
+import static com.calmen.pracgrader.shared.Validation.checkDuplicateName;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,6 +15,7 @@ import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Admin;
 import com.calmen.pracgrader.models.AdminList;
 import com.calmen.pracgrader.models.User;
+import com.calmen.pracgrader.shared.Validation;
 
 import java.util.ArrayList;
 
@@ -44,10 +47,10 @@ public class AdminRegistration extends AppCompatActivity {
                 msg = checkEmptyAttributes();
                 // display error message when either name, pin, confirmPin is empty
                 if (msg.equals("")) {
-                    msg = checkValidAttributes();
+                    msg = Validation.checkValidAttributes(nameTxt, pinTxt, confirmPinTxt);
                     // display error message when there is invalid input
                     if (msg.equals("")) {
-                        if (checkDuplicateName(adminList.getAdmins(),
+                        if (Validation.checkDuplicateName(adminList.getAdmins(),
                             nameTxt.getText().toString())) {
                             Toast.makeText(AdminRegistration.this, "Name has been taken!",
                                     Toast.LENGTH_SHORT).show();
@@ -83,34 +86,4 @@ public class AdminRegistration extends AppCompatActivity {
             return "";
         }
     }
-
-    public String checkValidAttributes() {
-        if (!((nameTxt.getText().toString()).matches(".*\\d.*"))) {
-            // ensures that the name is unique
-            return "Name must consist of integer value!";
-        } else if (!((pinTxt.getText().toString()).matches("[0-9]+"))) {
-                return "PIN must consist ONLY integer!";
-        } else {
-            if (pinTxt.getText().toString().length() > 4) {
-                return "PIN exceeded 4 digits!";
-            } else {
-                if (!pinTxt.getText().toString().
-                        equals(confirmPinTxt.getText().toString())) {
-                    return "PIN does not match!";
-                } else {
-                    return "";
-                }
-            }
-        }
-    }
-
-    public boolean checkDuplicateName(ArrayList<User> admins, String name) {
-        for (User admin: admins) {
-            if (admin.getName().equals(name)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
 }
