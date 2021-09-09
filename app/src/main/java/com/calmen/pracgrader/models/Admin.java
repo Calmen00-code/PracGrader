@@ -3,7 +3,7 @@ package com.calmen.pracgrader.models;
 import java.io.Serializable;
 
 public class Admin extends User implements Serializable {
-    // features associate to admin
+    // features associated to admin
     public static final int INSTRUCTOR_SETTINGS = 0;
     public static final int STUDENT_SETTINGS = 1;
     public static final int PRACTICAL_SETTINGS = 2;

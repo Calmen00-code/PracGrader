@@ -14,10 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Country;
+import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.shared.Validation;
 import com.calmen.pracgrader.ui.InstructorRegistration;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHolder> {
     ArrayList<Country> countries;
@@ -49,7 +52,9 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
                 String msg = checkEmptyAttributes();
                 if (msg.equals("")) {
                     msg = checkValidAttributes();
-                    // TODO: proceed to ask confirmation to register instructor
+                    if (msg.equals("")) {
+                        // TODO: proceed to ask confirmation to register instructor
+                    }
                 } else {
                     Toast.makeText(view.getContext(), msg, Toast.LENGTH_SHORT).show();
                 }
@@ -95,9 +100,17 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
 
         String msg = Validation.checkValidAttributes(username, pin, pinTwo);
         if (msg.equals("")) {
-            // check email if username and password is valid
-            if (email.getText().toString().endsWith(""))
-        }
+            Pattern pattern = Pattern.compile(Instructor.EMAIL_REGEX);
+            Matcher matcher = pattern.matcher(email.getText().toString());
 
+            // check email if username and password is valid
+            if (matcher.matches()) {
+                return "";
+            } else {
+                return "Email is invalid!";
+            }
+        } else {
+            return msg;
+        }
     }
 }
