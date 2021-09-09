@@ -8,7 +8,9 @@ import android.widget.Button;
 
 import com.calmen.pracgrader.R;
 
-public class ConfirmRegistration extends AppCompatActivity {
+import java.io.Serializable;
+
+public class ConfirmRegistration extends AppCompatActivity implements Serializable {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +19,7 @@ public class ConfirmRegistration extends AppCompatActivity {
 
         Button yesRegBtn = findViewById(R.id.yesRegBtn);
         Button noRegBtn = findViewById(R.id.noRegBtn);
+        String name = getIntent().getStringExtra("Name");
 
         yesRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override

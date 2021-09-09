@@ -21,11 +21,12 @@ import com.calmen.pracgrader.shared.Validation;
 import com.calmen.pracgrader.ui.InstructorRegistration;
 import com.calmen.pracgrader.ui.UserRegistration;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHolder> {
+public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHolder> implements Serializable {
     ArrayList<Country> countries;
     CountryView countryView;
 
