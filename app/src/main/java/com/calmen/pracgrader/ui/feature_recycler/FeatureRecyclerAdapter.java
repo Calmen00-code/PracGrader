@@ -1,5 +1,6 @@
 package com.calmen.pracgrader.ui.feature_recycler;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,14 +36,14 @@ public class FeatureRecyclerAdapter extends RecyclerView.Adapter<FeatureViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FeatureViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FeatureViewHolder holder, @SuppressLint("RecyclerView") int position) {
         String singleFeature = features.get(position);
         holder.featureView.setText(singleFeature);
         holder.selectFeatureBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (userRole.equals(Login.ADMIN)) {
-                    if (position == 0) {
+                    if (position == Admin.INSTRUCTOR_SETTINGS) {
                         Intent intent = new Intent(view.getContext(), InstructorSettings.class);
                         view.getContext().startActivity(intent);
                     }
