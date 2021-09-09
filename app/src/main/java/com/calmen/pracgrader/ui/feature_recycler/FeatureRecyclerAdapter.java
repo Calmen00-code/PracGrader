@@ -1,5 +1,6 @@
 package com.calmen.pracgrader.ui.feature_recycler;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,13 +9,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.ui.InstructorSettings;
+import com.calmen.pracgrader.ui.Login;
+import com.calmen.pracgrader.users.Admin;
+import com.calmen.pracgrader.users.User;
 
 import java.util.ArrayList;
 
 public class FeatureRecyclerAdapter extends RecyclerView.Adapter<FeatureViewHolder> {
     ArrayList<String> features;
+    String userRole;
 
-    public FeatureRecyclerAdapter(ArrayList<String> inFeatures) { this.features = inFeatures; }
+    public FeatureRecyclerAdapter(ArrayList<String> inFeatures, String inUserRole) {
+        this.features = inFeatures;
+        this.userRole = inUserRole;
+    }
 
     @NonNull
     @Override
@@ -32,10 +41,14 @@ public class FeatureRecyclerAdapter extends RecyclerView.Adapter<FeatureViewHold
         holder.selectFeatureBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // display feature of user here
+                if (userRole.equals(Login.ADMIN)) {
+                    if (position == 0) {
+                        Intent intent = new Intent(view.getContext(), InstructorSettings.class);
+                        view.getContext().startActivity(intent);
+                    }
+                }
             }
         });
-
     }
 
     @Override

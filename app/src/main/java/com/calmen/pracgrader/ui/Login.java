@@ -43,8 +43,6 @@ public class Login extends AppCompatActivity implements Serializable {
                 String msg = checkEmptyAttributes();
                 if (msg.equals("")) {
                     userLoginHandler(roles);
-                    // check if user exist
-                        // if user exist, check the pin
                 } else {
                     Toast.makeText(Login.this, msg, Toast.LENGTH_SHORT).show();
                 }
@@ -62,6 +60,10 @@ public class Login extends AppCompatActivity implements Serializable {
         }
     }
 
+    /***
+     * Check if user exist, if exist, then check the pin
+     * @param roles determine which table to query in DB
+     */
     public void userLoginHandler(String roles) {
         ArrayList<User> users;
         if (roles.equals(ADMIN)) {

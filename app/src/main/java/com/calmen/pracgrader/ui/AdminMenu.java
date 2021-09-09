@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.ui.feature_recycler.FeatureRecyclerAdapter;
+import com.calmen.pracgrader.users.Admin;
 
 import java.util.ArrayList;
 
@@ -38,7 +39,7 @@ public class AdminMenu extends Fragment {
         View view = inflater.inflate(R.layout.fragment_admin_menu, container, false);
         RecyclerView rv = view.findViewById(R.id.recyclerFeature);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        FeatureRecyclerAdapter featureRecyclerAdapter = new FeatureRecyclerAdapter(this.adminMenus);
+        FeatureRecyclerAdapter featureRecyclerAdapter = new FeatureRecyclerAdapter(this.adminMenus, Login.ADMIN);
         rv.setAdapter(featureRecyclerAdapter);
         return view;
     }

@@ -18,6 +18,7 @@ public class MenuPage extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
 
         if (roles.equals(Login.ADMIN)) {
+            // Load menu list for admin
             AdminMenu adminMenu = (AdminMenu) fm.findFragmentById(R.id.frag_menu);
             if (adminMenu == null) {
                 adminMenu = new AdminMenu();
