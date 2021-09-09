@@ -14,7 +14,6 @@ import com.calmen.pracgrader.users.Admin;
 import com.calmen.pracgrader.users.AdminList;
 import com.calmen.pracgrader.users.User;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /***
@@ -28,14 +27,14 @@ public class Registration extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registration_page);
+        setContentView(R.layout.admin_registration_page);
 
         adminList = new AdminList();
         adminList.load(this);
 
-        nameTxt = findViewById(R.id.usernameTxt);
-        pinTxt = findViewById(R.id.pinTxt);
-        confirmPinTxt = findViewById(R.id.pinTxt2);
+        nameTxt = findViewById(R.id.instructorEmailTxt);
+        pinTxt = findViewById(R.id.pinInstructorTxt2);
+        confirmPinTxt = findViewById(R.id.pinInstructorTxt);
         registerBtn = findViewById(R.id.registerBtn);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
