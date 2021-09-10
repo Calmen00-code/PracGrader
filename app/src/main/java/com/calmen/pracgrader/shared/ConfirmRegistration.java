@@ -20,6 +20,10 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
         Button yesRegBtn = findViewById(R.id.yesRegBtn);
         Button noRegBtn = findViewById(R.id.noRegBtn);
         String name = getIntent().getStringExtra("Name");
+        String username = getIntent().getStringExtra("Username");
+        String email = getIntent().getStringExtra("Email");
+        String pin = getIntent().getStringExtra("Pin");
+        String pinTwo = getIntent().getStringExtra("PinTwo");
 
         yesRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override

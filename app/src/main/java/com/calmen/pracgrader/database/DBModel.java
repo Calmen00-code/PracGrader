@@ -4,9 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import com.calmen.pracgrader.database.DBSchema.AdminTable;
+import com.calmen.pracgrader.database.DBSchema.*;
 
 import com.calmen.pracgrader.models.Admin;
+import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.User;
 
 import java.util.ArrayList;
@@ -40,5 +41,22 @@ public class DBModel {
             dbCursor.close();
         }
         return admins;
+    }
+
+    public ArrayList<User> getAllInstructors() {
+        ArrayList<User> instructors = new ArrayList<>();
+        Cursor cursor = db.query(InstructorTable.NAME, null, null,null,null,null,null);
+        DBCursor dbCursor = new DBCursor(cursor);
+
+        try {
+            dbCursor.moveToFirst();
+            while (!dbCursor.isAfterLast()) {
+                instructors.add(dbCursor.getInstructor());
+                dbCursor.moveToNext();
+            }
+        } finally {
+            dbCursor.close();
+        }
+        return instructors;
     }
 }

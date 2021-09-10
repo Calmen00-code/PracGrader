@@ -5,6 +5,7 @@ import android.database.CursorWrapper;
 
 import com.calmen.pracgrader.models.Admin;
 import com.calmen.pracgrader.database.DBSchema.AdminTable;
+import com.calmen.pracgrader.models.Instructor;
 
 public class DBCursor extends CursorWrapper {
     public DBCursor (Cursor cursor) { super(cursor); }
@@ -14,5 +15,9 @@ public class DBCursor extends CursorWrapper {
         int pin = getInt(getColumnIndex(AdminTable.Cols.PIN));
 
         return new Admin(name, pin);
+    }
+
+    public Instructor getInstructor() {
+        String name = getString()
     }
 }
