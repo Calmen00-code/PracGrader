@@ -30,7 +30,7 @@ public class Validation {
 
     public static boolean checkDuplicateName(ArrayList<User> users, String name) {
         for (User user: users) {
-            if (user.getName().equals(name)) {
+            if (user.getUsername().equals(name)) {
                 return true;
             }
         }

@@ -1,7 +1,10 @@
 package com.calmen.pracgrader.ui.country_recycler;
 
+import android.accessibilityservice.AccessibilityService;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +22,7 @@ import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.shared.ConfirmRegistration;
 import com.calmen.pracgrader.shared.Validation;
 import com.calmen.pracgrader.ui.InstructorRegistration;
+import com.calmen.pracgrader.ui.Login;
 import com.calmen.pracgrader.ui.UserRegistration;
 
 import java.io.Serializable;
@@ -27,6 +31,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHolder> implements Serializable {
+    public static final int REQUEST_CODE_PLAY = 1;
     ArrayList<Country> countries;
     CountryView countryView;
 
@@ -63,15 +68,14 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
                         String username = getUsername();
                         String email = getEmail();
                         String pin = getPin();
-                        String pinTwo = getPinTwo();
 
                         intent.putExtra("Name", name);
                         intent.putExtra("Username", username);
                         intent.putExtra("Email", email);
                         intent.putExtra("Pin", pin);
-                        intent.putExtra("PinTwo", pinTwo);
+                        intent.putExtra("Roles", Login.INSTRUCTOR);
 
-                        view.getContext().startActivity(intent);
+                        (view.getContext()).startActivity(intent);
                     } else {
                         Toast.makeText(view.getContext(), msg, Toast.LENGTH_SHORT).show();
                     }
@@ -138,22 +142,18 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
     }
 
     public String getName() {
-        return ((UserRegistration) (this.countryView.getActivity())).getUsername().toString();
+        return ((UserRegistration) (this.countryView.getActivity())).getName().getText().toString();
     }
 
     public String getUsername() {
-        return ((UserRegistration) (this.countryView.getActivity())).getUsername().toString();
+        return ((UserRegistration) (this.countryView.getActivity())).getUsername().getText().toString();
     }
 
     public String getEmail() {
-        return ((UserRegistration) (this.countryView.getActivity())).getEmail().toString();
+        return ((UserRegistration) (this.countryView.getActivity())).getEmail().getText().toString();
     }
 
     public String getPin() {
-        return ((UserRegistration) (this.countryView.getActivity())).getPin().toString();
-    }
-
-    public String getPinTwo() {
-        return ((UserRegistration) (this.countryView.getActivity())).getPinTwo().toString();
+        return ((UserRegistration) (this.countryView.getActivity())).getPin().getText().toString();
     }
 }

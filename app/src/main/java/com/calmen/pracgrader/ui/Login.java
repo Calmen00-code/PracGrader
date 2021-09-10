@@ -24,6 +24,7 @@ public class Login extends AppCompatActivity implements Serializable {
 
     private EditText userNameTxt, pinTxt;
     private Button signInBtn;
+    private static User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +70,7 @@ public class Login extends AppCompatActivity implements Serializable {
             AdminList adminList = new AdminList();
             adminList.load(this);
             users = adminList.getAdmins();
-            User user = getUserByName(users);
+            user = getUserByName(users);
             if (user == null) {
                 Toast.makeText(this, "Username does not exist!",
                         Toast.LENGTH_SHORT).show();
@@ -78,7 +79,7 @@ public class Login extends AppCompatActivity implements Serializable {
                 if (pin == user.getPin()) {
                     // successfully login
                     Intent intent = new Intent(Login.this, MenuPage.class);
-                    intent.putExtra("Roles", ADMIN);
+                    // intent.putExtra("Roles", ADMIN);
                     startActivity(intent);
                 } else {
                     Toast.makeText(Login.this, "PIN is incorrect!",
@@ -88,13 +89,21 @@ public class Login extends AppCompatActivity implements Serializable {
         }
     }
 
+    /***
+     * @param users is the list of currently checked user type
+     * @return will be null if the user does not exist in the DB
+     */
     public User getUserByName(List<User> users) {
         for (User user: users) {
-            if (user.getName().equals(userNameTxt
+            if (user.getUsername().equals(userNameTxt
                     .getText().toString())) {
                 return user;
             }
         }
         return null;
+    }
+
+    public static User getUser() {
+        return user;
     }
 }

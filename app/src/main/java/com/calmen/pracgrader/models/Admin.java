@@ -23,7 +23,7 @@ public class Admin extends User implements Serializable {
     }
 
     @Override
-    public String getName() {
-        return super.getName();
+    public String getUsername() {
+        return super.getUsername();
     }
 }

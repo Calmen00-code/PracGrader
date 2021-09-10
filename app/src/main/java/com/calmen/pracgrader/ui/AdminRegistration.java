@@ -88,6 +88,11 @@ public class AdminRegistration extends AppCompatActivity implements UserRegistra
     }
 
     @Override
+    public EditText getName() {
+        return nameTxt;
+    }
+
+    @Override
     public EditText getUsername() {
         return nameTxt;
     }

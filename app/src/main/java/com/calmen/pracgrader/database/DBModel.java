@@ -21,14 +21,14 @@ public class DBModel {
 
     public void addAdmin(Admin admin) {
         ContentValues cv = new ContentValues();
-        cv.put(AdminTable.Cols.NAME, admin.getName());
+        cv.put(AdminTable.Cols.NAME, admin.getUsername());
         cv.put(AdminTable.Cols.PIN, admin.getPin());
         db.insert(AdminTable.NAME, null, cv);
     }
 
     public void addInstructor(Instructor instructor) {
         ContentValues cv = new ContentValues();
-        cv.put(InstructorTable.Cols.NAME, instructor.getName());
+        cv.put(InstructorTable.Cols.NAME, instructor.getUsername());
         cv.put(InstructorTable.Cols.USERNAME, instructor.getUsername());
         cv.put(InstructorTable.Cols.PIN, instructor.getPin());
         cv.put(InstructorTable.Cols.EMAIL, instructor.getEmail());

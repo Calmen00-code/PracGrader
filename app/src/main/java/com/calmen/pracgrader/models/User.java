@@ -3,20 +3,20 @@ package com.calmen.pracgrader.models;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private String name;
+    private String username;
     private int pin;
 
-    public User(String inName, int inPin) {
-        this.name = inName;
+    public User(String inUsername, int inPin) {
+        this.username = inUsername;
         this.pin = inPin;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.username = name;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
     public void setPin(int pin) {

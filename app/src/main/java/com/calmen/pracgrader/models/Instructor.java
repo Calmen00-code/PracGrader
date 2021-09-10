@@ -6,13 +6,13 @@ public class Instructor extends User {
     // features associated to instructor
     public static final int STUDENT_SETTINGS = 0;
 
-    private String username;
+    private String name;
     private String email;
 
     public Instructor(String inName, String inUsername,
                       int inPin, String inEmail) {
-        super(inName, inPin);
-        this.username = inUsername;
+        super(inUsername, inPin);
+        this.name = inName;
         this.email = inEmail;
     }
 
@@ -30,13 +30,9 @@ public class Instructor extends User {
         this.email = email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     @Override
-    public String getName() {
-        return super.getName();
+    public String getUsername() {
+        return super.getUsername();
     }
 
     @Override
@@ -46,9 +42,5 @@ public class Instructor extends User {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getUsername() {
-        return username;
     }
 }

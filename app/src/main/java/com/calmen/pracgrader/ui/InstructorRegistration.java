@@ -1,14 +1,17 @@
 package com.calmen.pracgrader.ui;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Country;
+import com.calmen.pracgrader.ui.country_recycler.CountryRecyclerAdapter;
 import com.calmen.pracgrader.ui.country_recycler.CountryView;
 
 import java.util.ArrayList;
@@ -24,7 +27,6 @@ public class InstructorRegistration extends AppCompatActivity implements UserReg
     public ArrayList<Country> countries;
     public EditText instructorUsername, instructorName, instructorEmail;
     public EditText instructorPin, instructorPinTwo;
-    public Button instructorRegisterBtn;
 
     public InstructorRegistration() {
         countries = new ArrayList<Country>();
@@ -62,15 +64,8 @@ public class InstructorRegistration extends AppCompatActivity implements UserReg
         return countries;
     }
 
-    public Button getInstructorRegisterBtn() {
-        return instructorRegisterBtn;
-    }
-
-    public EditText getInstructorEmail() {
-        return instructorEmail;
-    }
-
-    public EditText getInstructorName() {
+    @Override
+    public EditText getName() {
         return instructorName;
     }
 

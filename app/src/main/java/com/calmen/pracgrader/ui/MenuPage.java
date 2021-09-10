@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.models.Admin;
 
 public class MenuPage extends AppCompatActivity {
 
@@ -14,10 +15,10 @@ public class MenuPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_page);
 
-        String roles = (String) getIntent().getSerializableExtra("Roles");
+        // String roles = (String) getIntent().getSerializableExtra("Roles");
         FragmentManager fm = getSupportFragmentManager();
 
-        if (roles.equals(Login.ADMIN)) {
+        if (Login.getUser() instanceof Admin) {
             // Load menu list for admin
             AdminMenu adminMenu = (AdminMenu) fm.findFragmentById(R.id.frag_menu);
             if (adminMenu == null) {
