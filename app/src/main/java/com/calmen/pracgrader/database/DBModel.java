@@ -39,7 +39,16 @@ public class DBModel {
     }
 
     public void removeInstructor(Instructor instructor) {
-
+        String[] whereVal = {String.valueOf(instructor.getUsername())};
+        for (String val : whereVal) {
+            System.out.println("val: " + val);
+        }
+        int deleted = db.delete(InstructorTable.NAME, InstructorTable.Cols.USERNAME + " =?", whereVal);
+        if (deleted > 0 ) {
+            System.out.println("Instructor deleted");
+        } else {
+            System.out.println("Instructor NOT DELETED");
+        }
     }
 
     public ArrayList<User> getAllAdmins() {

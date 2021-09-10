@@ -2,6 +2,7 @@ package com.calmen.pracgrader.shared;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,7 +48,11 @@ public class ConfirmDeletion extends AppCompatActivity {
         yesDelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (delUser instanceof Instructor) {
+                    Instructor delInstructor = (Instructor) delUser;
+                    instructorList.remove(delInstructor);
+                    finish();
+                }
             }
         });
 

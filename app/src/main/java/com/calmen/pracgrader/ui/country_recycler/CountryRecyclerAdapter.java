@@ -67,7 +67,6 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
                         intent.putExtra("Username", username);
                         intent.putExtra("Email", email);
                         intent.putExtra("Pin", pin);
-                        intent.putExtra("Roles", Login.INSTRUCTOR);
                         intent.putExtra("Country", singleCountry);
                         (view.getContext()).startActivity(intent);
                     } else {

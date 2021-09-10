@@ -16,6 +16,7 @@ public class DBSchema {
             public static final String USERNAME = "username";
             public static final String EMAIL = "email";
             public static final String PIN = "pin";
+            public static final String ID = "id";
             public static final String COUNTRY = "country";
             public static final String COUNTRY_FLAG = "flag";
         }

@@ -18,13 +18,18 @@ public class InstructorList {
         instructors = dbModel.getAllInstructors();
     }
 
-    public void addInstructor(Instructor instructor) {
+    public void add(Instructor instructor) {
         instructors.add(instructor);
         if (dbModel == null) {
             throw new NullPointerException("Database does not exist");
         } else {
             dbModel.addInstructor(instructor);
         }
+    }
+
+    public void remove(Instructor instructor) {
+        instructors.remove(instructor);
+        dbModel.removeInstructor(instructor);
     }
 
     public ArrayList<User> getInstructors() {

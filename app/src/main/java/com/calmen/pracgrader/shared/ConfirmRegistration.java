@@ -9,9 +9,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.models.Admin;
 import com.calmen.pracgrader.models.Country;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.InstructorList;
+import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.ui.AdminMenu;
 import com.calmen.pracgrader.ui.Login;
@@ -29,7 +31,6 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
 
         Button yesRegBtn = findViewById(R.id.yesRegBtn);
         Button noRegBtn = findViewById(R.id.noRegBtn);
-        String roles = getIntent().getStringExtra("Roles");
         String name = getIntent().getStringExtra("Name");
         String username = getIntent().getStringExtra("Username");
         String email = getIntent().getStringExtra("Email");
@@ -39,7 +40,8 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
         yesRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (roles.equals(Login.INSTRUCTOR)) {
+                // Only admin can add new instructor
+                if (Login.getUser() instanceof Admin) {
                     InstructorList instructorList = new InstructorList();
                     instructorList.load(view.getContext());
                     ArrayList<User> instructors = instructorList.getInstructors();
@@ -49,7 +51,7 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
                                 Toast.LENGTH_SHORT).show();
                     } else {
                         System.out.println("Country in add: " + country.getName());
-                        instructorList.addInstructor(new Instructor(name, username, pin,
+                        instructorList.add(new Instructor(name, username, pin,
                                 email, country.getName(), country.getFlag()));
                         // only admin can add a new instructor, therefore we do not need to check for other user menu
                         Intent intent = new Intent(ConfirmRegistration.this, MenuPage.class);
@@ -59,8 +61,8 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
                                 Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }
-                } else if (roles.equals(Login.STUDENT)) {
-                    // Student code here
+                } else if (Login.getUser() instanceof Instructor) {
+                    // Register Student code here
                 }
             }
         });

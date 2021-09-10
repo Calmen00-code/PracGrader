@@ -1,5 +1,6 @@
 package com.calmen.pracgrader.ui.user_settings;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -19,6 +20,7 @@ import com.calmen.pracgrader.shared.ConfirmDeletion;
 import java.util.ArrayList;
 
 public class InstructorDelete extends AppCompatActivity {
+    public static final int REQUEST_PLAY_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,9 @@ public class InstructorDelete extends AppCompatActivity {
                         Intent intent = new Intent(InstructorDelete.this, ConfirmDeletion.class);
                         intent.putExtra("Username", usernameDelTxt.getText().toString());
                         startActivity(intent);
+
+                        // reload the DB again after deletion
+                        instructorList.load(InstructorDelete.this);
                     } else {
                         Toast.makeText(InstructorDelete.this, "Username does not exist!",
                                 Toast.LENGTH_SHORT).show();
