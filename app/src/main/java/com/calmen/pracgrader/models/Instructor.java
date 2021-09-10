@@ -1,8 +1,6 @@
 package com.calmen.pracgrader.models;
 
 public class Instructor extends User {
-    public static final String EMAIL_REGEX = "^(.+)@(.+)$";
-
     // features associated to instructor
     public static final int STUDENT_SETTINGS = 0;
 

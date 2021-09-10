@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Country;
 import com.calmen.pracgrader.models.Instructor;
+import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.shared.ConfirmRegistration;
 import com.calmen.pracgrader.shared.Validation;
 import com.calmen.pracgrader.ui.Login;
@@ -120,7 +121,7 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
 
         String msg = Validation.checkValidAttributes(username, pin, pinTwo);
         if (msg.equals("")) {
-            Pattern pattern = Pattern.compile(Instructor.EMAIL_REGEX);
+            Pattern pattern = Pattern.compile(User.EMAIL_REGEX);
             Matcher matcher = pattern.matcher(email.getText().toString());
 
             // check email if username and password is valid

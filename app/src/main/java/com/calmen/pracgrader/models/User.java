@@ -3,6 +3,8 @@ package com.calmen.pracgrader.models;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    public static final String EMAIL_REGEX = "^(.+)@(.+)$";
+
     private String username;
     private int pin;
 

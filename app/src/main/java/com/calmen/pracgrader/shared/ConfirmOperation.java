@@ -2,6 +2,7 @@ package com.calmen.pracgrader.shared;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -65,11 +66,14 @@ public class ConfirmOperation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (userOperation instanceof Instructor) {
-                    Instructor delInstructor = (Instructor) userOperation;
                     if (operation.equals(UserQuery.EDIT_OPERATION)) {
-                        // TODO: Edit operation here
+                        Intent intent = new Intent(ConfirmOperation.this,
+                                EditUser.class);
+                        intent.putExtra("UserStr", UserQuery.USER_TYPE_INSTRUCTOR);
+                        intent.putExtra("User", userOperation);
+                        startActivity(intent);
                     } else {
-                        instructorList.remove(delInstructor);
+                        instructorList.remove((Instructor) userOperation);
                     }
                 } else {
                     // TODO: Do the same for Student here
