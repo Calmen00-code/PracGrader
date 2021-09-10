@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.models.Country;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.InstructorList;
 import com.calmen.pracgrader.models.User;
@@ -33,6 +34,7 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
         String username = getIntent().getStringExtra("Username");
         String email = getIntent().getStringExtra("Email");
         int pin = Integer.parseInt(getIntent().getStringExtra("Pin"));
+        Country country = (Country) getIntent().getSerializableExtra("Country");
 
         yesRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +48,9 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
                         Toast.makeText(view.getContext(), "Username has already been taken!",
                                 Toast.LENGTH_SHORT).show();
                     } else {
-                        instructorList.addInstructor(new Instructor(name, username, pin, email));
+                        System.out.println("Country in add: " + country.getName());
+                        instructorList.addInstructor(new Instructor(name, username, pin,
+                                email, country.getName(), country.getFlag()));
                         // only admin can add a new instructor, therefore we do not need to check for other user menu
                         Intent intent = new Intent(ConfirmRegistration.this, MenuPage.class);
                         // finish() all the parent activities
@@ -55,6 +59,8 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
                                 Toast.LENGTH_SHORT).show();
                         startActivity(intent);
                     }
+                } else if (roles.equals(Login.STUDENT)) {
+                    // Student code here
                 }
             }
         });

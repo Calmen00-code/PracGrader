@@ -1,4 +1,4 @@
-package com.calmen.pracgrader.ui;
+package com.calmen.pracgrader.ui.user_settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import com.calmen.pracgrader.R;
 
+/***
+ * Display all the options for the admin to make on instructors
+ */
 public class InstructorSettings extends AppCompatActivity {
     private Button addBtn, delBtn, editBtn;
     private TextView titleView;
@@ -29,6 +32,14 @@ public class InstructorSettings extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(InstructorSettings.this,
                         InstructorRegistration.class);
+                startActivity(intent);
+            }
+        });
+
+        delBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InstructorSettings.this, InstructorDelete.class);
                 startActivity(intent);
             }
         });

@@ -9,6 +9,7 @@ import com.calmen.pracgrader.database.DBSchema.*;
 import com.calmen.pracgrader.models.Admin;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.User;
+import com.calmen.pracgrader.ui.user_settings.InstructorDelete;
 
 import java.util.ArrayList;
 
@@ -28,11 +29,17 @@ public class DBModel {
 
     public void addInstructor(Instructor instructor) {
         ContentValues cv = new ContentValues();
-        cv.put(InstructorTable.Cols.NAME, instructor.getUsername());
+        cv.put(InstructorTable.Cols.NAME, instructor.getName());
         cv.put(InstructorTable.Cols.USERNAME, instructor.getUsername());
         cv.put(InstructorTable.Cols.PIN, instructor.getPin());
         cv.put(InstructorTable.Cols.EMAIL, instructor.getEmail());
+        cv.put(InstructorTable.Cols.COUNTRY, instructor.getCountryName());
+        cv.put(InstructorTable.Cols.COUNTRY_FLAG, instructor.getCountryFlag());
         db.insert(InstructorTable.NAME, null, cv);
+    }
+
+    public void removeInstructor(Instructor instructor) {
+
     }
 
     public ArrayList<User> getAllAdmins() {

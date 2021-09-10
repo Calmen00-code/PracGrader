@@ -1,4 +1,4 @@
-package com.calmen.pracgrader.ui;
+package com.calmen.pracgrader.ui.user_settings;
 
 import android.widget.EditText;
 

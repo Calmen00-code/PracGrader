@@ -6,14 +6,20 @@ public class Instructor extends User {
     // features associated to instructor
     public static final int STUDENT_SETTINGS = 0;
 
+    public final id; // for database
     private String name;
     private String email;
+    private String countryName;
+    private int countryFlag;
 
-    public Instructor(String inName, String inUsername,
-                      int inPin, String inEmail) {
+    public Instructor(int inId, String inName, String inUsername, int inPin,
+                      String inEmail, String inCountryName, int inCountryFlag) {
         super(inUsername, inPin);
+        this.id = inId;
         this.name = inName;
         this.email = inEmail;
+        this.countryName = inCountryName;
+        this.countryFlag = inCountryFlag;
     }
 
     @Override
@@ -42,5 +48,17 @@ public class Instructor extends User {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCountryFlag() {
+        return countryFlag;
+    }
+
+    public String getCountryName() {
+        return countryName;
     }
 }

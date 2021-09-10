@@ -1,17 +1,13 @@
-package com.calmen.pracgrader.ui;
+package com.calmen.pracgrader.ui.user_settings;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Country;
-import com.calmen.pracgrader.ui.country_recycler.CountryRecyclerAdapter;
 import com.calmen.pracgrader.ui.country_recycler.CountryView;
 
 import java.util.ArrayList;
@@ -42,7 +38,7 @@ public class InstructorRegistration extends AppCompatActivity implements UserReg
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.instructor_registration_page);
+        setContentView(R.layout.user_registration_page);
 
         instructorName = findViewById(R.id.instructorNameTxt);
         instructorUsername = findViewById(R.id.instructorUsernameTxt);

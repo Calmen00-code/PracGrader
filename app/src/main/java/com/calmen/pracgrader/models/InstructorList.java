@@ -38,4 +38,28 @@ public class InstructorList {
             return false;
         }
     }
+
+    public boolean isExist(String username) {
+        if (isEmpty()) {
+            return false;
+        } else {
+            for (User user : instructors) {
+                if (user.getUsername().equals(username)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public User getUserByUsername(String username) {
+        if (!isEmpty()) {
+            for (User user : instructors) {
+                if (user.getUsername().equals(username)) {
+                    return user;
+                }
+            }
+        }
+        return null;
+    }
 }

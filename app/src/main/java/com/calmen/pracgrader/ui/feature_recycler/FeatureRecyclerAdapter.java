@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
-import com.calmen.pracgrader.ui.InstructorSettings;
+import com.calmen.pracgrader.ui.user_settings.InstructorSettings;
 import com.calmen.pracgrader.ui.Login;
 import com.calmen.pracgrader.models.Admin;
 

@@ -1,10 +1,7 @@
 package com.calmen.pracgrader.ui.country_recycler;
 
-import android.accessibilityservice.AccessibilityService;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
@@ -21,9 +16,8 @@ import com.calmen.pracgrader.models.Country;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.shared.ConfirmRegistration;
 import com.calmen.pracgrader.shared.Validation;
-import com.calmen.pracgrader.ui.InstructorRegistration;
 import com.calmen.pracgrader.ui.Login;
-import com.calmen.pracgrader.ui.UserRegistration;
+import com.calmen.pracgrader.ui.user_settings.UserRegistration;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -63,18 +57,18 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
                     msg = checkValidAttributes();
                     if (msg.equals("")) {
                         // proceed to ask confirmation to register instructor
-                        Intent intent = new Intent(view.getContext(), ConfirmRegistration.class);
                         String name = getName();
                         String username = getUsername();
                         String email = getEmail();
                         String pin = getPin();
 
+                        Intent intent = new Intent(view.getContext(), ConfirmRegistration.class);
                         intent.putExtra("Name", name);
                         intent.putExtra("Username", username);
                         intent.putExtra("Email", email);
                         intent.putExtra("Pin", pin);
                         intent.putExtra("Roles", Login.INSTRUCTOR);
-
+                        intent.putExtra("Country", singleCountry);
                         (view.getContext()).startActivity(intent);
                     } else {
                         Toast.makeText(view.getContext(), msg, Toast.LENGTH_SHORT).show();

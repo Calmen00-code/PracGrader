@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import com.calmen.pracgrader.ui.UserSelection;
 import com.calmen.pracgrader.models.AdminList;
-import com.calmen.pracgrader.ui.AdminRegistration;
+import com.calmen.pracgrader.ui.user_settings.AdminRegistration;
 
 public class MainActivity extends AppCompatActivity {
     private AdminList adminList;

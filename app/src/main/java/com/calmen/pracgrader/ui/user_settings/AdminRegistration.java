@@ -1,6 +1,4 @@
-package com.calmen.pracgrader.ui;
-
-import static com.calmen.pracgrader.shared.Validation.checkDuplicateName;
+package com.calmen.pracgrader.ui.user_settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,10 +12,8 @@ import android.widget.Toast;
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Admin;
 import com.calmen.pracgrader.models.AdminList;
-import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.shared.Validation;
-
-import java.util.ArrayList;
+import com.calmen.pracgrader.ui.Login;
 
 /***
  * Run the registration if the app is being run on the first time
