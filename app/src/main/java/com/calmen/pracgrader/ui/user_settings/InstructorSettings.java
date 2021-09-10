@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.models.User;
 
 /***
  * Display all the options for the admin to make on instructors
@@ -36,10 +37,24 @@ public class InstructorSettings extends AppCompatActivity {
             }
         });
 
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InstructorSettings.this,
+                        UserQuery.class);
+                intent.putExtra("Operation", UserQuery.EDIT_OPERATION);
+                intent.putExtra("UserType", UserQuery.USER_TYPE_INSTRUCTOR);
+                startActivity(intent);
+            }
+        });
+
         delBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InstructorSettings.this, InstructorDelete.class);
+                Intent intent = new Intent(InstructorSettings.this,
+                        UserQuery.class);
+                intent.putExtra("Operation", UserQuery.DELETE_OPERATION);
+                intent.putExtra("UserType", UserQuery.USER_TYPE_INSTRUCTOR);
                 startActivity(intent);
             }
         });

@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PracGrader">
         <activity
-            android:name=".shared.ConfirmDeletion"
+            android:name=".shared.ConfirmOperation"
             android:exported="true" />
         <activity
-            android:name=".ui.user_settings.InstructorDelete"
+            android:name=".ui.user_settings.UserQuery"
             android:exported="true" />
         <activity
             android:name=".shared.ConfirmRegistration"

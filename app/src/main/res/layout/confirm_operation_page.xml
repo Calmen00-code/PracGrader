@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".shared.ConfirmDeletion">
+    tools:context=".shared.ConfirmOperation">
 
     <Button
         android:id="@+id/noDelBtn"
@@ -58,7 +58,7 @@
         app:layout_constraintVertical_bias="0.22" />
 
     <TextView
-        android:id="@+id/titleConfirmDel"
+        android:id="@+id/titleConfirmOperation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Confirm Delete?"

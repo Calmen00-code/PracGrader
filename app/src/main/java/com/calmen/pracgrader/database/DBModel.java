@@ -9,7 +9,6 @@ import com.calmen.pracgrader.database.DBSchema.*;
 import com.calmen.pracgrader.models.Admin;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.User;
-import com.calmen.pracgrader.ui.user_settings.InstructorDelete;
 
 import java.util.ArrayList;
 

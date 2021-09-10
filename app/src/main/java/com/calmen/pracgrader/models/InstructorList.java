@@ -6,20 +6,19 @@ import com.calmen.pracgrader.database.DBModel;
 
 import java.util.ArrayList;
 
-public class InstructorList {
-    ArrayList<User> instructors;
+public class InstructorList extends UserList {
     DBModel dbModel;
 
-    public InstructorList() { instructors = new ArrayList<>(); }
+    public InstructorList() { super(); }
 
     public void load(Context context) {
         dbModel = new DBModel();
         dbModel.load(context);
-        instructors = dbModel.getAllInstructors();
+        super.setUsers(dbModel.getAllInstructors());
     }
 
     public void add(Instructor instructor) {
-        instructors.add(instructor);
+        super.getUsers().add(instructor);
         if (dbModel == null) {
             throw new NullPointerException("Database does not exist");
         } else {
@@ -28,43 +27,21 @@ public class InstructorList {
     }
 
     public void remove(Instructor instructor) {
-        instructors.remove(instructor);
+        super.getUsers().remove(instructor);
         dbModel.removeInstructor(instructor);
     }
 
     public ArrayList<User> getInstructors() {
-        return this.instructors;
+        return super.getUsers();
     }
 
+    @Override
     public boolean isEmpty() {
-        if (instructors.isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
+        return super.isEmpty();
     }
 
+    @Override
     public boolean isExist(String username) {
-        if (isEmpty()) {
-            return false;
-        } else {
-            for (User user : instructors) {
-                if (user.getUsername().equals(username)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public User getUserByUsername(String username) {
-        if (!isEmpty()) {
-            for (User user : instructors) {
-                if (user.getUsername().equals(username)) {
-                    return user;
-                }
-            }
-        }
-        return null;
+        return super.isExist(username);
     }
 }
