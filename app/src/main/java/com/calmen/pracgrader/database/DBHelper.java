@@ -3,7 +3,7 @@ package com.calmen.pracgrader.database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.calmen.pracgrader.database.DBSchema.AdminTable;
+import com.calmen.pracgrader.database.DBSchema.*;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static final int VERSION = 1;
@@ -17,6 +17,12 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + AdminTable.NAME + "(" +
                 AdminTable.Cols.NAME + " TEXT," +
                 AdminTable.Cols.PIN + " INTEGER);");
+
+        db.execSQL("CREATE TABLE " + DBSchema.InstructorTable.NAME + "(" +
+                InstructorTable.Cols.NAME + " TEXT," +
+                InstructorTable.Cols.USERNAME + " TEXT," +
+                InstructorTable.Cols.EMAIL + " TEXT," +
+                InstructorTable.Cols.PIN + " INTEGER);");
     }
 
     @Override

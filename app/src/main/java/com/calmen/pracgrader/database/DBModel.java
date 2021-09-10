@@ -26,6 +26,15 @@ public class DBModel {
         db.insert(AdminTable.NAME, null, cv);
     }
 
+    public void addInstructor(Instructor instructor) {
+        ContentValues cv = new ContentValues();
+        cv.put(InstructorTable.Cols.NAME, instructor.getName());
+        cv.put(InstructorTable.Cols.USERNAME, instructor.getUsername());
+        cv.put(InstructorTable.Cols.PIN, instructor.getPin());
+        cv.put(InstructorTable.Cols.EMAIL, instructor.getEmail());
+        db.insert(InstructorTable.NAME, null, cv);
+    }
+
     public ArrayList<User> getAllAdmins() {
         ArrayList<User> admins = new ArrayList<>();
         Cursor cursor = db.query(AdminTable.NAME, null, null,null,null,null,null);

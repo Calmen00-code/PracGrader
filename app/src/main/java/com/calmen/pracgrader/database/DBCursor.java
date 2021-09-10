@@ -4,7 +4,7 @@ import android.database.Cursor;
 import android.database.CursorWrapper;
 
 import com.calmen.pracgrader.models.Admin;
-import com.calmen.pracgrader.database.DBSchema.AdminTable;
+import com.calmen.pracgrader.database.DBSchema.*;
 import com.calmen.pracgrader.models.Instructor;
 
 public class DBCursor extends CursorWrapper {
@@ -18,6 +18,11 @@ public class DBCursor extends CursorWrapper {
     }
 
     public Instructor getInstructor() {
-        String name = getString()
+        String name = getString(getColumnIndex(InstructorTable.Cols.NAME));
+        String username = getString(getColumnIndex(InstructorTable.Cols.USERNAME));
+        String email = getString(getColumnIndex(InstructorTable.Cols.EMAIL));
+        int pin = getInt(getColumnIndex(InstructorTable.Cols.PIN));
+
+        return new Instructor(name, username, pin, email);
     }
 }
