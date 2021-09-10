@@ -10,13 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PracGrader">
         <activity
+            android:name=".shared.ConfirmDeletion"
+            android:exported="true" />
+        <activity
+            android:name=".ui.user_settings.InstructorDelete"
+            android:exported="true" />
+        <activity
             android:name=".shared.ConfirmRegistration"
             android:exported="true" />
         <activity
-            android:name=".ui.InstructorRegistration"
+            android:name=".ui.user_settings.InstructorRegistration"
             android:exported="true" />
         <activity
-            android:name=".ui.InstructorSettings"
+            android:name=".ui.user_settings.InstructorSettings"
             android:exported="true" />
         <activity
             android:name=".ui.MenuPage"
@@ -28,7 +34,7 @@
             android:name=".ui.Login"
             android:exported="true" />
         <activity
-            android:name=".ui.AdminRegistration"
+            android:name=".ui.user_settings.AdminRegistration"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
