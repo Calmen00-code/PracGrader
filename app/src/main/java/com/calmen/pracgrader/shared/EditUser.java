@@ -19,12 +19,26 @@ import java.util.ArrayList;
 
 public class EditUser extends AppCompatActivity implements Serializable {
     ArrayList<EditData> edits;
-    String userStr;
     User user;
 
-    public EditUser() {
-        edits = new ArrayList<EditData>();
-        if (userStr.equals(UserQuery.USER_TYPE_INSTRUCTOR)) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.edit_user_page);
+
+        user = (User) getIntent().getSerializableExtra("User");
+        createEditData();
+
+        RecyclerView rv = findViewById(R.id.recyclerEdit);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerEditAdapter recyclerEditAdapter = new RecyclerEditAdapter(edits);
+        rv.setAdapter(recyclerEditAdapter);
+    }
+
+    public void createEditData() {
+        edits = new ArrayList<>();
+
+        if (user instanceof Instructor) {
             edits.add(new EditData(((Instructor) user).getName()));
             edits.add(new EditData(user.getUsername()));
             edits.add(new EditData(String.valueOf(user.getPin())));
@@ -40,19 +54,5 @@ public class EditUser extends AppCompatActivity implements Serializable {
             edits.add(new EditData(String.valueOf(((Student) user).getCountryFlag())));
         }
 
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit_user_page);
-
-        userStr = getIntent().getStringExtra("UserStr");
-        user = (User) getIntent().getSerializableExtra("User");
-
-        RecyclerView rv = findViewById(R.id.recyclerEdit);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-        RecyclerEditAdapter recyclerEditAdapter = new RecyclerEditAdapter(edits);
-        rv.setAdapter(recyclerEditAdapter);
     }
 }

@@ -69,7 +69,6 @@ public class ConfirmOperation extends AppCompatActivity {
                     if (operation.equals(UserQuery.EDIT_OPERATION)) {
                         Intent intent = new Intent(ConfirmOperation.this,
                                 EditUser.class);
-                        intent.putExtra("UserStr", UserQuery.USER_TYPE_INSTRUCTOR);
                         intent.putExtra("User", userOperation);
                         startActivity(intent);
                     } else {

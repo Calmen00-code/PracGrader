@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.AdminList;
+import com.calmen.pracgrader.models.InstructorList;
+import com.calmen.pracgrader.models.StudentList;
 import com.calmen.pracgrader.models.User;
 
 import java.io.Serializable;
@@ -70,21 +72,29 @@ public class Login extends AppCompatActivity implements Serializable {
             AdminList adminList = new AdminList();
             adminList.load(this);
             users = adminList.getAdmins();
-            user = getUserByName(users);
-            if (user == null) {
-                Toast.makeText(this, "Username does not exist!",
-                        Toast.LENGTH_SHORT).show();
+        } else if (roles.equals(INSTRUCTOR)) {
+            InstructorList instructorList = new InstructorList();
+            instructorList.load(this);
+            users = instructorList.getInstructors();
+        } else {
+            StudentList studentList = new StudentList();
+            // FIXME: have yet to implement load function for StudentList
+            users = null;
+        }
+        user = getUserByName(users);
+        if (user == null) {
+            Toast.makeText(this, "Username does not exist!",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            int pin = Integer.parseInt(pinTxt.getText().toString());
+            if (pin == user.getPin()) {
+                // successfully login
+                Intent intent = new Intent(Login.this, MenuPage.class);
+                // intent.putExtra("Roles", ADMIN);
+                startActivity(intent);
             } else {
-                int pin = Integer.parseInt(pinTxt.getText().toString());
-                if (pin == user.getPin()) {
-                    // successfully login
-                    Intent intent = new Intent(Login.this, MenuPage.class);
-                    // intent.putExtra("Roles", ADMIN);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(Login.this, "PIN is incorrect!",
-                            Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(Login.this, "PIN is incorrect!",
+                        Toast.LENGTH_SHORT).show();
             }
         }
     }
