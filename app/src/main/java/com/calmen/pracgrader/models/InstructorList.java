@@ -17,4 +17,25 @@ public class InstructorList {
         dbModel.load(context);
         instructors = dbModel.getAllInstructors();
     }
+
+    public void addInstructor(Instructor instructor) {
+        instructors.add(instructor);
+        if (dbModel == null) {
+            throw new NullPointerException("Database does not exist");
+        } else {
+            dbModel.addInstructor(instructor);
+        }
+    }
+
+    public ArrayList<User> getInstructors() {
+        return this.instructors;
+    }
+
+    public boolean isEmpty() {
+        if (instructors.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
