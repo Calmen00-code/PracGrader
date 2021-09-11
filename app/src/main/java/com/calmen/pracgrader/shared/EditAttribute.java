@@ -35,9 +35,15 @@ public class EditAttribute extends AppCompatActivity {
                     Toast.makeText(EditAttribute.this, "New Value is empty!",
                             Toast.LENGTH_SHORT).show();
                 } else {
-                    if (editTitle.equals(EditUser.EDIT_PIN)) {
-                        Validation.checkValidPIN(oldVal);
-                    } else if (editTitle.equals(EditUser.EDIT_EMAIL)) {
+                    String newVal = newAttributeTxt.getText().toString();
+                    if (editTitle.equals(EditUser.EDIT_PIN) &&
+                            !Validation.checkValidPIN(newVal).equals(Validation.VALID)) {
+                        Toast.makeText(EditAttribute.this, Validation.checkValidPIN(newVal),
+                                Toast.LENGTH_SHORT).show();
+                    } else if (editTitle.equals(EditUser.EDIT_EMAIL) &&
+                            !Validation.checkValidEmail(newVal).equals(Validation.VALID)) {
+                        Toast.makeText(EditAttribute.this, Validation.checkValidEmail(newVal),
+                                Toast.LENGTH_SHORT).show();
                     } else {
                         // TODO: implement edit in DB here
                     }

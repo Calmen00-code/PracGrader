@@ -89,7 +89,7 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
      * @return empty string if all attributes is not empty
      */
     public String checkEmptyAttributes() {
-        EditText name = ((UserRegistration) (this.countryView.getActivity())).getUsername();
+        EditText name = ((UserRegistration) (this.countryView.getActivity())).getName();
         EditText username = ((UserRegistration) (this.countryView.getActivity())).getUsername();
         EditText email = ((UserRegistration) (this.countryView.getActivity())).getEmail();
         EditText pin = ((UserRegistration) (this.countryView.getActivity())).getPin();

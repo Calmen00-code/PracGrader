@@ -45,9 +45,6 @@ public class RecyclerEditAdapter extends RecyclerView.Adapter<EditDataViewHolder
                 String editTitle = singleData.getEditTitle();
                 String oldVal = singleData.getEditVal();
 
-                System.out.println("EditTitle: " + editTitle);
-                System.out.println("OldVal: " + oldVal);
-
                 intent.putExtra("EditTitle", editTitle);
                 intent.putExtra("OldValue", oldVal);
 

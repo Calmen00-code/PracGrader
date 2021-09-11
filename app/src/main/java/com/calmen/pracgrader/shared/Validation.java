@@ -5,8 +5,12 @@ import android.widget.EditText;
 import com.calmen.pracgrader.models.User;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Validation {
+    public static final String VALID = "VALID";
+
     public static String checkValidAttributes(EditText nameTxt, EditText pinTxt,
                                               EditText confirmPinTxt) {
         if (!((nameTxt.getText().toString()).matches(".*\\d.*"))) {
@@ -28,6 +32,18 @@ public class Validation {
         }
     }
 
+    public static String checkValidEmail(String email) {
+        Pattern pattern = Pattern.compile(User.EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+
+        // check email if username and password is valid
+        if (matcher.matches()) {
+            return VALID;
+        } else {
+            return "Email is invalid!";
+        }
+    }
+
     public static String checkValidPIN(String pin) {
         if (!pin.matches("[0-9]+")) {
             return "PIN must consist ONLY integer!";
@@ -35,7 +51,7 @@ public class Validation {
             if (pin.length() > 4) {
                 return "PIN exceeded 4 digits!";
             } else {
-                return "";
+                return VALID;
             }
         }
     }
