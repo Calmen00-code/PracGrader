@@ -32,9 +32,18 @@ public class InstructorList extends UserList {
     }
 
     public void edit(Instructor oldInstructor, Instructor newInstructor) {
-        for (User user: super.getUsers()) {
+        System.out.println("oldInstructor username: " + oldInstructor.getUsername());
+        if (getInstructors().isEmpty()) {
+            System.out.println("Instructor is empty");
+        } else {
+            System.out.println("Instructor is NOT EMPTY");
+        }
+        for (User user: getInstructors()) {
             Instructor instructor = (Instructor) user;
-            if (instructor == oldInstructor) {
+            System.out.println("Instructor username: " + instructor.getUsername());
+            System.out.println("oldInstructor username: " + oldInstructor.getUsername());
+
+            if (instructor.getUsername().equals(oldInstructor.getUsername())) {
                 instructor = newInstructor;
                 dbModel.updateInstructor(instructor);
             }

@@ -107,6 +107,7 @@ public class EditAttribute extends AppCompatActivity {
             Instructor updateInstructor = new Instructor(param[0], param[1], Integer.parseInt(param[2]),
                     param[3], param[4], Integer.parseInt(param[5]));
             InstructorList instructorList = new InstructorList();
+            instructorList.load(EditAttribute.this);
             instructorList.edit((Instructor) EditUser.user, updateInstructor);
             instructorList.load(EditAttribute.this);
         } else {
