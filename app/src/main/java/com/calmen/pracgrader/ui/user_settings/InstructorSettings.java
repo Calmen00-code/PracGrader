@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.models.InstructorList;
 import com.calmen.pracgrader.models.User;
 
 /***
@@ -45,6 +46,9 @@ public class InstructorSettings extends AppCompatActivity {
                 intent.putExtra("Operation", UserQuery.EDIT_OPERATION);
                 intent.putExtra("UserType", UserQuery.USER_TYPE_INSTRUCTOR);
                 startActivity(intent);
+                InstructorList instructorList = new InstructorList();
+                instructorList.load(InstructorSettings.this);
+                finish();
             }
         });
 
@@ -56,6 +60,7 @@ public class InstructorSettings extends AppCompatActivity {
                 intent.putExtra("Operation", UserQuery.DELETE_OPERATION);
                 intent.putExtra("UserType", UserQuery.USER_TYPE_INSTRUCTOR);
                 startActivity(intent);
+                finish();
             }
         });
     }

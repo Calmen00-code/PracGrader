@@ -49,6 +49,7 @@ public class RecyclerEditAdapter extends RecyclerView.Adapter<EditDataViewHolder
                 intent.putExtra("OldValue", oldVal);
 
                 activity.startActivity(intent);
+                activity.finish();
             }
         });
     }

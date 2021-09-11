@@ -71,12 +71,13 @@ public class UserQuery extends AppCompatActivity {
                         }
                         startActivity(intent);
 
-                        // reload the DB again after deletion
+                        // reload the DB again after delete or edit
                         if (userType.equals(USER_TYPE_INSTRUCTOR)) {
                             ((InstructorList) userList).load(UserQuery.this);
                         } else {
                             // TODO: implement same thing for Student list here
                         }
+                        finish();
                     } else {
                         Toast.makeText(UserQuery.this, "Username does not exist!",
                                 Toast.LENGTH_SHORT).show();

@@ -2,6 +2,7 @@ package com.calmen.pracgrader.shared;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.InstructorList;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.User;
+import com.calmen.pracgrader.ui.MenuPage;
 
 public class EditAttribute extends AppCompatActivity {
     // number of params for Instructor and Student are six
@@ -53,6 +55,9 @@ public class EditAttribute extends AppCompatActivity {
                     } else {
                         // TODO: implement edit in DB here
                         updateUser(newVal, editTitle);
+                        Toast.makeText(EditAttribute.this, "User has been updated!",
+                                Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 }
             }
@@ -102,8 +107,8 @@ public class EditAttribute extends AppCompatActivity {
             Instructor updateInstructor = new Instructor(param[0], param[1], Integer.parseInt(param[2]),
                     param[3], param[4], Integer.parseInt(param[5]));
             InstructorList instructorList = new InstructorList();
-            instructorList.load(EditAttribute.this);
             instructorList.edit((Instructor) EditUser.user, updateInstructor);
+            instructorList.load(EditAttribute.this);
         } else {
             // TODO: update student list here
         }

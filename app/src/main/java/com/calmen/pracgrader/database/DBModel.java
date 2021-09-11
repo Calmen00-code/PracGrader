@@ -60,7 +60,12 @@ public class DBModel {
         cv.put(InstructorTable.Cols.COUNTRY, instructor.getCountryName());
         cv.put(InstructorTable.Cols.COUNTRY_FLAG, instructor.getCountryFlag());
 
-        db.update(InstructorTable.NAME, cv, InstructorTable.Cols.USERNAME + " =?", whereVal);
+        int updated = db.update(InstructorTable.NAME, cv, InstructorTable.Cols.USERNAME + " =?", whereVal);
+        if (updated > 0 ) {
+            System.out.println("Instructor updated");
+        } else {
+            System.out.println("Instructor NOT UPDATED");
+        }
     }
 
     public ArrayList<User> getAllAdmins() {
