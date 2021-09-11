@@ -37,7 +37,7 @@ public class EditUser extends AppCompatActivity implements Serializable {
 
         RecyclerView rv = findViewById(R.id.recyclerEdit);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        RecyclerEditAdapter recyclerEditAdapter = new RecyclerEditAdapter(edits);
+        RecyclerEditAdapter recyclerEditAdapter = new RecyclerEditAdapter(this, edits);
         rv.setAdapter(recyclerEditAdapter);
     }
 

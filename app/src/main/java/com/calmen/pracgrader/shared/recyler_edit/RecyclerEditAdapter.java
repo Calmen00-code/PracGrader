@@ -1,11 +1,13 @@
 package com.calmen.pracgrader.shared.recyler_edit;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
@@ -15,8 +17,10 @@ import java.util.ArrayList;
 
 public class RecyclerEditAdapter extends RecyclerView.Adapter<EditDataViewHolder> {
     ArrayList<EditData> edits;
+    Activity activity;
 
-    public RecyclerEditAdapter(ArrayList<EditData> inEdits) {
+    public RecyclerEditAdapter(Activity inActivity, ArrayList<EditData> inEdits) {
+        this.activity = inActivity;
         this.edits = inEdits;
     }
 
@@ -37,13 +41,17 @@ public class RecyclerEditAdapter extends RecyclerView.Adapter<EditDataViewHolder
         holder.selectEditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), EditAttribute.class);
+                Intent intent = new Intent(activity, EditAttribute.class);
                 String editTitle = singleData.getEditTitle();
                 String oldVal = singleData.getEditVal();
 
-                intent.putExtra(editTitle, "EditTitle");
-                intent.putExtra(oldVal, "OldValue");
-                view.getContext().startActivity(intent);
+                System.out.println("EditTitle: " + editTitle);
+                System.out.println("OldVal: " + oldVal);
+
+                intent.putExtra("EditTitle", editTitle);
+                intent.putExtra("OldValue", oldVal);
+
+                activity.startActivity(intent);
             }
         });
     }
