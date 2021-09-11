@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.shared.EditAttribute;
+import com.calmen.pracgrader.shared.EditUser;
+import com.calmen.pracgrader.ui.user_settings.UserQuery;
 
 import java.util.ArrayList;
 
@@ -41,12 +43,16 @@ public class RecyclerEditAdapter extends RecyclerView.Adapter<EditDataViewHolder
         holder.selectEditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity, EditAttribute.class);
                 String editTitle = singleData.getEditTitle();
                 String oldVal = singleData.getEditVal();
 
-                intent.putExtra("EditTitle", editTitle);
-                intent.putExtra("OldValue", oldVal);
+                if (editTitle.equals(EditUser.EDIT_COUNTRY)) {
+
+                } else {
+                    Intent intent = new Intent(activity, EditAttribute.class);
+                    intent.putExtra("EditTitle", editTitle);
+                    intent.putExtra("OldValue", oldVal);
+                }
 
                 activity.startActivity(intent);
                 activity.finish();
