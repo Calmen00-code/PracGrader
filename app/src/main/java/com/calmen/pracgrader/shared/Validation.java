@@ -28,6 +28,18 @@ public class Validation {
         }
     }
 
+    public static String checkValidPIN(String pin) {
+        if (!pin.matches("[0-9]+")) {
+            return "PIN must consist ONLY integer!";
+        } else {
+            if (pin.length() > 4) {
+                return "PIN exceeded 4 digits!";
+            } else {
+                return "";
+            }
+        }
+    }
+
     public static boolean checkDuplicateName(ArrayList<User> users, String name) {
         for (User user: users) {
             if (user.getUsername().equals(name)) {

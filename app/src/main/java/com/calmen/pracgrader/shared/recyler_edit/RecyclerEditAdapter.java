@@ -33,12 +33,16 @@ public class RecyclerEditAdapter extends RecyclerView.Adapter<EditDataViewHolder
     public void onBindViewHolder(@NonNull EditDataViewHolder holder, int position) {
         EditData singleData = edits.get(position);
         holder.editAttributeView.setText(singleData.getEditTitle());
+        holder.editAttributeVal.setText(singleData.getEditVal());
         holder.selectEditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), EditAttribute.class);
-                String val = singleData.getEditTitle();
-                intent.putExtra(val, "EditValue");
+                String editTitle = singleData.getEditTitle();
+                String oldVal = singleData.getEditVal();
+
+                intent.putExtra(editTitle, "EditTitle");
+                intent.putExtra(oldVal, "OldValue");
                 view.getContext().startActivity(intent);
             }
         });

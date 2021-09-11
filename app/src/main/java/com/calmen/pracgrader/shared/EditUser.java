@@ -18,6 +18,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class EditUser extends AppCompatActivity implements Serializable {
+    public static final String EDIT_NAME = "Name: ";
+    public static final String EDIT_USERNAME = "Username: ";
+    public static final String EDIT_PIN = "PIN: ";
+    public static final String EDIT_EMAIL = "Email: ";
+    public static final String EDIT_COUNTRY = "Country: ";
+
     ArrayList<EditData> edits;
     User user;
 
@@ -39,19 +45,17 @@ public class EditUser extends AppCompatActivity implements Serializable {
         edits = new ArrayList<>();
 
         if (user instanceof Instructor) {
-            edits.add(new EditData(((Instructor) user).getName()));
-            edits.add(new EditData(user.getUsername()));
-            edits.add(new EditData(String.valueOf(user.getPin())));
-            edits.add(new EditData(((Instructor) user).getEmail()));
-            edits.add(new EditData(((Instructor) user).getCountryName()));
-            edits.add(new EditData(String.valueOf(((Instructor) user).getCountryFlag())));
+            edits.add(new EditData(EDIT_NAME, ((Instructor) user).getName()));
+            edits.add(new EditData(EDIT_USERNAME, user.getUsername()));
+            edits.add(new EditData(EDIT_PIN, String.valueOf(user.getPin())));
+            edits.add(new EditData(EDIT_EMAIL, ((Instructor) user).getEmail()));
+            edits.add(new EditData(EDIT_COUNTRY, ((Instructor) user).getCountryName()));
         } else {
-            edits.add(new EditData(((Student) user).getName()));
-            edits.add(new EditData(user.getUsername()));
-            edits.add(new EditData(String.valueOf(user.getPin())));
-            edits.add(new EditData(((Student) user).getEmail()));
-            edits.add(new EditData(((Student) user).getCountryName()));
-            edits.add(new EditData(String.valueOf(((Student) user).getCountryFlag())));
+            edits.add(new EditData(EDIT_NAME, ((Student) user).getName()));
+            edits.add(new EditData(EDIT_USERNAME, user.getUsername()));
+            edits.add(new EditData(EDIT_PIN, String.valueOf(user.getPin())));
+            edits.add(new EditData(EDIT_EMAIL, ((Student) user).getEmail()));
+            edits.add(new EditData(EDIT_COUNTRY, ((Student) user).getCountryName()));
         }
 
     }
