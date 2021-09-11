@@ -17,6 +17,9 @@ import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.ui.MenuPage;
 
+/***
+ * Edit all the attributes of the user except for Country
+ */
 public class EditAttribute extends AppCompatActivity {
     // number of params for Instructor and Student are six
     public static final int USER_PARAM = 6;
@@ -53,7 +56,6 @@ public class EditAttribute extends AppCompatActivity {
                         Toast.makeText(EditAttribute.this, Validation.checkValidEmail(newVal),
                                 Toast.LENGTH_SHORT).show();
                     } else {
-                        // TODO: implement edit in DB here
                         updateUser(newVal, editTitle);
                         Toast.makeText(EditAttribute.this, "User has been updated!",
                                 Toast.LENGTH_SHORT).show();
@@ -67,6 +69,7 @@ public class EditAttribute extends AppCompatActivity {
     public void updateUser(String newVal, String editTitle) {
         String[] param = new String[USER_PARAM];
 
+        // assign all the old data, then update later
         if (EditUser.user instanceof Instructor) {
             Instructor user = (Instructor) EditUser.user;
             param[0] = user.getName();
@@ -85,6 +88,7 @@ public class EditAttribute extends AppCompatActivity {
             param[5] = String.valueOf(user.getCountryFlag());
         }
 
+        // choose which attributes to be updated
         switch (editTitle) {
             case EditUser.EDIT_NAME:
                 param[0] = newVal;

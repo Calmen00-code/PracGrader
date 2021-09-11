@@ -16,8 +16,10 @@ import com.calmen.pracgrader.models.Country;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.shared.ConfirmRegistration;
+import com.calmen.pracgrader.shared.EditCountry;
 import com.calmen.pracgrader.shared.Validation;
 import com.calmen.pracgrader.ui.Login;
+import com.calmen.pracgrader.ui.user_settings.UserQuery;
 import com.calmen.pracgrader.ui.user_settings.UserRegistration;
 
 import java.io.Serializable;
@@ -25,8 +27,11 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/***
+ * @user that uses country are Student and Instructor
+ * @operation that uses country are Registration and Edit
+ */
 public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHolder> implements Serializable {
-    public static final int REQUEST_CODE_PLAY = 1;
     ArrayList<Country> countries;
     CountryView countryView;
 
@@ -53,28 +58,34 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
         holder.selectCountryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String msg = checkEmptyAttributes();
-                if (msg.equals("")) {
-                    msg = checkValidAttributes();
+                if (CountryView.operation.equals(UserQuery.REGISTER_OPERATION)) {
+                    String msg = checkEmptyAttributes();
                     if (msg.equals("")) {
-                        // proceed to ask confirmation to register instructor
-                        String name = getName();
-                        String username = getUsername();
-                        String email = getEmail();
-                        String pin = getPin();
+                        msg = checkValidAttributes();
+                        if (msg.equals("")) {
+                            // proceed to ask confirmation to register instructor
+                            String name = getName();
+                            String username = getUsername();
+                            String email = getEmail();
+                            String pin = getPin();
 
-                        Intent intent = new Intent(view.getContext(), ConfirmRegistration.class);
-                        intent.putExtra("Name", name);
-                        intent.putExtra("Username", username);
-                        intent.putExtra("Email", email);
-                        intent.putExtra("Pin", pin);
-                        intent.putExtra("Country", singleCountry);
-                        (view.getContext()).startActivity(intent);
+                            Intent intent = new Intent(view.getContext(), ConfirmRegistration.class);
+                            intent.putExtra("Name", name);
+                            intent.putExtra("Username", username);
+                            intent.putExtra("Email", email);
+                            intent.putExtra("Pin", pin);
+                            intent.putExtra("Country", singleCountry);
+                            (view.getContext()).startActivity(intent);
+                        } else {
+                            Toast.makeText(view.getContext(), msg, Toast.LENGTH_SHORT).show();
+                        }
                     } else {
                         Toast.makeText(view.getContext(), msg, Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(view.getContext(), msg, Toast.LENGTH_SHORT).show();
+                    // edit country
+                    EditCountry editCountry = new EditCountry();
+                    editCountry.updateUserCountry(singleCountry.getName(), view.getContext());
                 }
             }
         });

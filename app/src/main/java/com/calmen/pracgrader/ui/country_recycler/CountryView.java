@@ -11,9 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.shared.EditCountry;
 import com.calmen.pracgrader.ui.user_settings.InstructorRegistration;
+import com.calmen.pracgrader.ui.user_settings.UserQuery;
 
 public class CountryView extends Fragment {
+    public static String operation;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -21,9 +24,16 @@ public class CountryView extends Fragment {
         View view = inflater.inflate(R.layout.country_view, container, false);
         RecyclerView rv = view.findViewById(R.id.recyclerFlag);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        CountryRecyclerAdapter countryRecyclerAdapter =
-                new CountryRecyclerAdapter(((InstructorRegistration) getActivity()).getCountries(),
-                        this);
+
+        CountryRecyclerAdapter countryRecyclerAdapter;
+        if (operation.equals(UserQuery.REGISTER_OPERATION)) {
+            countryRecyclerAdapter = new CountryRecyclerAdapter(
+                    ((InstructorRegistration) getActivity()).getCountries(), this);
+        } else {
+            // Edit country operation
+            countryRecyclerAdapter = new CountryRecyclerAdapter(
+                    ((EditCountry) getActivity()).getCountries(), this);
+        }
         rv.setAdapter(countryRecyclerAdapter);
         return view;
     }

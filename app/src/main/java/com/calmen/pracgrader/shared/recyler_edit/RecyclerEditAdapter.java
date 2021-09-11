@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.shared.EditAttribute;
+import com.calmen.pracgrader.shared.EditCountry;
 import com.calmen.pracgrader.shared.EditUser;
 import com.calmen.pracgrader.ui.user_settings.UserQuery;
 
@@ -46,13 +47,14 @@ public class RecyclerEditAdapter extends RecyclerView.Adapter<EditDataViewHolder
                 String editTitle = singleData.getEditTitle();
                 String oldVal = singleData.getEditVal();
 
+                Intent intent;
                 if (editTitle.equals(EditUser.EDIT_COUNTRY)) {
-
+                    intent = new Intent(activity, EditCountry.class);
                 } else {
-                    Intent intent = new Intent(activity, EditAttribute.class);
-                    intent.putExtra("EditTitle", editTitle);
-                    intent.putExtra("OldValue", oldVal);
+                    intent = new Intent(activity, EditAttribute.class);
                 }
+                intent.putExtra("EditTitle", editTitle);
+                intent.putExtra("OldValue", oldVal);
 
                 activity.startActivity(intent);
                 activity.finish();

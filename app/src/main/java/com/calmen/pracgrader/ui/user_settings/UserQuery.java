@@ -19,6 +19,7 @@ import com.calmen.pracgrader.shared.ConfirmOperation;
  * Query the user in the DB for operation edit and delete
  */
 public class UserQuery extends AppCompatActivity {
+    public static final String REGISTER_OPERATION = "REGISTER_OPERATION";
     public static final String EDIT_OPERATION = "EDIT_OPERATION";
     public static final String DELETE_OPERATION = "DELETE_OPERATION";
     public static final String USER_TYPE_INSTRUCTOR = "INSTRUCTOR";
