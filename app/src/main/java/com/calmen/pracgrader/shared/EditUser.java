@@ -25,7 +25,7 @@ public class EditUser extends AppCompatActivity implements Serializable {
     public static final String EDIT_COUNTRY = "Country: ";
 
     ArrayList<EditData> edits;
-    User user;
+    static User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

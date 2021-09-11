@@ -31,6 +31,16 @@ public class InstructorList extends UserList {
         dbModel.removeInstructor(instructor);
     }
 
+    public void edit(Instructor oldInstructor, Instructor newInstructor) {
+        for (User user: super.getUsers()) {
+            Instructor instructor = (Instructor) user;
+            if (instructor == oldInstructor) {
+                instructor = newInstructor;
+                dbModel.updateInstructor(instructor);
+            }
+        }
+    }
+
     public ArrayList<User> getInstructors() {
         return super.getUsers();
     }

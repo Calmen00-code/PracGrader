@@ -50,7 +50,7 @@ public class DBModel {
         }
     }
 
-    public void udpateInstructor(Instructor instructor) {
+    public void updateInstructor(Instructor instructor) {
         String[] whereVal = {String.valueOf(instructor.getUsername())};
         ContentValues cv = new ContentValues();
         cv.put(InstructorTable.Cols.NAME, instructor.getName());
