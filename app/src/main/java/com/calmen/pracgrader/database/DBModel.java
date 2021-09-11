@@ -50,8 +50,11 @@ public class DBModel {
         }
     }
 
-    public void updateInstructor(Instructor instructor) {
-        String[] whereVal = {String.valueOf(instructor.getUsername())};
+    /***
+     * @param oldUsername because it is still the unique key for DB before update
+     */
+    public void updateInstructor(Instructor instructor, String oldUsername) {
+        String[] whereVal = {String.valueOf(oldUsername)};
         ContentValues cv = new ContentValues();
         cv.put(InstructorTable.Cols.NAME, instructor.getName());
         cv.put(InstructorTable.Cols.USERNAME, instructor.getUsername());

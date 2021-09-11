@@ -40,12 +40,10 @@ public class InstructorList extends UserList {
         }
         for (User user: getInstructors()) {
             Instructor instructor = (Instructor) user;
-            System.out.println("Instructor username: " + instructor.getUsername());
-            System.out.println("oldInstructor username: " + oldInstructor.getUsername());
 
             if (instructor.getUsername().equals(oldInstructor.getUsername())) {
                 instructor = newInstructor;
-                dbModel.updateInstructor(instructor);
+                dbModel.updateInstructor(instructor, oldInstructor.getUsername());
             }
         }
     }
