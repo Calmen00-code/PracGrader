@@ -109,7 +109,6 @@ public class EditAttribute extends AppCompatActivity {
             InstructorList instructorList = new InstructorList();
             instructorList.load(EditAttribute.this);
             instructorList.edit((Instructor) EditUser.user, updateInstructor);
-            instructorList.load(EditAttribute.this);
         } else {
             // TODO: update student list here
         }

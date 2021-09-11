@@ -46,9 +46,6 @@ public class InstructorSettings extends AppCompatActivity {
                 intent.putExtra("Operation", UserQuery.EDIT_OPERATION);
                 intent.putExtra("UserType", UserQuery.USER_TYPE_INSTRUCTOR);
                 startActivity(intent);
-                InstructorList instructorList = new InstructorList();
-                instructorList.load(InstructorSettings.this);
-                finish();
             }
         });
 
