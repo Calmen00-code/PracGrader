@@ -50,6 +50,19 @@ public class DBModel {
         }
     }
 
+    public void udpateInstructor(Instructor instructor) {
+        String[] whereVal = {String.valueOf(instructor.getUsername())};
+        ContentValues cv = new ContentValues();
+        cv.put(InstructorTable.Cols.NAME, instructor.getName());
+        cv.put(InstructorTable.Cols.USERNAME, instructor.getUsername());
+        cv.put(InstructorTable.Cols.PIN, instructor.getPin());
+        cv.put(InstructorTable.Cols.EMAIL, instructor.getEmail());
+        cv.put(InstructorTable.Cols.COUNTRY, instructor.getCountryName());
+        cv.put(InstructorTable.Cols.COUNTRY_FLAG, instructor.getCountryFlag());
+
+        db.update(InstructorTable.NAME, cv, InstructorTable.Cols.USERNAME + " =?", whereVal);
+    }
+
     public ArrayList<User> getAllAdmins() {
         ArrayList<User> admins = new ArrayList<>();
         Cursor cursor = db.query(AdminTable.NAME, null, null,null,null,null,null);
