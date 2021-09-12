@@ -31,9 +31,11 @@ public class CountryView extends Fragment {
         CountryRecyclerAdapter countryRecyclerAdapter;
         if (operation.equals(UserQuery.REGISTER_OPERATION)) {
             if (userRoles.equals(Login.INSTRUCTOR)) {
+                // Admin register for Instructor
                 countryRecyclerAdapter = new CountryRecyclerAdapter(
                         ((InstructorRegistration) getActivity()).getCountries(), this);
             } else {
+                // Admin or Instructor register for Student
                 countryRecyclerAdapter = new CountryRecyclerAdapter(
                         ((StudentRegistration) getActivity()).getCountries(), this);
             }

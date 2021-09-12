@@ -14,10 +14,12 @@ import com.calmen.pracgrader.models.Country;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.InstructorList;
 import com.calmen.pracgrader.models.Student;
+import com.calmen.pracgrader.models.StudentList;
 import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.ui.AdminMenu;
 import com.calmen.pracgrader.ui.Login;
 import com.calmen.pracgrader.ui.MenuPage;
+import com.calmen.pracgrader.ui.country_recycler.CountryView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -40,25 +42,47 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
         yesRegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Only admin can add new instructor
                 if (Login.getUser() instanceof Admin) {
-                    InstructorList instructorList = new InstructorList();
-                    instructorList.load(view.getContext());
-                    ArrayList<User> instructors = instructorList.getInstructors();
+                    // Only admin can add new instructor
+                    if (CountryView.userRoles.equals(Login.INSTRUCTOR)) {
+                        InstructorList instructorList = new InstructorList();
+                        instructorList.load(view.getContext());
+                        ArrayList<User> instructors = instructorList.getInstructors();
 
-                    if (Validation.checkDuplicateName(instructors, username)) {
-                        Toast.makeText(view.getContext(), "Username has already been taken!",
-                                Toast.LENGTH_SHORT).show();
+                        if (Validation.checkDuplicateName(instructors, username)) {
+                            Toast.makeText(view.getContext(), "Username has already been taken!",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            instructorList.add(new Instructor(name, username, pin,
+                                    email, country.getName(), country.getFlag()));
+                            // only admin can add a new instructor, therefore we do not need to check for other user menu
+                            Intent intent = new Intent(ConfirmRegistration.this, MenuPage.class);
+                            // finish() all the parent activities
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            Toast.makeText(view.getContext(), "Instructor has been created!",
+                                    Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                        }
                     } else {
-                        instructorList.add(new Instructor(name, username, pin,
-                                email, country.getName(), country.getFlag()));
-                        // only admin can add a new instructor, therefore we do not need to check for other user menu
-                        Intent intent = new Intent(ConfirmRegistration.this, MenuPage.class);
-                        // finish() all the parent activities
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        Toast.makeText(view.getContext(), "Instructor has been created!",
-                                Toast.LENGTH_SHORT).show();
-                        startActivity(intent);
+                        // Admin register new Student
+                        StudentList studentList = new StudentList();
+                        studentList.load(view.getContext());
+                        ArrayList<User> students = studentList.getStudents();
+
+                        if (Validation.checkDuplicateName(students, username)) {
+                            Toast.makeText(view.getContext(), "Username has already been taken!",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            studentList.add(new Student(name, username, pin,
+                                    email, country.getName(), country.getFlag()));
+                            // only admin can add a new instructor, therefore we do not need to check for other user menu
+                            Intent intent = new Intent(ConfirmRegistration.this, MenuPage.class);
+                            // finish() all the parent activities
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            Toast.makeText(view.getContext(), "Student has been created!",
+                                    Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                        }
                     }
                 } else if (Login.getUser() instanceof Instructor) {
                     // Instructor register new Student
