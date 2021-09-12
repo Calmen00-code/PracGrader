@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.calmen.pracgrader.R;
+
 public class PracticalSettings extends AppCompatActivity {
 
     @Override

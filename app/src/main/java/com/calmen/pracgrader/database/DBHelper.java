@@ -37,7 +37,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE " + DBSchema.PracticalTable.NAME + "(" +
                 PracticalTable.Cols.TITLE + " TEXT," +
+                PracticalTable.Cols.DESC + " TEXT," +
                 PracticalTable.Cols.REF_ID + " INTEGER," +
+                PracticalTable.Cols.STUDENT_MARK + " REAL," +
                 PracticalTable.Cols.MARK + " REAL);");
     }
 

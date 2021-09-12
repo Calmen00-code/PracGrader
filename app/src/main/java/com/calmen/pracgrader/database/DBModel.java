@@ -126,14 +126,16 @@ public class DBModel {
     public void addPractical(Practical practical) {
         ContentValues cv = new ContentValues();
         cv.put(PracticalTable.Cols.TITLE, practical.getTitle());
+        cv.put(PracticalTable.Cols.DESC, practical.getDesc());
         cv.put(PracticalTable.Cols.MARK, practical.getMark());
+        cv.put(PracticalTable.Cols.STUDENT_MARK, practical.getStudentMark());
         cv.put(PracticalTable.Cols.REF_ID, practical.getUniqueRefID());
 
         db.insert(PracticalTable.NAME, null, cv);
     }
 
     public void removePractical(Practical practical) {
-        // username is unique
+        // title is unique
         String[] whereVal = {String.valueOf(practical.getTitle())};
         for (String val : whereVal) {
             System.out.println("val: " + val);
@@ -153,7 +155,9 @@ public class DBModel {
         String[] whereVal = {String.valueOf(oldPracTitle)};
         ContentValues cv = new ContentValues();
         cv.put(PracticalTable.Cols.TITLE, practical.getTitle());
+        cv.put(PracticalTable.Cols.DESC, practical.getDesc());
         cv.put(PracticalTable.Cols.MARK, practical.getMark());
+        cv.put(PracticalTable.Cols.STUDENT_MARK, practical.getStudentMark());
         cv.put(PracticalTable.Cols.REF_ID, practical.getUniqueRefID());
 
         int updated = db.update(PracticalTable.NAME, cv, PracticalTable.Cols.TITLE + " =?", whereVal);

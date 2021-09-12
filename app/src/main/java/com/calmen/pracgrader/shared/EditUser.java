@@ -22,8 +22,7 @@ public class EditUser extends AppCompatActivity implements Serializable {
     public static final String EDIT_USERNAME = "Username: ";
     public static final String EDIT_PIN = "PIN: ";
     public static final String EDIT_EMAIL = "Email: ";
-    public static final String EDIT_LAB_UNIT = "Unit: ";
-    public static final String EDIT_MARK = "Mark: ";
+    public static final String EDIT_PRACTICAL_LIST = "Practical List: ";
     public static final String EDIT_COUNTRY = "Country: ";
 
     ArrayList<EditData> edits;
@@ -57,8 +56,7 @@ public class EditUser extends AppCompatActivity implements Serializable {
             edits.add(new EditData(EDIT_NAME, ((Student) user).getName()));
             edits.add(new EditData(EDIT_USERNAME, user.getUsername()));
             edits.add(new EditData(EDIT_PIN, String.valueOf(user.getPin())));
-            edits.add(new EditData(EDIT_LAB_UNIT, String.valueOf(((Student) user).getLabUnit())));
-            edits.add(new EditData(EDIT_MARK, String.valueOf(((Student) user).getMark())));
+            edits.add(new EditData(EDIT_PRACTICAL_LIST, ""));
             edits.add(new EditData(EDIT_EMAIL, ((Student) user).getEmail()));
             edits.add(new EditData(EDIT_COUNTRY, ((Student) user).getCountryName()));
         }

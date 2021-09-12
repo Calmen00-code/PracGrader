@@ -50,6 +50,9 @@ public class RecyclerEditAdapter extends RecyclerView.Adapter<EditDataViewHolder
                 Intent intent;
                 if (editTitle.equals(EditUser.EDIT_COUNTRY)) {
                     intent = new Intent(activity, EditCountry.class);
+                } else if (editTitle.equals(EditUser.EDIT_PRACTICAL_LIST)) {
+                    // TODO: Implement edit for practical list here
+                    intent = null;
                 } else {
                     intent = new Intent(activity, EditAttribute.class);
                 }

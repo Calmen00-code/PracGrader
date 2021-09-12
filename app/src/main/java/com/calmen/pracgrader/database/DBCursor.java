@@ -65,9 +65,11 @@ public class DBCursor extends CursorWrapper {
 
     public Practical getPractical() {
         String title = getString(getColumnIndex(PracticalTable.Cols.TITLE));
+        String desc = getString(getColumnIndex(PracticalTable.Cols.DESC));
         double mark = Math.round(getDouble(getColumnIndex(PracticalTable.Cols.MARK))*100)/100;
+        double studentMark = Math.round(getDouble(getColumnIndex(PracticalTable.Cols.STUDENT_MARK))*100)/100;
         int uniqueRefID = getInt(getColumnIndex(PracticalTable.Cols.REF_ID));
 
-        return new Practical(title, mark, uniqueRefID);
+        return new Practical(title, desc, mark, studentMark, uniqueRefID);
     }
 }
