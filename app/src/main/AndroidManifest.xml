@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PracGrader">
         <activity
+            android:name=".ui.user_settings.PracticalRegistration"
+            android:exported="true" />
+        <activity
+            android:name=".ui.user_settings.PracticalSettings"
+            android:exported="true" />
+        <activity
             android:name=".ui.view_list.ViewStudentList"
             android:exported="true" />
         <activity

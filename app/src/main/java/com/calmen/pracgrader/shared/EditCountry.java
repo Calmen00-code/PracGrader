@@ -92,7 +92,7 @@ public class EditCountry extends AppCompatActivity {
             Student student = (Student) EditUser.user;
             Student updateStudent = new Student(student.getName(),
                     student.getUsername(), student.getPin(), student.getEmail(),
-                    student.getLabUnit(), student.getMark(), newCountry, findCountryID(newCountry));
+                    student.getPracticalList(), newCountry, findCountryID(newCountry));
             StudentList studentList = new StudentList();
             studentList.load(context);
             studentList.edit((Student) EditUser.user, updateStudent);
