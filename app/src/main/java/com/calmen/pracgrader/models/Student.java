@@ -59,4 +59,12 @@ public class Student extends User {
     public String getCountryName() {
         return countryName;
     }
+
+    public double getMark() {
+        return mark;
+    }
+
+    public String getLabUnit() {
+        return labUnit;
+    }
 }
