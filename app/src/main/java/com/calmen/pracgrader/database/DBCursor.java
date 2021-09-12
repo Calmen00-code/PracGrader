@@ -7,6 +7,7 @@ import com.calmen.pracgrader.models.Admin;
 import com.calmen.pracgrader.database.DBSchema.*;
 import com.calmen.pracgrader.models.Country;
 import com.calmen.pracgrader.models.Instructor;
+import com.calmen.pracgrader.models.Student;
 
 public class DBCursor extends CursorWrapper {
     public DBCursor (Cursor cursor) { super(cursor); }
@@ -27,5 +28,16 @@ public class DBCursor extends CursorWrapper {
         String countryName = getString(getColumnIndex(InstructorTable.Cols.COUNTRY));
 
         return new Instructor(name, username, pin, email, countryName, countryFlag);
+    }
+
+    public Student getStudent() {
+        String name = getString(getColumnIndex(StudentTable.Cols.NAME));
+        String username = getString(getColumnIndex(StudentTable.Cols.USERNAME));
+        String email = getString(getColumnIndex(StudentTable.Cols.EMAIL));
+        int pin = getInt(getColumnIndex(StudentTable.Cols.PIN));
+        int countryFlag = getInt(getColumnIndex(StudentTable.Cols.COUNTRY_FLAG));
+        String countryName = getString(getColumnIndex(StudentTable.Cols.COUNTRY));
+
+        return new Student(name, username, pin, email, countryName, countryFlag);
     }
 }

@@ -37,15 +37,13 @@ public class UserQuery extends AppCompatActivity {
         String userType = getIntent().getStringExtra("UserType");
 
         UserList userList;
-        // TODO: StudentList studentList;
 
         if (userType.equals(USER_TYPE_INSTRUCTOR)) {
             userList = new InstructorList();
             ((InstructorList) userList).load(UserQuery.this);
         } else {
-            // TODO: Define StudentList here
             userList = new StudentList();
-            // ((StudentList) userList).load()
+            ((StudentList) userList).load();
         }
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +74,7 @@ public class UserQuery extends AppCompatActivity {
                         if (userType.equals(USER_TYPE_INSTRUCTOR)) {
                             ((InstructorList) userList).load(UserQuery.this);
                         } else {
-                            // TODO: implement same thing for Student list here
+                            ((StudentList) userList).load(UserQuery.this);
                         }
                         finish();
                     } else {

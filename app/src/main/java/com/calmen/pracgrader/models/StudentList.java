@@ -28,7 +28,7 @@ public class StudentList extends UserList {
 
     public void remove(Student student) {
         super.getUsers().remove(student);
-        dbModel.removeInstructor(student);
+        dbModel.removeStudent(student);
     }
 
     public void edit(Student oldStudent, Student newStudent) {
@@ -43,7 +43,7 @@ public class StudentList extends UserList {
 
             if (student.getUsername().equals(oldStudent.getUsername())) {
                 student = newStudent;
-                dbModel.udpateStudent(student, oldStudent.getUsername());
+                dbModel.updateStudent(student, oldStudent.getUsername());
             }
         }
     }

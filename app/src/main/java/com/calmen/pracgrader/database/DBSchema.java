@@ -20,4 +20,16 @@ public class DBSchema {
             public static final String COUNTRY_FLAG = "flag";
         }
     }
+
+    public static class StudentTable {
+        public static final String NAME = "STUDENTS";
+        public static class Cols {
+            public static final String NAME = "name";
+            public static final String USERNAME = "username";
+            public static final String EMAIL = "email";
+            public static final String PIN = "pin";
+            public static final String COUNTRY = "country";
+            public static final String COUNTRY_FLAG = "flag";
+        }
+    }
 }

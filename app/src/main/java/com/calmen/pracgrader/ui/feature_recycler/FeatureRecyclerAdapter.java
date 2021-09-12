@@ -13,6 +13,7 @@ import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.ui.user_settings.InstructorSettings;
 import com.calmen.pracgrader.ui.Login;
 import com.calmen.pracgrader.models.Admin;
+import com.calmen.pracgrader.ui.user_settings.StudentSettings;
 
 import java.util.ArrayList;
 
@@ -46,7 +47,8 @@ public class FeatureRecyclerAdapter extends RecyclerView.Adapter<FeatureViewHold
                         Intent intent = new Intent(view.getContext(), InstructorSettings.class);
                         view.getContext().startActivity(intent);
                     } else if (position == Admin.STUDENT_SETTINGS) {
-
+                        Intent intent = new Intent(view.getContext(), StudentSettings.class);
+                        view.getContext().startActivity(intent);
                     }
                 }
             }

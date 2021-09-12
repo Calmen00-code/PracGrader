@@ -8,6 +8,7 @@ import com.calmen.pracgrader.database.DBSchema.*;
 
 import com.calmen.pracgrader.models.Admin;
 import com.calmen.pracgrader.models.Instructor;
+import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.User;
 
 import java.util.ArrayList;
@@ -71,6 +72,52 @@ public class DBModel {
         }
     }
 
+    public void addStudent(Student student) {
+        ContentValues cv = new ContentValues();
+        cv.put(StudentTable.Cols.NAME, student.getName());
+        cv.put(StudentTable.Cols.USERNAME, student.getUsername());
+        cv.put(StudentTable.Cols.PIN, student.getPin());
+        cv.put(StudentTable.Cols.EMAIL, student.getEmail());
+        cv.put(StudentTable.Cols.COUNTRY, student.getCountryName());
+        cv.put(StudentTable.Cols.COUNTRY_FLAG, student.getCountryFlag());
+        System.out.println("Student is added");
+        db.insert(StudentTable.NAME, null, cv);
+    }
+
+    public void removeStudent(Student student) {
+        String[] whereVal = {String.valueOf(student.getUsername())};
+        for (String val : whereVal) {
+            System.out.println("val: " + val);
+        }
+        int deleted = db.delete(StudentTable.NAME, StudentTable.Cols.USERNAME + " =?", whereVal);
+        if (deleted > 0 ) {
+            System.out.println("Student deleted");
+        } else {
+            System.out.println("Student NOT DELETED");
+        }
+    }
+
+    /***
+     * @param oldUsername because it is still the unique key for DB before update
+     */
+    public void updateStudent(Student student, String oldUsername) {
+        String[] whereVal = {String.valueOf(oldUsername)};
+        ContentValues cv = new ContentValues();
+        cv.put(StudentTable.Cols.NAME, student.getName());
+        cv.put(StudentTable.Cols.USERNAME, student.getUsername());
+        cv.put(StudentTable.Cols.PIN, student.getPin());
+        cv.put(StudentTable.Cols.EMAIL, student.getEmail());
+        cv.put(StudentTable.Cols.COUNTRY, student.getCountryName());
+        cv.put(StudentTable.Cols.COUNTRY_FLAG, student.getCountryFlag());
+
+        int updated = db.update(StudentTable.NAME, cv, StudentTable.Cols.USERNAME + " =?", whereVal);
+        if (updated > 0 ) {
+            System.out.println("Student updated");
+        } else {
+            System.out.println("Student NOT UPDATED");
+        }
+    }
+
     public ArrayList<User> getAllAdmins() {
         ArrayList<User> admins = new ArrayList<>();
         Cursor cursor = db.query(AdminTable.NAME, null, null,null,null,null,null);
@@ -103,5 +150,22 @@ public class DBModel {
             dbCursor.close();
         }
         return instructors;
+    }
+
+    public ArrayList<User> getAllStudents() {
+        ArrayList<User> students = new ArrayList<>();
+        Cursor cursor = db.query(StudentTable.NAME, null, null,null,null,null,null);
+        DBCursor dbCursor = new DBCursor(cursor);
+
+        try {
+            dbCursor.moveToFirst();
+            while (!dbCursor.isAfterLast()) {
+                students.add(dbCursor.getStudent());
+                dbCursor.moveToNext();
+            }
+        } finally {
+            dbCursor.close();
+        }
+        return students;
     }
 }

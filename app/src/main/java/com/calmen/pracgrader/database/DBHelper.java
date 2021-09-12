@@ -25,6 +25,14 @@ public class DBHelper extends SQLiteOpenHelper {
                 InstructorTable.Cols.PIN + " INTEGER," +
                 InstructorTable.Cols.COUNTRY_FLAG + " INTEGER," +
                 InstructorTable.Cols.COUNTRY + " TEXT);");
+
+        db.execSQL("CREATE TABLE " + DBSchema.StudentTable.NAME + "(" +
+                StudentTable.Cols.NAME + " TEXT," +
+                StudentTable.Cols.USERNAME + " TEXT," +
+                StudentTable.Cols.EMAIL + " TEXT," +
+                StudentTable.Cols.PIN + " INTEGER," +
+                StudentTable.Cols.COUNTRY_FLAG + " INTEGER," +
+                StudentTable.Cols.COUNTRY + " TEXT);");
     }
 
     @Override
