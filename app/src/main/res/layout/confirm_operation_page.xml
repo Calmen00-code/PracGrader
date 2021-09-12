@@ -7,7 +7,7 @@
     tools:context=".shared.ConfirmOperation">
 
     <Button
-        android:id="@+id/noDelBtn"
+        android:id="@+id/noOpBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No"
@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.566" />
 
     <TextView
-        android:id="@+id/emailDelView"
+        android:id="@+id/emailOpView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.329" />
 
     <TextView
-        android:id="@+id/countryDelView"
+        android:id="@+id/countryOpView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Country"
@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="0.433" />
 
     <TextView
-        android:id="@+id/nameView"
+        android:id="@+id/nameOpView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
@@ -72,7 +72,7 @@
         app:layout_constraintVertical_bias="0.099" />
 
     <Button
-        android:id="@+id/yesDelBtn"
+        android:id="@+id/yesOpBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="yes"

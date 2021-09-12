@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.InstructorList;
+import com.calmen.pracgrader.models.Student;
+import com.calmen.pracgrader.models.StudentList;
 import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.ui.user_settings.UserQuery;
 
@@ -22,11 +24,11 @@ public class ConfirmOperation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confirm_operation_page);
 
-        Button yesDelBtn = findViewById(R.id.yesDelBtn);
-        Button noDelBtn = findViewById(R.id.noDelBtn);
-        TextView emailDelView = findViewById(R.id.emailDelView);
-        TextView countryDelView = findViewById(R.id.countryDelView);
-        TextView nameDelView = findViewById(R.id.nameView);
+        Button yesOpBtn = findViewById(R.id.yesOpBtn);
+        Button noOpBtn = findViewById(R.id.noOpBtn);
+        TextView emailOpView = findViewById(R.id.emailOpView);
+        TextView countryOpView = findViewById(R.id.countryOpView);
+        TextView nameOpView = findViewById(R.id.nameOpView);
         TextView titleConfirmOperation = findViewById(R.id.titleConfirmOperation);
 
         String username = getIntent().getStringExtra("Username");
@@ -34,36 +36,44 @@ public class ConfirmOperation extends AppCompatActivity {
         String operation = getIntent().getStringExtra("Operation");
 
         User userOperation;
-        InstructorList instructorList = new InstructorList();
+        InstructorList instructorList = null;
+        StudentList studentList = null;
         if (userType.equals(UserQuery.USER_TYPE_INSTRUCTOR)) {
+            instructorList = new InstructorList();
             instructorList.load(ConfirmOperation.this);
             // username is check to be existed from previous activity ConfirmDeletion
             userOperation = instructorList.getUserByUsername(username);
         } else {
-            // TODO: Do the same for Student
-            userOperation = new User("temp", 0);
+            studentList = new StudentList();
+            studentList.load(ConfirmOperation.this);
+            // username is check to be existed from previous activity ConfirmDeletion
+            userOperation = studentList.getUserByUsername(username);
         }
 
         String titleTxt = "";
         if (operation.equals(UserQuery.EDIT_OPERATION)) {
             titleTxt += "Confirm Edit?";
-            titleConfirmOperation.setText(titleTxt);
         } else {
             titleTxt += "Confirm Delete?";
-            titleConfirmOperation.setText(titleTxt);
         }
+        titleConfirmOperation.setText(titleTxt);
 
         // parent instance (User) does not have name, email, country attributes
         if (userOperation instanceof Instructor) {
-            Instructor delInstructor = (Instructor) userOperation;
-            nameDelView.setText(delInstructor.getName());
-            emailDelView.setText(delInstructor.getEmail());
-            countryDelView.setText(delInstructor.getCountryName());
-            System.out.println("Country: " + delInstructor.getCountryName());
-        } // else if (userOperation instanceof Student) {
-        //}
+            Instructor instructor = (Instructor) userOperation;
+            nameOpView.setText(instructor.getName());
+            emailOpView.setText(instructor.getEmail());
+            countryOpView.setText(instructor.getCountryName());
+        } else if (userOperation instanceof Student) {
+            Student student = (Student) userOperation;
+            nameOpView.setText(student.getName());
+            emailOpView.setText(student.getEmail());
+            countryOpView.setText(student.getCountryName());
+        }
 
-        yesDelBtn.setOnClickListener(new View.OnClickListener() {
+        InstructorList finalInstructorList = instructorList;
+        StudentList finalStudentList = studentList;
+        yesOpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (userOperation instanceof Instructor) {
@@ -73,18 +83,27 @@ public class ConfirmOperation extends AppCompatActivity {
                         intent.putExtra("User", userOperation);
                         startActivity(intent);
                     } else {
-                        instructorList.remove((Instructor) userOperation);
+                        finalInstructorList.remove((Instructor) userOperation);
                         Toast.makeText(ConfirmOperation.this,
                                 "Instructor has been removed!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    // TODO: Do the same for Student here
+                    if (operation.equals(UserQuery.EDIT_OPERATION)) {
+                        Intent intent = new Intent(ConfirmOperation.this,
+                                EditUser.class);
+                        intent.putExtra("User", userOperation);
+                        startActivity(intent);
+                    } else {
+                        finalStudentList.remove((Student) userOperation);
+                        Toast.makeText(ConfirmOperation.this,
+                                "Student has been removed!", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 finish();
             }
         });
 
-        noDelBtn.setOnClickListener(new View.OnClickListener() {
+        noOpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

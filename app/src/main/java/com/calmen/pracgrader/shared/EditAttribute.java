@@ -14,6 +14,7 @@ import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.InstructorList;
 import com.calmen.pracgrader.models.Student;
+import com.calmen.pracgrader.models.StudentList;
 import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.ui.MenuPage;
 
@@ -114,7 +115,11 @@ public class EditAttribute extends AppCompatActivity {
             instructorList.load(EditAttribute.this);
             instructorList.edit((Instructor) EditUser.user, updateInstructor);
         } else {
-            // TODO: update student list here
+            Student updateStudent = new Student(param[0], param[1], Integer.parseInt(param[2]),
+                    param[3], param[4], Integer.parseInt(param[5]));
+            StudentList studentList = new StudentList();
+            studentList.load(EditAttribute.this);
+            studentList.edit((Student) EditUser.user, updateStudent);
         }
     }
 }
