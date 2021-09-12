@@ -1,21 +1,22 @@
 package com.calmen.pracgrader.models;
 
+/***
+ * Has-A Relationship with PracticalList
+ */
 public class Student extends User {
 
     private String name;
     private String email;
     private String countryName;
-    private String labUnit;
-    private double mark;
+    private PracticalList practicalList;
     private int countryFlag;
 
     public Student(String inName, String inUsername, int inPin, String inEmail,
-                   String inLabUnit, double inMark, String inCountryName, int inCountryFlag) {
+                   PracticalList inPracticalList, String inCountryName, int inCountryFlag) {
         super(inUsername, inPin);
         this.name = inName;
         this.email = inEmail;
-        this.labUnit = inLabUnit;
-        this.mark = inMark;
+        this.practicalList = inPracticalList;
         this.countryName = inCountryName;
         this.countryFlag = inCountryFlag;
     }
@@ -60,11 +61,7 @@ public class Student extends User {
         return countryName;
     }
 
-    public double getMark() {
-        return mark;
-    }
-
-    public String getLabUnit() {
-        return labUnit;
+    public PracticalList getPracticalList() {
+        return practicalList;
     }
 }

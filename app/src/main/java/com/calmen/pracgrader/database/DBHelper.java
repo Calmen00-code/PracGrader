@@ -30,14 +30,14 @@ public class DBHelper extends SQLiteOpenHelper {
                 StudentTable.Cols.NAME + " TEXT," +
                 StudentTable.Cols.USERNAME + " TEXT," +
                 StudentTable.Cols.EMAIL + " TEXT," +
-                StudentTable.Cols.LAB_UNIT + " TEXT," +
-                StudentTable.Cols.MARK + " REAL," +
+                StudentTable.Cols.REF_ID + " INTEGER," +
                 StudentTable.Cols.PIN + " INTEGER," +
                 StudentTable.Cols.COUNTRY_FLAG + " INTEGER," +
                 StudentTable.Cols.COUNTRY + " TEXT);");
 
         db.execSQL("CREATE TABLE " + DBSchema.PracticalTable.NAME + "(" +
                 PracticalTable.Cols.TITLE + " TEXT," +
+                PracticalTable.Cols.REF_ID + " INTEGER," +
                 PracticalTable.Cols.MARK + " REAL);");
     }
 

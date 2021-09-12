@@ -53,6 +53,11 @@ public class StudentList extends UserList {
     }
 
     @Override
+    public User getUserByUsername(String findUsername) {
+        return super.getUserByUsername(findUsername);
+    }
+
+    @Override
     public boolean isEmpty() {
         return super.isEmpty();
     }
@@ -61,4 +66,5 @@ public class StudentList extends UserList {
     public boolean isExist(String username) {
         return super.isExist(username);
     }
+
 }

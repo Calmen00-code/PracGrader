@@ -79,8 +79,7 @@ public class DBModel {
         cv.put(StudentTable.Cols.USERNAME, student.getUsername());
         cv.put(StudentTable.Cols.PIN, student.getPin());
         cv.put(StudentTable.Cols.EMAIL, student.getEmail());
-        cv.put(StudentTable.Cols.LAB_UNIT, student.getLabUnit());
-        cv.put(StudentTable.Cols.MARK, student.getMark());
+        cv.put(StudentTable.Cols.REF_ID, student.getPracticalList().getUniqueRefID());
         cv.put(StudentTable.Cols.COUNTRY, student.getCountryName());
         cv.put(StudentTable.Cols.COUNTRY_FLAG, student.getCountryFlag());
         db.insert(StudentTable.NAME, null, cv);
@@ -110,8 +109,7 @@ public class DBModel {
         cv.put(StudentTable.Cols.USERNAME, student.getUsername());
         cv.put(StudentTable.Cols.PIN, student.getPin());
         cv.put(StudentTable.Cols.EMAIL, student.getEmail());
-        cv.put(StudentTable.Cols.LAB_UNIT, student.getLabUnit());
-        cv.put(StudentTable.Cols.MARK, student.getMark());
+        cv.put(StudentTable.Cols.REF_ID, student.getPracticalList().getUniqueRefID());
         cv.put(StudentTable.Cols.COUNTRY, student.getCountryName());
         cv.put(StudentTable.Cols.COUNTRY_FLAG, student.getCountryFlag());
 
@@ -127,6 +125,7 @@ public class DBModel {
         ContentValues cv = new ContentValues();
         cv.put(PracticalTable.Cols.TITLE, practical.getTitle());
         cv.put(PracticalTable.Cols.MARK, practical.getMark());
+        cv.put(PracticalTable.Cols.REF_ID, practical.getUniqueRefID());
 
         db.insert(PracticalTable.NAME, null, cv);
     }
@@ -153,6 +152,7 @@ public class DBModel {
         ContentValues cv = new ContentValues();
         cv.put(PracticalTable.Cols.TITLE, practical.getTitle());
         cv.put(PracticalTable.Cols.MARK, practical.getMark());
+        cv.put(PracticalTable.Cols.REF_ID, practical.getUniqueRefID());
 
         int updated = db.update(PracticalTable.NAME, cv, PracticalTable.Cols.TITLE + " =?", whereVal);
         if (updated > 0 ) {

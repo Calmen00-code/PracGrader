@@ -1,5 +1,7 @@
 package com.calmen.pracgrader.database;
 
+import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
@@ -9,6 +11,7 @@ import com.calmen.pracgrader.models.Country;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.Practical;
 import com.calmen.pracgrader.models.Student;
+import com.calmen.pracgrader.models.StudentList;
 
 public class DBCursor extends CursorWrapper {
     public DBCursor (Cursor cursor) { super(cursor); }
@@ -35,8 +38,7 @@ public class DBCursor extends CursorWrapper {
         String name = getString(getColumnIndex(StudentTable.Cols.NAME));
         String username = getString(getColumnIndex(StudentTable.Cols.USERNAME));
         String email = getString(getColumnIndex(StudentTable.Cols.EMAIL));
-        String labUnit = getString(getColumnIndex(StudentTable.Cols.LAB_UNIT));
-        double mark = Math.round(getDouble(getColumnIndex(StudentTable.Cols.MARK))*100)/100;
+        int uniqueRefID = getInt(getColumnIndex(StudentTable.Cols.REF_ID));
         int pin = getInt(getColumnIndex(StudentTable.Cols.PIN));
         int countryFlag = getInt(getColumnIndex(StudentTable.Cols.COUNTRY_FLAG));
         String countryName = getString(getColumnIndex(StudentTable.Cols.COUNTRY));

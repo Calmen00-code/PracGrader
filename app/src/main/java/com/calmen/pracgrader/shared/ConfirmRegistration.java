@@ -13,6 +13,7 @@ import com.calmen.pracgrader.models.Admin;
 import com.calmen.pracgrader.models.Country;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.InstructorList;
+import com.calmen.pracgrader.models.PracticalList;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.StudentList;
 import com.calmen.pracgrader.models.User;
@@ -73,8 +74,9 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
                             Toast.makeText(view.getContext(), "Username has already been taken!",
                                     Toast.LENGTH_SHORT).show();
                         } else {
+                            PracticalList practicalList = new PracticalList();
                             studentList.add(new Student(name, username, pin,
-                                    email, "", 0.0, country.getName(), country.getFlag()));
+                                    email, practicalList, country.getName(), country.getFlag()));
                             // only admin can add a new instructor, therefore we do not need to check for other user menu
                             Intent intent = new Intent(ConfirmRegistration.this, MenuPage.class);
                             // finish() all the parent activities

@@ -9,9 +9,13 @@ import java.util.ArrayList;
 public class PracticalList {
     DBModel dbModel;
     private ArrayList<Practical> practicals;
+    private int uniqueRefID;
+    public static int nextId = 0;
 
     public PracticalList() {
         practicals = new ArrayList<>();
+        this.uniqueRefID = nextId + 2;
+        nextId = this.uniqueRefID;
     }
 
     public void load(Context context) {
@@ -87,5 +91,9 @@ public class PracticalList {
             }
         }
         return null;
+    }
+
+    public int getUniqueRefID() {
+        return uniqueRefID;
     }
 }
