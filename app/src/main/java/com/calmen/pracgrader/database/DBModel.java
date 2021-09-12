@@ -8,6 +8,7 @@ import com.calmen.pracgrader.database.DBSchema.*;
 
 import com.calmen.pracgrader.models.Admin;
 import com.calmen.pracgrader.models.Instructor;
+import com.calmen.pracgrader.models.Practical;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.User;
 
@@ -122,6 +123,45 @@ public class DBModel {
         }
     }
 
+    public void addPractical(Practical practical) {
+        ContentValues cv = new ContentValues();
+        cv.put(PracticalTable.Cols.TITLE, practical.getTitle());
+        cv.put(PracticalTable.Cols.MARK, practical.getMark());
+
+        db.insert(PracticalTable.NAME, null, cv);
+    }
+
+    public void removePractical(Practical practical) {
+        // username is unique
+        String[] whereVal = {String.valueOf(practical.getTitle())};
+        for (String val : whereVal) {
+            System.out.println("val: " + val);
+        }
+        int deleted = db.delete(PracticalTable.NAME, PracticalTable.Cols.TITLE + " =?", whereVal);
+        if (deleted > 0 ) {
+            System.out.println("Practical deleted");
+        } else {
+            System.out.println("Practical NOT DELETED");
+        }
+    }
+
+    /***
+     * @param oldPracTitle because it is still the unique key for DB before update
+     */
+    public void updatePractical(Practical practical, String oldPracTitle) {
+        String[] whereVal = {String.valueOf(oldPracTitle)};
+        ContentValues cv = new ContentValues();
+        cv.put(PracticalTable.Cols.TITLE, practical.getTitle());
+        cv.put(PracticalTable.Cols.MARK, practical.getMark());
+
+        int updated = db.update(PracticalTable.NAME, cv, PracticalTable.Cols.TITLE + " =?", whereVal);
+        if (updated > 0 ) {
+            System.out.println("Practical updated");
+        } else {
+            System.out.println("Practical NOT UPDATED");
+        }
+    }
+
     public ArrayList<User> getAllAdmins() {
         ArrayList<User> admins = new ArrayList<>();
         Cursor cursor = db.query(AdminTable.NAME, null, null,null,null,null,null);
@@ -171,5 +211,22 @@ public class DBModel {
             dbCursor.close();
         }
         return students;
+    }
+
+    public ArrayList<Practical> getAllPracticals() {
+        ArrayList<Practical> practicals = new ArrayList<>();
+        Cursor cursor = db.query(PracticalTable.NAME, null, null,null,null,null,null);
+        DBCursor dbCursor = new DBCursor(cursor);
+
+        try {
+            dbCursor.moveToFirst();
+            while (!dbCursor.isAfterLast()) {
+                practicals.add(dbCursor.getPractical());
+                dbCursor.moveToNext();
+            }
+        } finally {
+            dbCursor.close();
+        }
+        return practicals;
     }
 }

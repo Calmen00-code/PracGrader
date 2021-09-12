@@ -34,4 +34,12 @@ public class DBSchema {
             public static final String COUNTRY_FLAG = "flag";
         }
     }
+
+    public static class PracticalTable {
+        public static final String NAME = "PRACTICALS";
+        public static class Cols {
+            public static final String TITLE = "title";
+            public static final String MARK = "mark";
+        }
+    }
 }
