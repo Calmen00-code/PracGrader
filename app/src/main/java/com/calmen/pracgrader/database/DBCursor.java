@@ -10,8 +10,11 @@ import com.calmen.pracgrader.database.DBSchema.*;
 import com.calmen.pracgrader.models.Country;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.Practical;
+import com.calmen.pracgrader.models.PracticalList;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.StudentList;
+
+import java.util.ArrayList;
 
 public class DBCursor extends CursorWrapper {
     public DBCursor (Cursor cursor) { super(cursor); }
@@ -34,7 +37,10 @@ public class DBCursor extends CursorWrapper {
         return new Instructor(name, username, pin, email, countryName, countryFlag);
     }
 
-    public Student getStudent() {
+    /**
+     * @param context is needed to load DB and retrieve the PracticalList
+     */
+    public Student getStudent(Context context) {
         String name = getString(getColumnIndex(StudentTable.Cols.NAME));
         String username = getString(getColumnIndex(StudentTable.Cols.USERNAME));
         String email = getString(getColumnIndex(StudentTable.Cols.EMAIL));
@@ -43,13 +49,25 @@ public class DBCursor extends CursorWrapper {
         int countryFlag = getInt(getColumnIndex(StudentTable.Cols.COUNTRY_FLAG));
         String countryName = getString(getColumnIndex(StudentTable.Cols.COUNTRY));
 
-        return new Student(name, username, pin, email, labUnit, mark, countryName, countryFlag);
+        PracticalList existingPracticalList = new PracticalList();
+        existingPracticalList.load(context);
+        ArrayList<Practical> existingPracticals = existingPracticalList.getPracticals();
+
+        PracticalList practicalList = new PracticalList();
+        for (Practical practical: existingPracticals) {
+            if (practical.getUniqueRefID() == uniqueRefID) {
+                practicalList.add(practical);
+            }
+        }
+
+        return new Student(name, username, pin, email, practicalList, countryName, countryFlag);
     }
 
     public Practical getPractical() {
         String title = getString(getColumnIndex(PracticalTable.Cols.TITLE));
         double mark = Math.round(getDouble(getColumnIndex(PracticalTable.Cols.MARK))*100)/100;
+        int uniqueRefID = getInt(getColumnIndex(PracticalTable.Cols.REF_ID));
 
-        return new Practical(title, mark);
+        return new Practical(title, mark, uniqueRefID);
     }
 }

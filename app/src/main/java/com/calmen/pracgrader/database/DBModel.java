@@ -16,9 +16,11 @@ import java.util.ArrayList;
 
 public class DBModel {
     SQLiteDatabase db;
+    Context activityContext;
 
     public void load(Context context) {
         this.db = new DBHelper(context).getWritableDatabase();
+        this.activityContext = context;
     }
 
     public void addAdmin(Admin admin) {
@@ -204,7 +206,7 @@ public class DBModel {
         try {
             dbCursor.moveToFirst();
             while (!dbCursor.isAfterLast()) {
-                students.add(dbCursor.getStudent());
+                students.add(dbCursor.getStudent(activityContext));
                 dbCursor.moveToNext();
             }
         } finally {
