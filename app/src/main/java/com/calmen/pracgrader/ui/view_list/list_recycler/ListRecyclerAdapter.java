@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Instructor;
+import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.User;
 
 import java.util.ArrayList;
@@ -41,6 +42,8 @@ public class ListRecyclerAdapter extends RecyclerView.Adapter<ListViewHolder> {
             @Override
             public void onClick(View view) {
                 if (user instanceof Instructor) {
+
+                } else if (user instanceof Student) {
 
                 }
             }

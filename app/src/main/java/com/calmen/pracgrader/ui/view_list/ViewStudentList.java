@@ -4,35 +4,34 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import com.calmen.pracgrader.R;
-import com.calmen.pracgrader.models.InstructorList;
+import com.calmen.pracgrader.models.StudentList;
 import com.calmen.pracgrader.models.User;
-import com.calmen.pracgrader.shared.recyler_edit.RecyclerEditAdapter;
 import com.calmen.pracgrader.ui.view_list.list_recycler.ListRecyclerAdapter;
 
 import java.util.ArrayList;
 
-public class ViewInstructorList extends AppCompatActivity {
-    public ArrayList<User> instructors;
+public class ViewStudentList extends AppCompatActivity {
+    public ArrayList<User> students;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_user_list);
 
-        loadInstructors();
+        loadStudent();
+
         RecyclerView rv = findViewById(R.id.listViewRecycler);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        ListRecyclerAdapter listRecyclerAdapter = new ListRecyclerAdapter(this, instructors);
+        ListRecyclerAdapter listRecyclerAdapter = new ListRecyclerAdapter(this, students);
         rv.setAdapter(listRecyclerAdapter);
     }
 
-    public void loadInstructors() {
-        InstructorList instructorList = new InstructorList();
-        instructorList.load(ViewInstructorList.this);
-        instructors = instructorList.getInstructors();
+    public void loadStudent() {
+        StudentList studentList = new StudentList();
+        studentList.load(ViewStudentList.this);
+        students = studentList.getStudents();
     }
 }
