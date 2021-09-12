@@ -5,13 +5,17 @@ public class Student extends User {
     private String name;
     private String email;
     private String countryName;
+    private String labUnit;
+    private double mark;
     private int countryFlag;
 
-    public Student(String inName, String inUsername, int inPin,
-                      String inEmail, String inCountryName, int inCountryFlag) {
+    public Student(String inName, String inUsername, int inPin, String inEmail,
+                   String inLabUnit, double inMark, String inCountryName, int inCountryFlag) {
         super(inUsername, inPin);
         this.name = inName;
         this.email = inEmail;
+        this.labUnit = inLabUnit;
+        this.mark = inMark;
         this.countryName = inCountryName;
         this.countryFlag = inCountryFlag;
     }
