@@ -10,10 +10,7 @@ import android.widget.TextView;
 
 import com.calmen.pracgrader.R;
 
-/***
- * Display all the options for the admin to make on instructors
- */
-public class InstructorSettings extends AppCompatActivity {
+public class StudentSettings extends AppCompatActivity {
     private Button addBtn, delBtn, editBtn;
     private TextView titleView;
 
@@ -27,12 +24,12 @@ public class InstructorSettings extends AppCompatActivity {
         delBtn = findViewById(R.id.deleteInstructorBtn);
         editBtn = findViewById(R.id.editInstructorBtn);
 
-        titleView.setText("Instructor's Settings");
+        titleView.setText("Student's Settings");
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InstructorSettings.this,
-                        InstructorRegistration.class);
+                Intent intent = new Intent(StudentSettings.this,
+                        StudentRegistration.class);
                 startActivity(intent);
             }
         });
@@ -40,10 +37,10 @@ public class InstructorSettings extends AppCompatActivity {
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InstructorSettings.this,
+                Intent intent = new Intent(StudentSettings.this,
                         UserQuery.class);
                 intent.putExtra("Operation", UserQuery.EDIT_OPERATION);
-                intent.putExtra("UserType", UserQuery.USER_TYPE_INSTRUCTOR);
+                intent.putExtra("UserType", UserQuery.USER_TYPE_STUDENT);
                 startActivity(intent);
             }
         });
@@ -51,10 +48,10 @@ public class InstructorSettings extends AppCompatActivity {
         delBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InstructorSettings.this,
+                Intent intent = new Intent(StudentSettings.this,
                         UserQuery.class);
                 intent.putExtra("Operation", UserQuery.DELETE_OPERATION);
-                intent.putExtra("UserType", UserQuery.USER_TYPE_INSTRUCTOR);
+                intent.putExtra("UserType", UserQuery.USER_TYPE_STUDENT);
                 startActivity(intent);
                 finish();
             }

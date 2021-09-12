@@ -12,11 +12,14 @@ import android.view.ViewGroup;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.shared.EditCountry;
+import com.calmen.pracgrader.ui.Login;
 import com.calmen.pracgrader.ui.user_settings.InstructorRegistration;
+import com.calmen.pracgrader.ui.user_settings.StudentRegistration;
 import com.calmen.pracgrader.ui.user_settings.UserQuery;
 
 public class CountryView extends Fragment {
     public static String operation;
+    public static String userRoles;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,8 +30,13 @@ public class CountryView extends Fragment {
 
         CountryRecyclerAdapter countryRecyclerAdapter;
         if (operation.equals(UserQuery.REGISTER_OPERATION)) {
-            countryRecyclerAdapter = new CountryRecyclerAdapter(
-                    ((InstructorRegistration) getActivity()).getCountries(), this);
+            if (userRoles.equals(Login.INSTRUCTOR)) {
+                countryRecyclerAdapter = new CountryRecyclerAdapter(
+                        ((InstructorRegistration) getActivity()).getCountries(), this);
+            } else {
+                countryRecyclerAdapter = new CountryRecyclerAdapter(
+                        ((StudentRegistration) getActivity()).getCountries(), this);
+            }
         } else {
             // Edit country operation
             countryRecyclerAdapter = new CountryRecyclerAdapter(

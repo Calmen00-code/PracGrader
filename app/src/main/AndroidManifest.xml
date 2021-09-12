@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PracGrader">
         <activity
+            android:name=".ui.user_settings.StudentRegistration"
+            android:exported="true" />
+        <activity
+            android:name=".ui.user_settings.StudentSettings"
+            android:exported="true" />
+        <activity
             android:name=".shared.EditCountry"
             android:exported="true" />
         <activity

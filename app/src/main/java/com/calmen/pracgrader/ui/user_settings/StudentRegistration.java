@@ -8,17 +8,15 @@ import android.widget.EditText;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Country;
-import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.ui.Login;
-import com.calmen.pracgrader.ui.country_recycler.CountryRecyclerAdapter;
 import com.calmen.pracgrader.ui.country_recycler.CountryView;
 
 import java.util.ArrayList;
 
-public class InstructorRegistration extends AppCompatActivity implements UserRegistration {
+public class StudentRegistration extends AppCompatActivity implements UserRegistration {
     public static final int[] DRAWABLES = {
-        0, // No country
-        R.drawable.flag_my, R.drawable.flag_us, R.drawable.flag_au,
+            0, // No country
+            R.drawable.flag_my, R.drawable.flag_us, R.drawable.flag_au,
             R.drawable.flag_ca, R.drawable.flag_hk, R.drawable.flag_dk,
             R.drawable.flag_fr
     };
@@ -27,7 +25,7 @@ public class InstructorRegistration extends AppCompatActivity implements UserReg
     public EditText instructorUsername, instructorName, instructorEmail;
     public EditText instructorPin, instructorPinTwo;
 
-    public InstructorRegistration() {
+    public StudentRegistration() {
         countries = new ArrayList<Country>();
         countries.add(new Country("Malaysia", R.drawable.flag_my));
         countries.add(new Country("United States", R.drawable.flag_us));
@@ -55,7 +53,7 @@ public class InstructorRegistration extends AppCompatActivity implements UserReg
         if (countryView == null) {
             countryView = new CountryView();
             CountryView.operation = UserQuery.REGISTER_OPERATION;
-            CountryView.userRoles = Login.INSTRUCTOR;
+            CountryView.userRoles = Login.STUDENT;
             fm.beginTransaction()
                     .add(R.id.f_container_flag, countryView).commit();
         }
