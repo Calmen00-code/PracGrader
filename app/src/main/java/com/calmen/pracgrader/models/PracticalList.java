@@ -1,5 +1,7 @@
 package com.calmen.pracgrader.models;
 
+import android.content.Context;
+
 import com.calmen.pracgrader.database.DBModel;
 
 import java.util.ArrayList;
@@ -10,6 +12,41 @@ public class PracticalList {
 
     public PracticalList() {
         practicals = new ArrayList<>();
+    }
+
+    public void load(Context context) {
+        dbModel = new DBModel();
+        dbModel.load(context);
+        practicals = dbModel.getAllPracticals();
+    }
+
+    public void add(Practical practical) {
+        practicals.add(practical);
+        if (dbModel == null) {
+            throw new NullPointerException("Database does not exist");
+        } else {
+            dbModel.addPractical(practical);
+        }
+    }
+
+    public void remove(Practical practical) {
+        practicals.remove(practical);
+        dbModel.removePractical(practical);
+    }
+
+    public void edit(Practical oldPrac, Practical newPrac) {
+        System.out.println("oldPractical title: " + oldPrac.getTitle());
+        if (practicals.isEmpty()) {
+            System.out.println("Student is empty");
+        } else {
+            System.out.println("Student is NOT EMPTY");
+        }
+        for (Practical practical: practicals) {
+            if (practical.getTitle().equals(oldPrac.getTitle())) {
+                practical = newPrac;
+                dbModel.updatePractical(practical, oldPrac.getTitle());
+            }
+        }
     }
 
     public ArrayList<Practical> getPracticals() {
