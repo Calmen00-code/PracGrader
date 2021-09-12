@@ -17,12 +17,12 @@ public class StudentSettings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_settings);
+        setContentView(R.layout.entity_settings);
 
-        titleView = findViewById(R.id.instructorSettingsView);
-        addBtn = findViewById(R.id.addInstructorBtn);
-        delBtn = findViewById(R.id.deleteInstructorBtn);
-        editBtn = findViewById(R.id.editInstructorBtn);
+        titleView = findViewById(R.id.entitySettingsView);
+        addBtn = findViewById(R.id.addEntityBtn);
+        delBtn = findViewById(R.id.deleteEntityBtn);
+        editBtn = findViewById(R.id.editEntityBtn);
 
         titleView.setText("Student's Settings");
         addBtn.setOnClickListener(new View.OnClickListener() {
