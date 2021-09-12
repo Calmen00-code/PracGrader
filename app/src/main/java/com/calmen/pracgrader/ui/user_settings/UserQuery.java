@@ -43,7 +43,8 @@ public class UserQuery extends AppCompatActivity {
             ((InstructorList) userList).load(UserQuery.this);
         } else {
             userList = new StudentList();
-            ((StudentList) userList).load();
+            ((StudentList) userList).load(UserQuery.this);
+            System.out.println("Student list loaded");
         }
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
