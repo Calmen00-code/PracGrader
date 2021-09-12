@@ -30,6 +30,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 StudentTable.Cols.NAME + " TEXT," +
                 StudentTable.Cols.USERNAME + " TEXT," +
                 StudentTable.Cols.EMAIL + " TEXT," +
+                StudentTable.Cols.LAB_UNIT + " TEXT," +
+                StudentTable.Cols.MARK + " REAL," +
                 StudentTable.Cols.PIN + " INTEGER," +
                 StudentTable.Cols.COUNTRY_FLAG + " INTEGER," +
                 StudentTable.Cols.COUNTRY + " TEXT);");

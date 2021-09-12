@@ -78,13 +78,15 @@ public class DBModel {
         cv.put(StudentTable.Cols.USERNAME, student.getUsername());
         cv.put(StudentTable.Cols.PIN, student.getPin());
         cv.put(StudentTable.Cols.EMAIL, student.getEmail());
+        cv.put(StudentTable.Cols.LAB_UNIT, student.getLabUnit());
+        cv.put(StudentTable.Cols.MARK, student.getMark());
         cv.put(StudentTable.Cols.COUNTRY, student.getCountryName());
         cv.put(StudentTable.Cols.COUNTRY_FLAG, student.getCountryFlag());
-        System.out.println("Student is added");
         db.insert(StudentTable.NAME, null, cv);
     }
 
     public void removeStudent(Student student) {
+        // username is unique
         String[] whereVal = {String.valueOf(student.getUsername())};
         for (String val : whereVal) {
             System.out.println("val: " + val);
@@ -107,6 +109,8 @@ public class DBModel {
         cv.put(StudentTable.Cols.USERNAME, student.getUsername());
         cv.put(StudentTable.Cols.PIN, student.getPin());
         cv.put(StudentTable.Cols.EMAIL, student.getEmail());
+        cv.put(StudentTable.Cols.LAB_UNIT, student.getLabUnit());
+        cv.put(StudentTable.Cols.MARK, student.getMark());
         cv.put(StudentTable.Cols.COUNTRY, student.getCountryName());
         cv.put(StudentTable.Cols.COUNTRY_FLAG, student.getCountryFlag());
 

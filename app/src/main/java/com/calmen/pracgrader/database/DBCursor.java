@@ -34,10 +34,12 @@ public class DBCursor extends CursorWrapper {
         String name = getString(getColumnIndex(StudentTable.Cols.NAME));
         String username = getString(getColumnIndex(StudentTable.Cols.USERNAME));
         String email = getString(getColumnIndex(StudentTable.Cols.EMAIL));
+        String labUnit = getString(getColumnIndex(StudentTable.Cols.LAB_UNIT));
+        double mark = Math.round(getDouble(getColumnIndex(StudentTable.Cols.MARK))*100)/100;
         int pin = getInt(getColumnIndex(StudentTable.Cols.PIN));
         int countryFlag = getInt(getColumnIndex(StudentTable.Cols.COUNTRY_FLAG));
         String countryName = getString(getColumnIndex(StudentTable.Cols.COUNTRY));
 
-        return new Student(name, username, pin, email, countryName, countryFlag);
+        return new Student(name, username, pin, email, labUnit, mark, countryName, countryFlag);
     }
 }
