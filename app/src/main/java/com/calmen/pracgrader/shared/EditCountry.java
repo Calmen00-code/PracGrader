@@ -1,7 +1,5 @@
 package com.calmen.pracgrader.shared;
 
-import static com.calmen.pracgrader.shared.EditAttribute.USER_PARAM;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -62,7 +60,8 @@ public class EditCountry extends AppCompatActivity {
             Instructor instructor = (Instructor) EditUser.user;
             oldCountryVal.setText(instructor.getCountryName());
         } else {
-            // TODO: do the same for student
+            Student student = (Student) EditUser.user;
+            oldCountryVal.setText(student.getCountryName());
         }
 
         FragmentManager fm = getSupportFragmentManager();
@@ -89,19 +88,17 @@ public class EditCountry extends AppCompatActivity {
             InstructorList instructorList = new InstructorList();
             instructorList.load(context);
             instructorList.edit((Instructor) EditUser.user, updateInstructor);
-            Toast.makeText(context, "User has been updated!", Toast.LENGTH_SHORT).show();
-            finish();
         } else {
             Student student = (Student) EditUser.user;
             Student updateStudent = new Student(student.getName(),
                     student.getUsername(), student.getPin(), student.getEmail(),
-                    newCountry, findCountryID(newCountry));
+                    student.getLabUnit(), student.getMark(), newCountry, findCountryID(newCountry));
             StudentList studentList = new StudentList();
             studentList.load(context);
             studentList.edit((Student) EditUser.user, updateStudent);
-            Toast.makeText(context, "User has been updated!", Toast.LENGTH_SHORT).show();
-            finish();
         }
+        Toast.makeText(context, "User has been updated!", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     public int findCountryID(String country) {

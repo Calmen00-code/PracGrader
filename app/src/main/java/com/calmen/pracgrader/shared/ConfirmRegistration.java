@@ -74,7 +74,7 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             studentList.add(new Student(name, username, pin,
-                                    email, country.getName(), country.getFlag()));
+                                    email, "", 0.0, country.getName(), country.getFlag()));
                             // only admin can add a new instructor, therefore we do not need to check for other user menu
                             Intent intent = new Intent(ConfirmRegistration.this, MenuPage.class);
                             // finish() all the parent activities
