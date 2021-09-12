@@ -45,6 +45,8 @@ public class FeatureRecyclerAdapter extends RecyclerView.Adapter<FeatureViewHold
                     if (position == Admin.INSTRUCTOR_SETTINGS) {
                         Intent intent = new Intent(view.getContext(), InstructorSettings.class);
                         view.getContext().startActivity(intent);
+                    } else if (position == Admin.STUDENT_SETTINGS) {
+
                     }
                 }
             }

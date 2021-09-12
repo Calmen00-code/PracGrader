@@ -50,7 +50,6 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
                         Toast.makeText(view.getContext(), "Username has already been taken!",
                                 Toast.LENGTH_SHORT).show();
                     } else {
-                        System.out.println("Country in add: " + country.getName());
                         instructorList.add(new Instructor(name, username, pin,
                                 email, country.getName(), country.getFlag()));
                         // only admin can add a new instructor, therefore we do not need to check for other user menu
@@ -62,7 +61,7 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
                         startActivity(intent);
                     }
                 } else if (Login.getUser() instanceof Instructor) {
-                    // Register Student code here
+                    // Instructor register new Student
                 }
             }
         });

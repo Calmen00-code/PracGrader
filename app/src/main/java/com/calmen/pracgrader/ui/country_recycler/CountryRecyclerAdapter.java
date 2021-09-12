@@ -1,5 +1,6 @@
 package com.calmen.pracgrader.ui.country_recycler;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
@@ -86,6 +87,7 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
                     // edit country
                     EditCountry editCountry = new EditCountry();
                     editCountry.updateUserCountry(singleCountry.getName(), view.getContext());
+                    countryView.getActivity().finish();
                 }
             }
         });

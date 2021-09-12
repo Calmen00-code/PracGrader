@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Instructor;
@@ -73,6 +74,8 @@ public class ConfirmOperation extends AppCompatActivity {
                         startActivity(intent);
                     } else {
                         instructorList.remove((Instructor) userOperation);
+                        Toast.makeText(ConfirmOperation.this,
+                                "Instructor has been removed!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     // TODO: Do the same for Student here

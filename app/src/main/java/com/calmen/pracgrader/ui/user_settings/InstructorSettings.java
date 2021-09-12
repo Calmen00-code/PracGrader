@@ -9,8 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.calmen.pracgrader.R;
-import com.calmen.pracgrader.models.InstructorList;
-import com.calmen.pracgrader.models.User;
 
 /***
  * Display all the options for the admin to make on instructors
@@ -22,7 +20,7 @@ public class InstructorSettings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_instructor_settings);
+        setContentView(R.layout.user_settings);
 
         titleView = findViewById(R.id.instructorSettingsView);
         addBtn = findViewById(R.id.addInstructorBtn);
