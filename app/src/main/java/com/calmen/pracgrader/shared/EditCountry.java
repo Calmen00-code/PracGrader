@@ -17,6 +17,7 @@ import com.calmen.pracgrader.models.Country;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.InstructorList;
 import com.calmen.pracgrader.models.Student;
+import com.calmen.pracgrader.models.StudentList;
 import com.calmen.pracgrader.ui.AdminMenu;
 import com.calmen.pracgrader.ui.MenuPage;
 import com.calmen.pracgrader.ui.country_recycler.CountryRecyclerAdapter;
@@ -91,7 +92,15 @@ public class EditCountry extends AppCompatActivity {
             Toast.makeText(context, "User has been updated!", Toast.LENGTH_SHORT).show();
             finish();
         } else {
-            // TODO: update student list here
+            Student student = (Student) EditUser.user;
+            Student updateStudent = new Student(student.getName(),
+                    student.getUsername(), student.getPin(), student.getEmail(),
+                    newCountry, findCountryID(newCountry));
+            StudentList studentList = new StudentList();
+            studentList.load(context);
+            studentList.edit((Student) EditUser.user, updateStudent);
+            Toast.makeText(context, "User has been updated!", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 
