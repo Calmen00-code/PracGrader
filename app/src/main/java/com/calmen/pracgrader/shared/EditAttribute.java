@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.InstructorList;
+import com.calmen.pracgrader.models.Practical;
 import com.calmen.pracgrader.models.PracticalList;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.StudentList;
@@ -24,6 +25,8 @@ public class EditAttribute extends AppCompatActivity {
     public static final int INSTRUCTOR_PARAM = 6;
     // number of params for Student is 7 (include practicalList)
     public static final int STUDENT_PARAM = 7;
+    // number of params for Practical is 7 (include practicalList)
+    public static final int PRACTICAL_PARAM = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,7 @@ public class EditAttribute extends AppCompatActivity {
         confirmEditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (newAttributeTxt.equals("")) {
+                if (newAttributeTxt.getText().toString().equals("")) {
                     Toast.makeText(EditAttribute.this, "New Value is empty!",
                             Toast.LENGTH_SHORT).show();
                 } else {
@@ -58,9 +61,6 @@ public class EditAttribute extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     } else {
                         updateUser(newVal, editTitle);
-                        Toast.makeText(EditAttribute.this, "User has been updated!",
-                                Toast.LENGTH_SHORT).show();
-                        finish();
                     }
                 }
             }
@@ -70,78 +70,174 @@ public class EditAttribute extends AppCompatActivity {
     public void updateUser(Object newVal, String editTitle) {
         Object[] param;
 
-        // assign all the old data, then update later
-        if (EditEntity.user instanceof Instructor) {
-            param = new String[INSTRUCTOR_PARAM];
-            Instructor user = (Instructor) EditEntity.user;
-            param[0] = user.getName();
-            param[1] = user.getUsername();
-            param[2] = String.valueOf(user.getPin());
-            param[3] = user.getEmail();
-            param[4] = user.getCountryName();
-            param[5] = String.valueOf(user.getCountryFlag());
+        if (EditEntity.user == null && EditEntity.practical != null) {
+            // edit is on practical
+            param = new Object[PRACTICAL_PARAM];
+            Practical practical = (Practical) EditEntity.practical;
+            param[0] = practical.getTitle();
+            param[1] = practical.getDesc();
+            param[2] = String.valueOf(practical.getMark());
+            param[3] = String.valueOf(practical.getStudentMark());
+            param[4] = String.valueOf(practical.getUniqueRefID());
 
             // choose which attributes to be updated
+            // student mark can be edited from Edit Student
+            // uniqueRefID can never be edited
             switch (editTitle) {
-                case EditEntity.EDIT_NAME:
+                case EditEntity.EDIT_TITLE:
                     param[0] = newVal;
                     break;
-                case EditEntity.EDIT_USERNAME:
+
+                case EditEntity.EDIT_DESCRIPTION:
                     param[1] = newVal;
                     break;
-                case EditEntity.EDIT_PIN:
+
+                case EditEntity.EDIT_MARK:
                     param[2] = newVal;
                     break;
-                case EditEntity.EDIT_EMAIL:
-                    param[3] = newVal;
-                    break;
+            }
+
+            // Edit for instructor
+            Practical updatePractical = new Practical((String) param[0], (String) param[1],
+                    Double.parseDouble((String) param[2]), Double.parseDouble((String) param[3]),
+                    Integer.parseInt((String) param[4]));
+
+            PracticalList practicalList = new PracticalList();
+            practicalList.load(EditAttribute.this);
+
+            if (editTitle.equals(EditEntity.EDIT_TITLE) &&
+                    Validation.checkDuplicateTitle(practicalList.getPracticals(), (String) param[0])) {
+                Toast.makeText(EditAttribute.this, "Title has already been taken!",
+                        Toast.LENGTH_SHORT).show();
+            } else if (editTitle.equals(EditEntity.EDIT_TITLE) &&
+                    !Validation.checkDuplicateTitle(practicalList.getPracticals(), (String) param[1])) {
+                // Edit for practical title ONLY
+                practicalList.edit(EditEntity.practical, updatePractical);
+                Toast.makeText(EditAttribute.this, "Title updated!",
+                        Toast.LENGTH_SHORT).show();
+                finish();
+            } else {
+                // Edit for the rest of instructor attributes
+                practicalList.edit(EditEntity.practical, updatePractical);
+                Toast.makeText(EditAttribute.this, "Attribute updated!",
+                        Toast.LENGTH_SHORT).show();
+                finish();
             }
         } else {
-            param = new Object[STUDENT_PARAM];
-            Student user = (Student) EditEntity.user;
-            param[0] = user.getName();
-            param[1] = user.getUsername();
-            param[2] = String.valueOf(user.getPin());
-            param[3] = user.getEmail();
-            param[4] = user.getPracticalList();
-            param[5] = user.getCountryName();
-            param[6] = String.valueOf(user.getCountryFlag());
+            // edit is either on Instructor or Student
+            // assign all the old data, then update later
+            if (EditEntity.user instanceof Instructor) {
+                param = new String[INSTRUCTOR_PARAM];
+                Instructor user = (Instructor) EditEntity.user;
+                param[0] = user.getName();
+                param[1] = user.getUsername();
+                param[2] = String.valueOf(user.getPin());
+                param[3] = user.getEmail();
+                param[4] = user.getCountryName();
+                param[5] = String.valueOf(user.getCountryFlag());
 
-            // choose which attributes to be updated
-            switch (editTitle) {
-                case EditEntity.EDIT_NAME:
-                    param[0] = newVal;
-                    break;
-                case EditEntity.EDIT_USERNAME:
-                    param[1] = newVal;
-                    break;
-                case EditEntity.EDIT_PIN:
-                    param[2] = newVal;
-                    break;
-                case EditEntity.EDIT_EMAIL:
-                    param[3] = newVal;
-                    break;
+                // choose which attributes to be updated
+                switch (editTitle) {
+                    case EditEntity.EDIT_NAME:
+                        param[0] = newVal;
+                        break;
+                    case EditEntity.EDIT_USERNAME:
+                        param[1] = newVal;
+                        break;
+                    case EditEntity.EDIT_PIN:
+                        param[2] = newVal;
+                        break;
+                    case EditEntity.EDIT_EMAIL:
+                        param[3] = newVal;
+                        break;
+                }
+            } else {
+                param = new Object[STUDENT_PARAM];
+                Student user = (Student) EditEntity.user;
+                param[0] = user.getName();
+                param[1] = user.getUsername();
+                param[2] = String.valueOf(user.getPin());
+                param[3] = user.getEmail();
+                param[4] = user.getPracticalList();
+                param[5] = user.getCountryName();
+                param[6] = String.valueOf(user.getCountryFlag());
 
-                case EditEntity.EDIT_PRACTICAL_LIST:
-                    param[4] = newVal;
-                    break;
+                // choose which attributes to be updated
+                switch (editTitle) {
+                    case EditEntity.EDIT_NAME:
+                        param[0] = newVal;
+                        break;
+                    case EditEntity.EDIT_USERNAME:
+                        param[1] = newVal;
+                        break;
+                    case EditEntity.EDIT_PIN:
+                        param[2] = newVal;
+                        break;
+                    case EditEntity.EDIT_EMAIL:
+                        param[3] = newVal;
+                        break;
+
+                    case EditEntity.EDIT_PRACTICAL_LIST:
+                        param[4] = newVal;
+                        break;
+                }
             }
-        }
 
-        if (EditEntity.user instanceof Instructor) {
-            Instructor updateInstructor = new Instructor((String) param[0], (String) param[1],
-                    Integer.parseInt((String) param[2]), (String) param[3], (String) param[4],
-                    Integer.parseInt((String) param[5]));
-            InstructorList instructorList = new InstructorList();
-            instructorList.load(EditAttribute.this);
-            instructorList.edit((Instructor) EditEntity.user, updateInstructor);
-        } else {
-            Student updateStudent = new Student((String) param[0], (String) param[1],
-                    Integer.parseInt((String) param[2]), (String) param[3],
-                    (PracticalList) param[4], (String) param[5], Integer.parseInt((String) param[6]));
-            StudentList studentList = new StudentList();
-            studentList.load(EditAttribute.this);
-            studentList.edit((Student) EditEntity.user, updateStudent);
+            if (EditEntity.user instanceof Instructor) {
+                // Edit for instructor
+                assert param[4] instanceof String;
+                Instructor updateInstructor = new Instructor((String) param[0], (String) param[1],
+                        Integer.parseInt((String) param[2]), (String) param[3], (String) param[4],
+                        Integer.parseInt((String) param[5]));
+                InstructorList instructorList = new InstructorList();
+                instructorList.load(EditAttribute.this);
+
+                if (editTitle.equals(EditEntity.EDIT_USERNAME) &&
+                        Validation.checkDuplicateName(instructorList.getInstructors(), (String) param[1])) {
+                    Toast.makeText(EditAttribute.this, "Username has already been taken!",
+                            Toast.LENGTH_SHORT).show();
+                } else if (editTitle.equals(EditEntity.EDIT_USERNAME) &&
+                        !Validation.checkDuplicateName(instructorList.getInstructors(), (String) param[1])) {
+                    // Edit for instructor username ONLY
+                    instructorList.edit((Instructor) EditEntity.user, updateInstructor);
+                    Toast.makeText(EditAttribute.this, "Username updated!",
+                            Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    // Edit for the rest of instructor attributes
+                    instructorList.edit((Instructor) EditEntity.user, updateInstructor);
+                    Toast.makeText(EditAttribute.this, "Entity updated!",
+                            Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            } else {
+                // Edit for student
+                assert param[4] instanceof PracticalList;
+                Student updateStudent = new Student((String) param[0], (String) param[1],
+                        Integer.parseInt((String) param[2]), (String) param[3],
+                        (PracticalList) param[4], (String) param[5], Integer.parseInt((String) param[6]));
+                StudentList studentList = new StudentList();
+                studentList.load(EditAttribute.this);
+
+                if (editTitle.equals(EditEntity.EDIT_USERNAME) &&
+                        Validation.checkDuplicateName(studentList.getStudents(), (String) param[1])) {
+                    Toast.makeText(EditAttribute.this, "Username has already been taken!",
+                            Toast.LENGTH_SHORT).show();
+                } else if (editTitle.equals(EditEntity.EDIT_USERNAME) &&
+                        !Validation.checkDuplicateName(studentList.getStudents(), (String) param[1])) {
+                    // Edit for student username ONLY
+                    studentList.edit((Student) EditEntity.user, updateStudent);
+                    Toast.makeText(EditAttribute.this, "Username updated!",
+                            Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    // Edit for the rest of student attributes
+                    studentList.edit((Student) EditEntity.user, updateStudent);
+                    Toast.makeText(EditAttribute.this, "Entity updated!",
+                            Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
         }
     }
 }

@@ -92,7 +92,7 @@ public class EditCountry extends AppCompatActivity {
             studentList.load(context);
             studentList.edit((Student) EditEntity.user, updateStudent);
         }
-        Toast.makeText(context, "User has been updated!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "User country has been updated!", Toast.LENGTH_SHORT).show();
         finish();
     }
 

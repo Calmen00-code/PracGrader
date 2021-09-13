@@ -2,6 +2,7 @@ package com.calmen.pracgrader.shared;
 
 import android.widget.EditText;
 
+import com.calmen.pracgrader.models.Practical;
 import com.calmen.pracgrader.models.User;
 
 import java.util.ArrayList;
@@ -72,5 +73,14 @@ public class Validation {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    public static boolean checkDuplicateTitle(ArrayList<Practical> practicals, String title) {
+        for (Practical practical: practicals) {
+            if (practical.getTitle().equals(title)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
