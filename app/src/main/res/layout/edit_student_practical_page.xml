@@ -7,7 +7,7 @@
     tools:context=".ui.entity_settings.NewStudentPractical">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/newStudentPracticalRecycler"
+        android:id="@+id/editStudentPracticalRecyler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

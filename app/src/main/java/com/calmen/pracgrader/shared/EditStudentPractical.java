@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.ui.entity_settings.MarkStudentPractical;
 import com.calmen.pracgrader.ui.entity_settings.NewStudentPractical;
 
 public class EditStudentPractical extends AppCompatActivity {
@@ -29,6 +30,14 @@ public class EditStudentPractical extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EditStudentPractical.this, NewStudentPractical.class);
+                startActivity(intent);
+            }
+        });
+
+        markPracBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EditStudentPractical.this, MarkStudentPractical.class);
                 startActivity(intent);
             }
         });

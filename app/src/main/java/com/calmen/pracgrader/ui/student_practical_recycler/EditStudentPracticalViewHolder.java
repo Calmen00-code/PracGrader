@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
 
-public class NewStudentPracticalViewHolder extends RecyclerView.ViewHolder {
+public class EditStudentPracticalViewHolder extends RecyclerView.ViewHolder {
     public TextView practicalTitle;
     public Button selStudentPracticalBtn;
 
-    public NewStudentPracticalViewHolder(@NonNull View itemView) {
+    public EditStudentPracticalViewHolder(@NonNull View itemView) {
         super(itemView);
         practicalTitle = itemView.findViewById(R.id.practicalTitle);
         selStudentPracticalBtn = itemView.findViewById(R.id.studentPracticalBtn);
