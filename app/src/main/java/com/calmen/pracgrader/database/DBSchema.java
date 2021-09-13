@@ -38,7 +38,7 @@ public class DBSchema {
         public static final String NAME = "PRACTICALS";
         public static class Cols {
             public static final String TITLE = "title";
-            public static final String DESC = "desc";
+            public static final String DESC = "description";
             public static final String MARK = "mark";
             public static final String STUDENT_MARK = "studentMark";
             public static final String REF_ID = "refID";

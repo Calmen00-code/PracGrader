@@ -48,7 +48,7 @@ public class PracticalRegistration extends AppCompatActivity {
                             pracTitle.getText().toString())) {
                         Toast.makeText(PracticalRegistration.this, "Practical Title already exist!",
                                 Toast.LENGTH_SHORT).show();
-                    } else if (Validation.isDouble(markTxt.getText().toString())) {
+                    } else if (!Validation.isDouble(markTxt.getText().toString())) {
                         Toast.makeText(PracticalRegistration.this, "Practical mark must be decimals value!",
                                 Toast.LENGTH_SHORT).show();
                     } else {
