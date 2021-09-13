@@ -10,6 +10,8 @@ public class Student extends User {
     private String countryName;
     private PracticalList practicalList;
     private int countryFlag;
+    private int uniqueID;
+    private static int nextId = 0;
 
     public Student(String inName, String inUsername, int inPin, String inEmail,
                    PracticalList inPracticalList, String inCountryName, int inCountryFlag) {
@@ -19,6 +21,7 @@ public class Student extends User {
         this.practicalList = inPracticalList;
         this.countryName = inCountryName;
         this.countryFlag = inCountryFlag;
+        this.uniqueID = nextId + 2;
     }
 
     @Override
@@ -63,5 +66,9 @@ public class Student extends User {
 
     public PracticalList getPracticalList() {
         return practicalList;
+    }
+
+    public int getUniqueID() {
+        return uniqueID;
     }
 }
