@@ -9,6 +9,7 @@ import com.calmen.pracgrader.database.DBSchema.*;
 import com.calmen.pracgrader.models.Admin;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.Practical;
+import com.calmen.pracgrader.models.PracticalList;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.User;
 
@@ -81,7 +82,7 @@ public class DBModel {
         cv.put(StudentTable.Cols.USERNAME, student.getUsername());
         cv.put(StudentTable.Cols.PIN, student.getPin());
         cv.put(StudentTable.Cols.EMAIL, student.getEmail());
-        cv.put(StudentTable.Cols.REF_ID, student.getPracticalList().getUniqueRefID());
+        cv.put(StudentTable.Cols.REF_ID, student.getUniqueID());
         cv.put(StudentTable.Cols.COUNTRY, student.getCountryName());
         cv.put(StudentTable.Cols.COUNTRY_FLAG, student.getCountryFlag());
         db.insert(StudentTable.NAME, null, cv);
@@ -111,7 +112,7 @@ public class DBModel {
         cv.put(StudentTable.Cols.USERNAME, student.getUsername());
         cv.put(StudentTable.Cols.PIN, student.getPin());
         cv.put(StudentTable.Cols.EMAIL, student.getEmail());
-        cv.put(StudentTable.Cols.REF_ID, student.getPracticalList().getUniqueRefID());
+        cv.put(StudentTable.Cols.REF_ID, student.getUniqueID());
         cv.put(StudentTable.Cols.COUNTRY, student.getCountryName());
         cv.put(StudentTable.Cols.COUNTRY_FLAG, student.getCountryFlag());
 
@@ -232,7 +233,29 @@ public class DBModel {
         try {
             dbCursor.moveToFirst();
             while (!dbCursor.isAfterLast()) {
-                practicals.add(dbCursor.getPractical());
+                if (dbCursor.getPractical().getUniqueRefID() ==
+                        PracticalList.DEFAULT_PRACTICAL_LIST_ID) {
+                    practicals.add(dbCursor.getPractical());
+                }
+                dbCursor.moveToNext();
+            }
+        } finally {
+            dbCursor.close();
+        }
+        return practicals;
+    }
+
+    public ArrayList<Practical> getAllStudentPracticals(int findID) {
+        ArrayList<Practical> practicals = new ArrayList<>();
+        Cursor cursor = db.query(PracticalTable.NAME, null, null,null,null,null,null);
+        DBCursor dbCursor = new DBCursor(cursor);
+
+        try {
+            dbCursor.moveToFirst();
+            while (!dbCursor.isAfterLast()) {
+                if (dbCursor.getPractical().getUniqueRefID() == findID) {
+                    practicals.add(dbCursor.getPractical());
+                }
                 dbCursor.moveToNext();
             }
         } finally {

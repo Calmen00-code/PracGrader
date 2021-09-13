@@ -8,20 +8,20 @@ public class Student extends User {
     private String name;
     private String email;
     private String countryName;
-    private PracticalList practicalList;
+    private StudentPracticalList studentPracticalList;
     private int countryFlag;
     private int uniqueID;
     private static int nextId = 0;
 
     public Student(String inName, String inUsername, int inPin, String inEmail,
-                   PracticalList inPracticalList, String inCountryName, int inCountryFlag) {
+                   String inCountryName, int inCountryFlag) {
         super(inUsername, inPin);
         this.name = inName;
         this.email = inEmail;
-        this.practicalList = inPracticalList;
         this.countryName = inCountryName;
         this.countryFlag = inCountryFlag;
         this.uniqueID = nextId + 2;
+        this.studentPracticalList = new StudentPracticalList(this.uniqueID);
     }
 
     @Override
@@ -64,8 +64,8 @@ public class Student extends User {
         return countryName;
     }
 
-    public PracticalList getPracticalList() {
-        return practicalList;
+    public StudentPracticalList getStudentPracticalList() {
+        return studentPracticalList;
     }
 
     public int getUniqueID() {

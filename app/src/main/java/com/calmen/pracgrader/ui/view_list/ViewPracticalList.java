@@ -14,7 +14,7 @@ import com.calmen.pracgrader.ui.view_list.list_recycler.PracticalListRecyclerAda
 import java.util.ArrayList;
 
 public class ViewPracticalList extends AppCompatActivity {
-    ArrayList<Practical> practicals;
+    public ArrayList<Practical> practicals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +32,5 @@ public class ViewPracticalList extends AppCompatActivity {
         PracticalList practicalList = new PracticalList();
         practicalList.load(ViewPracticalList.this);
         practicals = practicalList.getPracticals();
-        if (practicals.isEmpty()) {
-            System.out.println("practicals is EMPTY");
-        } else {
-            System.out.println("practicals is NOT EMPTY");
-            for (Practical practical: practicals) {
-                System.out.println("Title: " + practical.getTitle());
-            }
-        }
     }
 }

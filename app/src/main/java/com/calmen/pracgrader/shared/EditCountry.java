@@ -85,9 +85,8 @@ public class EditCountry extends AppCompatActivity {
             instructorList.edit((Instructor) EditEntity.user, updateInstructor);
         } else {
             Student student = (Student) EditEntity.user;
-            Student updateStudent = new Student(student.getName(),
-                    student.getUsername(), student.getPin(), student.getEmail(),
-                    student.getPracticalList(), newCountry, findCountryID(newCountry));
+            Student updateStudent = new Student(student.getName(), student.getUsername(),
+                    student.getPin(), student.getEmail(), newCountry, findCountryID(newCountry));
             StudentList studentList = new StudentList();
             studentList.load(context);
             studentList.edit((Student) EditEntity.user, updateStudent);

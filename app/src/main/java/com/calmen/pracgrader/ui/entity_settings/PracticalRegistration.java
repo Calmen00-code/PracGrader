@@ -51,9 +51,11 @@ public class PracticalRegistration extends AppCompatActivity {
                         Toast.makeText(PracticalRegistration.this, "Practical mark must be decimals value!",
                                 Toast.LENGTH_SHORT).show();
                     } else {
+                        /* DEFAULT_PRACTICAL_LIST_ID was used as this is Admin registering a
+                            new practicals unit to the DB, NOT assigning new practical to student */
                         Practical practical = new Practical(pracTitle.getText().toString(),
                                 pracDesc.getText().toString(), Double.parseDouble(markTxt.getText().toString()),
-                                0.0, practicalList.getUniqueRefID());
+                                0.0, PracticalList.DEFAULT_PRACTICAL_LIST_ID);
                         practicalList.add(practical);
                         Toast.makeText(PracticalRegistration.this, "Practical created!",
                                 Toast.LENGTH_SHORT).show();

@@ -15,7 +15,7 @@ import android.widget.Button;
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.ui.entity_settings.NewStudentPractical;
 
-public class EditPractical extends AppCompatActivity {
+public class EditStudentPractical extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class EditPractical extends AppCompatActivity {
         addNewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EditPractical.this, NewStudentPractical.class);
+                Intent intent = new Intent(EditStudentPractical.this, NewStudentPractical.class);
                 startActivity(intent);
             }
         });

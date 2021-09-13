@@ -16,7 +16,7 @@
             android:name=".ui.entity_settings.NewStudentPractical"
             android:exported="true" />
         <activity
-            android:name=".shared.EditPractical"
+            android:name=".shared.EditStudentPractical"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.PracticalRegistration"

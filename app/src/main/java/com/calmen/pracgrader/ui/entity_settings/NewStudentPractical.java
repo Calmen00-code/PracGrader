@@ -18,6 +18,7 @@ public class NewStudentPractical extends AppCompatActivity {
         setContentView(R.layout.new_student_practical_page);
 
         PracticalList practicalList = new PracticalList();
+        practicalList.load(NewStudentPractical.this);
 
         RecyclerView rv = findViewById(R.id.newStudentPracticalRecycler);
         rv.setLayoutManager(new LinearLayoutManager(this));

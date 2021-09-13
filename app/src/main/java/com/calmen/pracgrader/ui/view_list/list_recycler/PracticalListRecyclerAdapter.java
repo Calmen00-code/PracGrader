@@ -27,8 +27,8 @@ public class PracticalListRecyclerAdapter extends RecyclerView.Adapter<Practical
     public PracticalListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.view_practical_row, parent, false);
-        PracticalListViewHolder listViewHolder = new PracticalListViewHolder(view);
-        return listViewHolder;
+        PracticalListViewHolder practicalListViewHolder = new PracticalListViewHolder(view);
+        return practicalListViewHolder;
     }
 
     @Override
@@ -47,6 +47,6 @@ public class PracticalListRecyclerAdapter extends RecyclerView.Adapter<Practical
 
     @Override
     public int getItemCount() {
-        return 0;
+        return practicals.size();
     }
 }

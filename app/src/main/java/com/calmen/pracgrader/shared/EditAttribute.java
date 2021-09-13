@@ -21,11 +21,11 @@ import com.calmen.pracgrader.models.StudentList;
  * Edit all the attributes of the user except for Country
  */
 public class EditAttribute extends AppCompatActivity {
-    // number of params for Instructor is six
+    // number of params for Instructor is 6
     public static final int INSTRUCTOR_PARAM = 6;
-    // number of params for Student is 7 (include practicalList)
-    public static final int STUDENT_PARAM = 7;
-    // number of params for Practical is 7 (include practicalList)
+    // number of params for Student is 6 (include practicalList)
+    public static final int STUDENT_PARAM = 6;
+    // number of params for Practical is 5
     public static final int PRACTICAL_PARAM = 5;
 
     @Override
@@ -137,20 +137,6 @@ public class EditAttribute extends AppCompatActivity {
                 param[5] = String.valueOf(user.getCountryFlag());
 
                 // choose which attributes to be updated
-                switch (editTitle) {
-                    case EditEntity.EDIT_NAME:
-                        param[0] = newVal;
-                        break;
-                    case EditEntity.EDIT_USERNAME:
-                        param[1] = newVal;
-                        break;
-                    case EditEntity.EDIT_PIN:
-                        param[2] = newVal;
-                        break;
-                    case EditEntity.EDIT_EMAIL:
-                        param[3] = newVal;
-                        break;
-                }
             } else {
                 param = new Object[STUDENT_PARAM];
                 Student user = (Student) EditEntity.user;
@@ -158,34 +144,30 @@ public class EditAttribute extends AppCompatActivity {
                 param[1] = user.getUsername();
                 param[2] = String.valueOf(user.getPin());
                 param[3] = user.getEmail();
-                param[4] = user.getPracticalList();
-                param[5] = user.getCountryName();
-                param[6] = String.valueOf(user.getCountryFlag());
+                param[4] = user.getCountryName();
+                param[5] = String.valueOf(user.getCountryFlag());
 
                 // choose which attributes to be updated
-                switch (editTitle) {
-                    case EditEntity.EDIT_NAME:
-                        param[0] = newVal;
-                        break;
-                    case EditEntity.EDIT_USERNAME:
-                        param[1] = newVal;
-                        break;
-                    case EditEntity.EDIT_PIN:
-                        param[2] = newVal;
-                        break;
-                    case EditEntity.EDIT_EMAIL:
-                        param[3] = newVal;
-                        break;
+            }
 
-                    case EditEntity.EDIT_PRACTICAL_LIST:
-                        param[4] = newVal;
-                        break;
-                }
+            switch (editTitle) {
+                case EditEntity.EDIT_NAME:
+                    param[0] = newVal;
+                    break;
+                case EditEntity.EDIT_USERNAME:
+                    param[1] = newVal;
+                    break;
+                case EditEntity.EDIT_PIN:
+                    param[2] = newVal;
+                    break;
+                case EditEntity.EDIT_EMAIL:
+                    param[3] = newVal;
+                    break;
             }
 
             if (EditEntity.user instanceof Instructor) {
                 // Edit for instructor
-                assert param[4] instanceof String;
+                assert param[4] != null;
                 Instructor updateInstructor = new Instructor((String) param[0], (String) param[1],
                         Integer.parseInt((String) param[2]), (String) param[3], (String) param[4],
                         Integer.parseInt((String) param[5]));
@@ -212,10 +194,10 @@ public class EditAttribute extends AppCompatActivity {
                 }
             } else {
                 // Edit for student
-                assert param[4] instanceof PracticalList;
+                assert false;
                 Student updateStudent = new Student((String) param[0], (String) param[1],
-                        Integer.parseInt((String) param[2]), (String) param[3],
-                        (PracticalList) param[4], (String) param[5], Integer.parseInt((String) param[6]));
+                        Integer.parseInt((String) param[2]), (String) param[3], (String) param[4],
+                        Integer.parseInt((String) param[5]));
                 StudentList studentList = new StudentList();
                 studentList.load(EditAttribute.this);
 

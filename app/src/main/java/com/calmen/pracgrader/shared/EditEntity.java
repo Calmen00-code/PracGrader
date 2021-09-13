@@ -23,7 +23,7 @@ public class EditEntity extends AppCompatActivity implements Serializable {
     public static final String EDIT_USERNAME = "Username: ";
     public static final String EDIT_PIN = "PIN: ";
     public static final String EDIT_EMAIL = "Email: ";
-    public static final String EDIT_PRACTICAL_LIST = "Practical List: ";
+    public static final String EDIT_PRACTICAL_LIST = "Practical List";
     public static final String EDIT_COUNTRY = "Country: ";
 
     // Menu for editing Practical Type
@@ -32,8 +32,10 @@ public class EditEntity extends AppCompatActivity implements Serializable {
     public static final String EDIT_MARK = "Mark: ";
 
     ArrayList<EditData> edits;
-    static User user;
-    static Practical practical;
+
+    // will be used for detection of user in further activity
+    public static User user;
+    public static Practical practical;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,7 @@ public class EditEntity extends AppCompatActivity implements Serializable {
                 edits.add(new EditData(EDIT_COUNTRY, ((Instructor) user).getCountryName()));
             } else {
                 // Admin edit for Student
+                assert user != null;
                 edits.add(new EditData(EDIT_NAME, ((Student) user).getName()));
                 edits.add(new EditData(EDIT_USERNAME, user.getUsername()));
                 edits.add(new EditData(EDIT_PIN, String.valueOf(user.getPin())));

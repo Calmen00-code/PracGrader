@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class PracticalList implements Serializable {
+    public static final int DEFAULT_PRACTICAL_LIST_ID = -1;
+
     DBModel dbModel;
     private ArrayList<Practical> practicals;
 
