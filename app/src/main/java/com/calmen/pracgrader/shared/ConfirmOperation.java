@@ -17,7 +17,7 @@ import com.calmen.pracgrader.models.PracticalList;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.StudentList;
 import com.calmen.pracgrader.models.User;
-import com.calmen.pracgrader.ui.user_settings.EntityQuery;
+import com.calmen.pracgrader.ui.entity_settings.EntityQuery;
 
 public class ConfirmOperation extends AppCompatActivity {
 

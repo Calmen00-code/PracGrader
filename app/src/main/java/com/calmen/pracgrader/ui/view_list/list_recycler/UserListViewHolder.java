@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
 
-public class ListViewHolder extends RecyclerView.ViewHolder {
+public class UserListViewHolder extends RecyclerView.ViewHolder {
     TextView usernameView;
     Button viewBtn;
 
-    public ListViewHolder(@NonNull View itemView) {
+    public UserListViewHolder(@NonNull View itemView) {
         super(itemView);
         usernameView = itemView.findViewById(R.id.usernameListView);
         viewBtn = itemView.findViewById(R.id.viewUserBtn);

@@ -1,4 +1,4 @@
-package com.calmen.pracgrader.ui.user_settings;
+package com.calmen.pracgrader.ui.entity_settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;

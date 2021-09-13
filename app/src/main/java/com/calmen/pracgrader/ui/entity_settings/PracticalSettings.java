@@ -1,4 +1,4 @@
-package com.calmen.pracgrader.ui.user_settings;
+package com.calmen.pracgrader.ui.entity_settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,10 +10,7 @@ import android.widget.TextView;
 
 import com.calmen.pracgrader.R;
 
-/***
- * Display all the options for the admin to make on instructors
- */
-public class InstructorSettings extends AppCompatActivity {
+public class PracticalSettings extends AppCompatActivity {
     private Button addBtn, delBtn, editBtn;
     private TextView titleView;
 
@@ -27,12 +24,12 @@ public class InstructorSettings extends AppCompatActivity {
         delBtn = findViewById(R.id.deleteEntityBtn);
         editBtn = findViewById(R.id.editEntityBtn);
 
-        titleView.setText("Instructor's Settings");
+        titleView.setText("Practical's Settings");
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InstructorSettings.this,
-                        InstructorRegistration.class);
+                Intent intent = new Intent(PracticalSettings.this,
+                        PracticalRegistration.class);
                 startActivity(intent);
             }
         });
@@ -40,10 +37,10 @@ public class InstructorSettings extends AppCompatActivity {
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InstructorSettings.this,
+                Intent intent = new Intent(PracticalSettings.this,
                         EntityQuery.class);
                 intent.putExtra("Operation", EntityQuery.EDIT_OPERATION);
-                intent.putExtra("EntityType", EntityQuery.USER_TYPE_INSTRUCTOR);
+                intent.putExtra("EntityType", EntityQuery.ENTITY_TYPE_PRACTICAL);
                 startActivity(intent);
             }
         });
@@ -51,10 +48,10 @@ public class InstructorSettings extends AppCompatActivity {
         delBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InstructorSettings.this,
+                Intent intent = new Intent(PracticalSettings.this,
                         EntityQuery.class);
                 intent.putExtra("Operation", EntityQuery.DELETE_OPERATION);
-                intent.putExtra("EntityType", EntityQuery.USER_TYPE_INSTRUCTOR);
+                intent.putExtra("EntityType", EntityQuery.ENTITY_TYPE_PRACTICAL);
                 startActivity(intent);
                 finish();
             }

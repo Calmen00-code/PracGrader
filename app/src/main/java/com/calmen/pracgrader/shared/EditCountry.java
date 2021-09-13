@@ -15,7 +15,7 @@ import com.calmen.pracgrader.models.InstructorList;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.StudentList;
 import com.calmen.pracgrader.ui.country_recycler.CountryView;
-import com.calmen.pracgrader.ui.user_settings.EntityQuery;
+import com.calmen.pracgrader.ui.entity_settings.EntityQuery;
 
 import java.util.ArrayList;
 

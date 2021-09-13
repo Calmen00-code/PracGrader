@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user_settings.InstructorSettings">
+    tools:context=".ui.entity_settings.InstructorSettings">
 
   <Button
       android:id="@+id/addEntityBtn"

@@ -16,8 +16,8 @@ import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.shared.ConfirmRegistration;
 import com.calmen.pracgrader.shared.EditCountry;
 import com.calmen.pracgrader.shared.Validation;
-import com.calmen.pracgrader.ui.user_settings.EntityQuery;
-import com.calmen.pracgrader.ui.user_settings.UserRegistration;
+import com.calmen.pracgrader.ui.entity_settings.EntityQuery;
+import com.calmen.pracgrader.ui.entity_settings.UserRegistration;
 
 import java.io.Serializable;
 import java.util.ArrayList;

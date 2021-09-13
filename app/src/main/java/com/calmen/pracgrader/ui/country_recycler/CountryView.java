@@ -13,9 +13,9 @@ import android.view.ViewGroup;
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.shared.EditCountry;
 import com.calmen.pracgrader.ui.Login;
-import com.calmen.pracgrader.ui.user_settings.InstructorRegistration;
-import com.calmen.pracgrader.ui.user_settings.StudentRegistration;
-import com.calmen.pracgrader.ui.user_settings.EntityQuery;
+import com.calmen.pracgrader.ui.entity_settings.InstructorRegistration;
+import com.calmen.pracgrader.ui.entity_settings.StudentRegistration;
+import com.calmen.pracgrader.ui.entity_settings.EntityQuery;
 
 public class CountryView extends Fragment {
     public static String operation;

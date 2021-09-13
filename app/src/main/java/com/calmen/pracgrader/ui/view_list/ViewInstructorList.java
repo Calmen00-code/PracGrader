@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.InstructorList;
 import com.calmen.pracgrader.models.User;
-import com.calmen.pracgrader.shared.recyler_edit.RecyclerEditAdapter;
-import com.calmen.pracgrader.ui.view_list.list_recycler.ListRecyclerAdapter;
+import com.calmen.pracgrader.ui.view_list.list_recycler.UserListRecyclerAdapter;
 
 import java.util.ArrayList;
 
@@ -26,7 +24,7 @@ public class ViewInstructorList extends AppCompatActivity {
         loadInstructors();
         RecyclerView rv = findViewById(R.id.listViewRecycler);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        ListRecyclerAdapter listRecyclerAdapter = new ListRecyclerAdapter(this, instructors);
+        UserListRecyclerAdapter listRecyclerAdapter = new UserListRecyclerAdapter(this, instructors);
         rv.setAdapter(listRecyclerAdapter);
     }
 

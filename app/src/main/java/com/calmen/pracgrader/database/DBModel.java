@@ -131,7 +131,12 @@ public class DBModel {
         cv.put(PracticalTable.Cols.STUDENT_MARK, practical.getStudentMark());
         cv.put(PracticalTable.Cols.REF_ID, practical.getUniqueRefID());
 
-        db.insert(PracticalTable.NAME, null, cv);
+        long added = db.insert(PracticalTable.NAME, null, cv);
+        if (added > 0) {
+            System.out.println("Practical added");
+        } else {
+            System.out.println("Practical NOT ADDED");
+        }
     }
 
     public void removePractical(Practical practical) {

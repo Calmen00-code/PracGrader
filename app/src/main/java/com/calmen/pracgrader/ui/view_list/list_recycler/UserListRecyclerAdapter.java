@@ -15,26 +15,26 @@ import com.calmen.pracgrader.models.User;
 
 import java.util.ArrayList;
 
-public class ListRecyclerAdapter extends RecyclerView.Adapter<ListViewHolder> {
+public class UserListRecyclerAdapter extends RecyclerView.Adapter<UserListViewHolder> {
     ArrayList<User> users;
     Activity activity;
 
-    public ListRecyclerAdapter(Activity inActivity, ArrayList<User> inUsers) {
+    public UserListRecyclerAdapter(Activity inActivity, ArrayList<User> inUsers) {
         this.activity = inActivity;
         this.users = inUsers;
     }
 
     @NonNull
     @Override
-    public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public UserListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.view_user_list_row, parent, false);
-        ListViewHolder listViewHolder = new ListViewHolder(view);
+        UserListViewHolder listViewHolder = new UserListViewHolder(view);
         return listViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UserListViewHolder holder, int position) {
         User user = users.get(position);
 
         holder.usernameView.setText(user.getUsername());

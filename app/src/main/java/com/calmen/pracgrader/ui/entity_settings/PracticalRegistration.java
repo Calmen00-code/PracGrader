@@ -1,4 +1,4 @@
-package com.calmen.pracgrader.ui.user_settings;
+package com.calmen.pracgrader.ui.entity_settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Practical;
 import com.calmen.pracgrader.models.PracticalList;
-import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.shared.Validation;
 
 import java.util.ArrayList;

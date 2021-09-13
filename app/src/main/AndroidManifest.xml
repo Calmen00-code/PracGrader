@@ -10,16 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PracGrader">
         <activity
-            android:name=".ui.user_settings.NewStudentPractical"
+            android:name=".ui.view_list.ViewPracticalList"
+            android:exported="true" />
+        <activity
+            android:name=".ui.entity_settings.NewStudentPractical"
             android:exported="true" />
         <activity
             android:name=".shared.EditPractical"
             android:exported="true" />
         <activity
-            android:name=".ui.user_settings.PracticalRegistration"
+            android:name=".ui.entity_settings.PracticalRegistration"
             android:exported="true" />
         <activity
-            android:name=".ui.user_settings.PracticalSettings"
+            android:name=".ui.entity_settings.PracticalSettings"
             android:exported="true" />
         <activity
             android:name=".ui.view_list.ViewStudentList"
@@ -28,10 +31,10 @@
             android:name=".ui.view_list.ViewInstructorList"
             android:exported="true" />
         <activity
-            android:name=".ui.user_settings.StudentRegistration"
+            android:name=".ui.entity_settings.StudentRegistration"
             android:exported="true" />
         <activity
-            android:name=".ui.user_settings.StudentSettings"
+            android:name=".ui.entity_settings.StudentSettings"
             android:exported="true" />
         <activity
             android:name=".shared.EditCountry"
@@ -46,16 +49,16 @@
             android:name=".shared.ConfirmOperation"
             android:exported="true" />
         <activity
-            android:name=".ui.user_settings.EntityQuery"
+            android:name=".ui.entity_settings.EntityQuery"
             android:exported="true" />
         <activity
             android:name=".shared.ConfirmRegistration"
             android:exported="true" />
         <activity
-            android:name=".ui.user_settings.InstructorRegistration"
+            android:name=".ui.entity_settings.InstructorRegistration"
             android:exported="true" />
         <activity
-            android:name=".ui.user_settings.InstructorSettings"
+            android:name=".ui.entity_settings.InstructorSettings"
             android:exported="true" />
         <activity
             android:name=".ui.MenuPage"
@@ -67,7 +70,7 @@
             android:name=".ui.Login"
             android:exported="true" />
         <activity
-            android:name=".ui.user_settings.AdminRegistration"
+            android:name=".ui.entity_settings.AdminRegistration"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

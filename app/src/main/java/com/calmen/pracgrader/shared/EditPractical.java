@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.calmen.pracgrader.R;
-import com.calmen.pracgrader.ui.user_settings.NewStudentPractical;
+import com.calmen.pracgrader.ui.entity_settings.NewStudentPractical;
 
 public class EditPractical extends AppCompatActivity {
 

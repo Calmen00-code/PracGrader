@@ -1,4 +1,4 @@
-package com.calmen.pracgrader.ui.user_settings;
+package com.calmen.pracgrader.ui.entity_settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,7 +8,6 @@ import android.os.Bundle;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.PracticalList;
-import com.calmen.pracgrader.shared.recyler_edit.RecyclerEditAdapter;
 import com.calmen.pracgrader.ui.student_practical_recycler.NewStudentPracticalRecylerAdapter;
 
 public class NewStudentPractical extends AppCompatActivity {
