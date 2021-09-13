@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.shared.EditAttribute;
 import com.calmen.pracgrader.shared.EditCountry;
-import com.calmen.pracgrader.shared.EditUser;
+import com.calmen.pracgrader.shared.EditEntity;
 
 import java.util.ArrayList;
 
@@ -46,9 +46,9 @@ public class RecyclerEditAdapter extends RecyclerView.Adapter<EditDataViewHolder
                 String oldVal = singleData.getEditVal();
 
                 Intent intent;
-                if (editTitle.equals(EditUser.EDIT_COUNTRY)) {
+                if (editTitle.equals(EditEntity.EDIT_COUNTRY)) {
                     intent = new Intent(activity, EditCountry.class);
-                } else if (editTitle.equals(EditUser.EDIT_PRACTICAL_LIST)) {
+                } else if (editTitle.equals(EditEntity.EDIT_PRACTICAL_LIST)) {
                     // TODO: Implement edit for practical list here
                     intent = null;
                 } else {

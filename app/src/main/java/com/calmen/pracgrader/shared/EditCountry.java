@@ -51,11 +51,11 @@ public class EditCountry extends AppCompatActivity {
 
         String title = "Country: ";
         oldCountryTitle.setText(title);
-        if (EditUser.user instanceof Instructor) {
-            Instructor instructor = (Instructor) EditUser.user;
+        if (EditEntity.user instanceof Instructor) {
+            Instructor instructor = (Instructor) EditEntity.user;
             oldCountryVal.setText(instructor.getCountryName());
         } else {
-            Student student = (Student) EditUser.user;
+            Student student = (Student) EditEntity.user;
             oldCountryVal.setText(student.getCountryName());
         }
 
@@ -75,22 +75,22 @@ public class EditCountry extends AppCompatActivity {
     }
 
     public void updateUserCountry(String newCountry, Context context) {
-        if (EditUser.user instanceof Instructor) {
-            Instructor instructor = (Instructor) EditUser.user;
+        if (EditEntity.user instanceof Instructor) {
+            Instructor instructor = (Instructor) EditEntity.user;
             Instructor updateInstructor = new Instructor(instructor.getName(),
                     instructor.getUsername(), instructor.getPin(), instructor.getEmail(),
                     newCountry, findCountryID(newCountry));
             InstructorList instructorList = new InstructorList();
             instructorList.load(context);
-            instructorList.edit((Instructor) EditUser.user, updateInstructor);
+            instructorList.edit((Instructor) EditEntity.user, updateInstructor);
         } else {
-            Student student = (Student) EditUser.user;
+            Student student = (Student) EditEntity.user;
             Student updateStudent = new Student(student.getName(),
                     student.getUsername(), student.getPin(), student.getEmail(),
                     student.getPracticalList(), newCountry, findCountryID(newCountry));
             StudentList studentList = new StudentList();
             studentList.load(context);
-            studentList.edit((Student) EditUser.user, updateStudent);
+            studentList.edit((Student) EditEntity.user, updateStudent);
         }
         Toast.makeText(context, "User has been updated!", Toast.LENGTH_SHORT).show();
         finish();

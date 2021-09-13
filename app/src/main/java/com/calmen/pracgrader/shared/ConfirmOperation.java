@@ -96,10 +96,11 @@ public class ConfirmOperation extends AppCompatActivity {
                 if (finalUserOperation instanceof Instructor) {
                     if (operation.equals(EntityQuery.EDIT_OPERATION)) {
                         Intent intent = new Intent(ConfirmOperation.this,
-                                EditUser.class);
+                                EditEntity.class);
                         intent.putExtra("User", finalUserOperation);
                         startActivity(intent);
                     } else {
+                        assert finalInstructorList != null;
                         finalInstructorList.remove((Instructor) finalUserOperation);
                         Toast.makeText(ConfirmOperation.this,
                                 "Instructor has been removed!", Toast.LENGTH_SHORT).show();
@@ -107,7 +108,7 @@ public class ConfirmOperation extends AppCompatActivity {
                 } else if (finalUserOperation instanceof Student) {
                     if (operation.equals(EntityQuery.EDIT_OPERATION)) {
                         Intent intent = new Intent(ConfirmOperation.this,
-                                EditUser.class);
+                                EditEntity.class);
                         intent.putExtra("User", finalUserOperation);
                         startActivity(intent);
                     } else {
@@ -119,7 +120,7 @@ public class ConfirmOperation extends AppCompatActivity {
                 } else {
                     if (operation.equals(EntityQuery.EDIT_OPERATION)) {
                         Intent intent = new Intent(ConfirmOperation.this,
-                                EditPractical.class);
+                                EditEntity.class);
                         intent.putExtra("Practical", finalPractical);
                         startActivity(intent);
                     } else {

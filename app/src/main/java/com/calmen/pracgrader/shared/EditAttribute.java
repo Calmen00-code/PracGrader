@@ -2,7 +2,6 @@ package com.calmen.pracgrader.shared;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +15,6 @@ import com.calmen.pracgrader.models.InstructorList;
 import com.calmen.pracgrader.models.PracticalList;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.StudentList;
-import com.calmen.pracgrader.models.User;
-import com.calmen.pracgrader.ui.MenuPage;
 
 /***
  * Edit all the attributes of the user except for Country
@@ -51,11 +48,11 @@ public class EditAttribute extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 } else {
                     String newVal = newAttributeTxt.getText().toString();
-                    if (editTitle.equals(EditUser.EDIT_PIN) &&
+                    if (editTitle.equals(EditEntity.EDIT_PIN) &&
                             !Validation.checkValidPIN(newVal).equals(Validation.VALID)) {
                         Toast.makeText(EditAttribute.this, Validation.checkValidPIN(newVal),
                                 Toast.LENGTH_SHORT).show();
-                    } else if (editTitle.equals(EditUser.EDIT_EMAIL) &&
+                    } else if (editTitle.equals(EditEntity.EDIT_EMAIL) &&
                             !Validation.checkValidEmail(newVal).equals(Validation.VALID)) {
                         Toast.makeText(EditAttribute.this, Validation.checkValidEmail(newVal),
                                 Toast.LENGTH_SHORT).show();
@@ -74,9 +71,9 @@ public class EditAttribute extends AppCompatActivity {
         Object[] param;
 
         // assign all the old data, then update later
-        if (EditUser.user instanceof Instructor) {
+        if (EditEntity.user instanceof Instructor) {
             param = new String[INSTRUCTOR_PARAM];
-            Instructor user = (Instructor) EditUser.user;
+            Instructor user = (Instructor) EditEntity.user;
             param[0] = user.getName();
             param[1] = user.getUsername();
             param[2] = String.valueOf(user.getPin());
@@ -86,22 +83,22 @@ public class EditAttribute extends AppCompatActivity {
 
             // choose which attributes to be updated
             switch (editTitle) {
-                case EditUser.EDIT_NAME:
+                case EditEntity.EDIT_NAME:
                     param[0] = newVal;
                     break;
-                case EditUser.EDIT_USERNAME:
+                case EditEntity.EDIT_USERNAME:
                     param[1] = newVal;
                     break;
-                case EditUser.EDIT_PIN:
+                case EditEntity.EDIT_PIN:
                     param[2] = newVal;
                     break;
-                case EditUser.EDIT_EMAIL:
+                case EditEntity.EDIT_EMAIL:
                     param[3] = newVal;
                     break;
             }
         } else {
             param = new Object[STUDENT_PARAM];
-            Student user = (Student) EditUser.user;
+            Student user = (Student) EditEntity.user;
             param[0] = user.getName();
             param[1] = user.getUsername();
             param[2] = String.valueOf(user.getPin());
@@ -112,39 +109,39 @@ public class EditAttribute extends AppCompatActivity {
 
             // choose which attributes to be updated
             switch (editTitle) {
-                case EditUser.EDIT_NAME:
+                case EditEntity.EDIT_NAME:
                     param[0] = newVal;
                     break;
-                case EditUser.EDIT_USERNAME:
+                case EditEntity.EDIT_USERNAME:
                     param[1] = newVal;
                     break;
-                case EditUser.EDIT_PIN:
+                case EditEntity.EDIT_PIN:
                     param[2] = newVal;
                     break;
-                case EditUser.EDIT_EMAIL:
+                case EditEntity.EDIT_EMAIL:
                     param[3] = newVal;
                     break;
 
-                case EditUser.EDIT_PRACTICAL_LIST:
+                case EditEntity.EDIT_PRACTICAL_LIST:
                     param[4] = newVal;
                     break;
             }
         }
 
-        if (EditUser.user instanceof Instructor) {
+        if (EditEntity.user instanceof Instructor) {
             Instructor updateInstructor = new Instructor((String) param[0], (String) param[1],
                     Integer.parseInt((String) param[2]), (String) param[3], (String) param[4],
                     Integer.parseInt((String) param[5]));
             InstructorList instructorList = new InstructorList();
             instructorList.load(EditAttribute.this);
-            instructorList.edit((Instructor) EditUser.user, updateInstructor);
+            instructorList.edit((Instructor) EditEntity.user, updateInstructor);
         } else {
             Student updateStudent = new Student((String) param[0], (String) param[1],
                     Integer.parseInt((String) param[2]), (String) param[3],
                     (PracticalList) param[4], (String) param[5], Integer.parseInt((String) param[6]));
             StudentList studentList = new StudentList();
             studentList.load(EditAttribute.this);
-            studentList.edit((Student) EditUser.user, updateStudent);
+            studentList.edit((Student) EditEntity.user, updateStudent);
         }
     }
 }

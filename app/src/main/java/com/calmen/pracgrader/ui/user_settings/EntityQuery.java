@@ -69,6 +69,7 @@ public class EntityQuery extends AppCompatActivity {
                     Toast.makeText(EntityQuery.this, "Username is empty!",
                             Toast.LENGTH_SHORT).show();
                 } else {
+                    // Edit/Delete for student or instructor
                     if (entityType.equals(USER_TYPE_INSTRUCTOR) || entityType.equals(USER_TYPE_STUDENT)) {
                         if (finalUserList.isExist(entityTxt.getText().toString())) {
                             Intent intent = new Intent(EntityQuery.this, ConfirmOperation.class);
