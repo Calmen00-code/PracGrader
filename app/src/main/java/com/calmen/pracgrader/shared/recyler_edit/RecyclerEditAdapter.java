@@ -13,6 +13,7 @@ import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.shared.EditAttribute;
 import com.calmen.pracgrader.shared.EditCountry;
 import com.calmen.pracgrader.shared.EditEntity;
+import com.calmen.pracgrader.shared.EditPractical;
 
 import java.util.ArrayList;
 
@@ -50,7 +51,7 @@ public class RecyclerEditAdapter extends RecyclerView.Adapter<EditDataViewHolder
                     intent = new Intent(activity, EditCountry.class);
                 } else if (editTitle.equals(EditEntity.EDIT_PRACTICAL_LIST)) {
                     // TODO: Implement edit for practical list here
-                    intent = null;
+                    intent = new Intent(activity, EditPractical.class);
                 } else {
                     intent = new Intent(activity, EditAttribute.class);
                 }

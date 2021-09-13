@@ -4,9 +4,10 @@ import android.content.Context;
 
 import com.calmen.pracgrader.database.DBModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PracticalList {
+public class PracticalList implements Serializable {
     DBModel dbModel;
     private ArrayList<Practical> practicals;
     private int uniqueRefID;
