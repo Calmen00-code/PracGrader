@@ -52,7 +52,7 @@ public class StudentRegistration extends AppCompatActivity implements UserRegist
 
         if (countryView == null) {
             countryView = new CountryView();
-            CountryView.operation = UserQuery.REGISTER_OPERATION;
+            CountryView.operation = EntityQuery.REGISTER_OPERATION;
             CountryView.userRoles = Login.STUDENT;
             fm.beginTransaction()
                     .add(R.id.f_container_flag, countryView).commit();

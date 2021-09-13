@@ -41,9 +41,9 @@ public class InstructorSettings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(InstructorSettings.this,
-                        UserQuery.class);
-                intent.putExtra("Operation", UserQuery.EDIT_OPERATION);
-                intent.putExtra("UserType", UserQuery.USER_TYPE_INSTRUCTOR);
+                        EntityQuery.class);
+                intent.putExtra("Operation", EntityQuery.EDIT_OPERATION);
+                intent.putExtra("UserType", EntityQuery.USER_TYPE_INSTRUCTOR);
                 startActivity(intent);
             }
         });
@@ -52,9 +52,9 @@ public class InstructorSettings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(InstructorSettings.this,
-                        UserQuery.class);
-                intent.putExtra("Operation", UserQuery.DELETE_OPERATION);
-                intent.putExtra("UserType", UserQuery.USER_TYPE_INSTRUCTOR);
+                        EntityQuery.class);
+                intent.putExtra("Operation", EntityQuery.DELETE_OPERATION);
+                intent.putExtra("UserType", EntityQuery.USER_TYPE_INSTRUCTOR);
                 startActivity(intent);
                 finish();
             }

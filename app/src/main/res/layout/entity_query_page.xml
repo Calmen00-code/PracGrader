@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user_settings.UserQuery">
+    tools:context=".ui.user_settings.EntityQuery">
 
     <TextView
-        android:id="@+id/delTitleView"
+        android:id="@+id/entityTitleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter Username"
+        android:text="Entity Search"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.102" />
 
     <EditText
-        android:id="@+id/editTextPersonName"
+        android:id="@+id/editEntityTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"

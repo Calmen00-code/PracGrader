@@ -15,7 +15,7 @@ import com.calmen.pracgrader.shared.EditCountry;
 import com.calmen.pracgrader.ui.Login;
 import com.calmen.pracgrader.ui.user_settings.InstructorRegistration;
 import com.calmen.pracgrader.ui.user_settings.StudentRegistration;
-import com.calmen.pracgrader.ui.user_settings.UserQuery;
+import com.calmen.pracgrader.ui.user_settings.EntityQuery;
 
 public class CountryView extends Fragment {
     public static String operation;
@@ -29,7 +29,7 @@ public class CountryView extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         CountryRecyclerAdapter countryRecyclerAdapter;
-        if (operation.equals(UserQuery.REGISTER_OPERATION)) {
+        if (operation.equals(EntityQuery.REGISTER_OPERATION)) {
             if (userRoles.equals(Login.INSTRUCTOR)) {
                 // Admin register for Instructor
                 countryRecyclerAdapter = new CountryRecyclerAdapter(

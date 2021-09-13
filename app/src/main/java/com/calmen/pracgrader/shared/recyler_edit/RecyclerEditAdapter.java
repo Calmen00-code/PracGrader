@@ -7,14 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.shared.EditAttribute;
 import com.calmen.pracgrader.shared.EditCountry;
 import com.calmen.pracgrader.shared.EditUser;
-import com.calmen.pracgrader.ui.user_settings.UserQuery;
 
 import java.util.ArrayList;
 

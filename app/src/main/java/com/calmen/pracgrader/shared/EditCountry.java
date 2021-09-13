@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,11 +14,8 @@ import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.InstructorList;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.StudentList;
-import com.calmen.pracgrader.ui.AdminMenu;
-import com.calmen.pracgrader.ui.MenuPage;
-import com.calmen.pracgrader.ui.country_recycler.CountryRecyclerAdapter;
 import com.calmen.pracgrader.ui.country_recycler.CountryView;
-import com.calmen.pracgrader.ui.user_settings.UserQuery;
+import com.calmen.pracgrader.ui.user_settings.EntityQuery;
 
 import java.util.ArrayList;
 
@@ -69,7 +64,7 @@ public class EditCountry extends AppCompatActivity {
 
         if (countryView == null) {
             countryView = new CountryView();
-            CountryView.operation = UserQuery.EDIT_OPERATION;
+            CountryView.operation = EntityQuery.EDIT_OPERATION;
             fm.beginTransaction()
                     .add(R.id.f_edit_container_flag, countryView).commit();
         }

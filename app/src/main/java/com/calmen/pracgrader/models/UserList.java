@@ -18,11 +18,7 @@ public class UserList {
     }
 
     public boolean isEmpty() {
-        if (users.isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
+        return users.isEmpty();
     }
 
     public boolean isExist(String username) {

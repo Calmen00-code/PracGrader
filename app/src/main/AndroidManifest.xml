@@ -40,7 +40,7 @@
             android:name=".shared.ConfirmOperation"
             android:exported="true" />
         <activity
-            android:name=".ui.user_settings.UserQuery"
+            android:name=".ui.user_settings.EntityQuery"
             android:exported="true" />
         <activity
             android:name=".shared.ConfirmRegistration"

@@ -1,8 +1,6 @@
 package com.calmen.pracgrader.ui.country_recycler;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Country;
-import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.shared.ConfirmRegistration;
 import com.calmen.pracgrader.shared.EditCountry;
 import com.calmen.pracgrader.shared.Validation;
-import com.calmen.pracgrader.ui.Login;
-import com.calmen.pracgrader.ui.user_settings.UserQuery;
+import com.calmen.pracgrader.ui.user_settings.EntityQuery;
 import com.calmen.pracgrader.ui.user_settings.UserRegistration;
 
 import java.io.Serializable;
@@ -59,7 +55,7 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
         holder.selectCountryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (CountryView.operation.equals(UserQuery.REGISTER_OPERATION)) {
+                if (CountryView.operation.equals(EntityQuery.REGISTER_OPERATION)) {
                     String msg = checkEmptyAttributes();
                     if (msg.equals("")) {
                         msg = checkValidAttributes();

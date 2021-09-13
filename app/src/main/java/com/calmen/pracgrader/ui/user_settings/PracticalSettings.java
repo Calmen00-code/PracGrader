@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.calmen.pracgrader.R;
-import com.calmen.pracgrader.models.Practical;
 
 public class PracticalSettings extends AppCompatActivity {
     private Button addBtn, delBtn, editBtn;
@@ -39,9 +38,9 @@ public class PracticalSettings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PracticalSettings.this,
-                        UserQuery.class);
-                intent.putExtra("Operation", UserQuery.EDIT_OPERATION);
-                intent.putExtra("UserType", UserQuery.USER_TYPE_STUDENT);
+                        EntityQuery.class);
+                intent.putExtra("Operation", EntityQuery.EDIT_OPERATION);
+                intent.putExtra("EntityType", EntityQuery.ENTITY_TYPE_PRACTICAL);
                 startActivity(intent);
             }
         });
@@ -50,9 +49,9 @@ public class PracticalSettings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PracticalSettings.this,
-                        UserQuery.class);
-                intent.putExtra("Operation", UserQuery.DELETE_OPERATION);
-                intent.putExtra("UserType", UserQuery.USER_TYPE_STUDENT);
+                        EntityQuery.class);
+                intent.putExtra("Operation", EntityQuery.DELETE_OPERATION);
+                intent.putExtra("UserType", EntityQuery.USER_TYPE_STUDENT);
                 startActivity(intent);
                 finish();
             }

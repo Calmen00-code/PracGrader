@@ -15,7 +15,7 @@ import com.calmen.pracgrader.models.InstructorList;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.StudentList;
 import com.calmen.pracgrader.models.User;
-import com.calmen.pracgrader.ui.user_settings.UserQuery;
+import com.calmen.pracgrader.ui.user_settings.EntityQuery;
 
 public class ConfirmOperation extends AppCompatActivity {
 
@@ -31,27 +31,27 @@ public class ConfirmOperation extends AppCompatActivity {
         TextView nameOpView = findViewById(R.id.nameOpView);
         TextView titleConfirmOperation = findViewById(R.id.titleConfirmOperation);
 
-        String username = getIntent().getStringExtra("Username");
-        String userType = getIntent().getStringExtra("UserType");
+        String entityVal = getIntent().getStringExtra("Entity");
+        String userType = getIntent().getStringExtra("EntityType");
         String operation = getIntent().getStringExtra("Operation");
 
         User userOperation;
         InstructorList instructorList = null;
         StudentList studentList = null;
-        if (userType.equals(UserQuery.USER_TYPE_INSTRUCTOR)) {
+        if (userType.equals(EntityQuery.USER_TYPE_INSTRUCTOR)) {
             instructorList = new InstructorList();
             instructorList.load(ConfirmOperation.this);
             // username is check to be existed from previous activity ConfirmDeletion
-            userOperation = instructorList.getUserByUsername(username);
+            userOperation = instructorList.getUserByUsername(entityVal);
         } else {
             studentList = new StudentList();
             studentList.load(ConfirmOperation.this);
             // username is check to be existed from previous activity ConfirmDeletion
-            userOperation = studentList.getUserByUsername(username);
+            userOperation = studentList.getUserByUsername(entityVal);
         }
 
         String titleTxt = "";
-        if (operation.equals(UserQuery.EDIT_OPERATION)) {
+        if (operation.equals(EntityQuery.EDIT_OPERATION)) {
             titleTxt += "Confirm Edit?";
         } else {
             titleTxt += "Confirm Delete?";
@@ -77,7 +77,7 @@ public class ConfirmOperation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (userOperation instanceof Instructor) {
-                    if (operation.equals(UserQuery.EDIT_OPERATION)) {
+                    if (operation.equals(EntityQuery.EDIT_OPERATION)) {
                         Intent intent = new Intent(ConfirmOperation.this,
                                 EditUser.class);
                         intent.putExtra("User", userOperation);
@@ -88,12 +88,13 @@ public class ConfirmOperation extends AppCompatActivity {
                                 "Instructor has been removed!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    if (operation.equals(UserQuery.EDIT_OPERATION)) {
+                    if (operation.equals(EntityQuery.EDIT_OPERATION)) {
                         Intent intent = new Intent(ConfirmOperation.this,
                                 EditUser.class);
                         intent.putExtra("User", userOperation);
                         startActivity(intent);
                     } else {
+                        assert finalStudentList != null;
                         finalStudentList.remove((Student) userOperation);
                         Toast.makeText(ConfirmOperation.this,
                                 "Student has been removed!", Toast.LENGTH_SHORT).show();

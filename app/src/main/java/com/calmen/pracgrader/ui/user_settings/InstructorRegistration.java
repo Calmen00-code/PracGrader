@@ -8,9 +8,7 @@ import android.widget.EditText;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Country;
-import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.ui.Login;
-import com.calmen.pracgrader.ui.country_recycler.CountryRecyclerAdapter;
 import com.calmen.pracgrader.ui.country_recycler.CountryView;
 
 import java.util.ArrayList;
@@ -54,7 +52,7 @@ public class InstructorRegistration extends AppCompatActivity implements UserReg
 
         if (countryView == null) {
             countryView = new CountryView();
-            CountryView.operation = UserQuery.REGISTER_OPERATION;
+            CountryView.operation = EntityQuery.REGISTER_OPERATION;
             CountryView.userRoles = Login.INSTRUCTOR;
             fm.beginTransaction()
                     .add(R.id.f_container_flag, countryView).commit();

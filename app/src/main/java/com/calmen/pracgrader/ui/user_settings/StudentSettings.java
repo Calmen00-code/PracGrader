@@ -38,9 +38,9 @@ public class StudentSettings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(StudentSettings.this,
-                        UserQuery.class);
-                intent.putExtra("Operation", UserQuery.EDIT_OPERATION);
-                intent.putExtra("UserType", UserQuery.USER_TYPE_STUDENT);
+                        EntityQuery.class);
+                intent.putExtra("Operation", EntityQuery.EDIT_OPERATION);
+                intent.putExtra("UserType", EntityQuery.USER_TYPE_STUDENT);
                 startActivity(intent);
             }
         });
@@ -49,9 +49,9 @@ public class StudentSettings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(StudentSettings.this,
-                        UserQuery.class);
-                intent.putExtra("Operation", UserQuery.DELETE_OPERATION);
-                intent.putExtra("UserType", UserQuery.USER_TYPE_STUDENT);
+                        EntityQuery.class);
+                intent.putExtra("Operation", EntityQuery.DELETE_OPERATION);
+                intent.putExtra("UserType", EntityQuery.USER_TYPE_STUDENT);
                 startActivity(intent);
                 finish();
             }

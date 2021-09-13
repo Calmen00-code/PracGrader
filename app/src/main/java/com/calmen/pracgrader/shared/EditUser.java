@@ -12,7 +12,6 @@ import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.shared.recyler_edit.EditData;
 import com.calmen.pracgrader.shared.recyler_edit.RecyclerEditAdapter;
-import com.calmen.pracgrader.ui.user_settings.UserQuery;
 
 import java.io.Serializable;
 import java.util.ArrayList;
