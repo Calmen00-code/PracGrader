@@ -51,7 +51,7 @@ public class PracticalSettings extends AppCompatActivity {
                 Intent intent = new Intent(PracticalSettings.this,
                         EntityQuery.class);
                 intent.putExtra("Operation", EntityQuery.DELETE_OPERATION);
-                intent.putExtra("UserType", EntityQuery.USER_TYPE_STUDENT);
+                intent.putExtra("EntityType", EntityQuery.USER_TYPE_STUDENT);
                 startActivity(intent);
                 finish();
             }

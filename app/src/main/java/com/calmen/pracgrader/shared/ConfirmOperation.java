@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.InstructorList;
+import com.calmen.pracgrader.models.Practical;
+import com.calmen.pracgrader.models.PracticalList;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.StudentList;
 import com.calmen.pracgrader.models.User;
@@ -26,28 +28,35 @@ public class ConfirmOperation extends AppCompatActivity {
 
         Button yesOpBtn = findViewById(R.id.yesOpBtn);
         Button noOpBtn = findViewById(R.id.noOpBtn);
-        TextView emailOpView = findViewById(R.id.emailOpView);
-        TextView countryOpView = findViewById(R.id.countryOpView);
-        TextView nameOpView = findViewById(R.id.nameOpView);
+        TextView firstView = findViewById(R.id.firstView);
+        TextView secondView = findViewById(R.id.secondView);
+        TextView thirdView = findViewById(R.id.thirdView);
         TextView titleConfirmOperation = findViewById(R.id.titleConfirmOperation);
 
         String entityVal = getIntent().getStringExtra("Entity");
-        String userType = getIntent().getStringExtra("EntityType");
+        String entityType = getIntent().getStringExtra("EntityType");
         String operation = getIntent().getStringExtra("Operation");
 
-        User userOperation;
+        User userOperation = null;
         InstructorList instructorList = null;
         StudentList studentList = null;
-        if (userType.equals(EntityQuery.USER_TYPE_INSTRUCTOR)) {
+        PracticalList practicalList = null;
+        Practical practical = null;
+        if (entityType.equals(EntityQuery.USER_TYPE_INSTRUCTOR)) {
             instructorList = new InstructorList();
             instructorList.load(ConfirmOperation.this);
             // username is check to be existed from previous activity ConfirmDeletion
             userOperation = instructorList.getUserByUsername(entityVal);
-        } else {
+        } else if (entityType.equals(EntityQuery.USER_TYPE_STUDENT)) {
             studentList = new StudentList();
             studentList.load(ConfirmOperation.this);
             // username is check to be existed from previous activity ConfirmDeletion
             userOperation = studentList.getUserByUsername(entityVal);
+        } else {
+            practicalList = new PracticalList();
+            practicalList.load(ConfirmOperation.this);
+            // username is check to be existed from previous activity ConfirmDeletion
+            practical = practicalList.getPracByTitle(entityVal);
         }
 
         String titleTxt = "";
@@ -58,46 +67,66 @@ public class ConfirmOperation extends AppCompatActivity {
         }
         titleConfirmOperation.setText(titleTxt);
 
-        // parent instance (User) does not have name, email, country attributes
         if (userOperation instanceof Instructor) {
+            // parent instance (User) does not have name, email, country attributes
             Instructor instructor = (Instructor) userOperation;
-            nameOpView.setText(instructor.getName());
-            emailOpView.setText(instructor.getEmail());
-            countryOpView.setText(instructor.getCountryName());
+            firstView.setText(instructor.getName());
+            secondView.setText(instructor.getEmail());
+            thirdView.setText(instructor.getCountryName());
         } else if (userOperation instanceof Student) {
+            // parent instance (User) does not have name, email, country attributes
             Student student = (Student) userOperation;
-            nameOpView.setText(student.getName());
-            emailOpView.setText(student.getEmail());
-            countryOpView.setText(student.getCountryName());
+            firstView.setText(student.getName());
+            secondView.setText(student.getEmail());
+            thirdView.setText(student.getCountryName());
+        } else {
+            firstView.setText(practical.getTitle());
+            secondView.setText(practical.getDesc());
+            thirdView.setText(String.valueOf(practical.getMark()));
         }
 
         InstructorList finalInstructorList = instructorList;
         StudentList finalStudentList = studentList;
+        User finalUserOperation = userOperation;
+        PracticalList finalPracticalList = practicalList;
+        Practical finalPractical = practical;
         yesOpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (userOperation instanceof Instructor) {
+                if (finalUserOperation instanceof Instructor) {
                     if (operation.equals(EntityQuery.EDIT_OPERATION)) {
                         Intent intent = new Intent(ConfirmOperation.this,
                                 EditUser.class);
-                        intent.putExtra("User", userOperation);
+                        intent.putExtra("User", finalUserOperation);
                         startActivity(intent);
                     } else {
-                        finalInstructorList.remove((Instructor) userOperation);
+                        finalInstructorList.remove((Instructor) finalUserOperation);
                         Toast.makeText(ConfirmOperation.this,
                                 "Instructor has been removed!", Toast.LENGTH_SHORT).show();
+                    }
+                } else if (finalUserOperation instanceof Student) {
+                    if (operation.equals(EntityQuery.EDIT_OPERATION)) {
+                        Intent intent = new Intent(ConfirmOperation.this,
+                                EditUser.class);
+                        intent.putExtra("User", finalUserOperation);
+                        startActivity(intent);
+                    } else {
+                        assert finalStudentList != null;
+                        finalStudentList.remove((Student) finalUserOperation);
+                        Toast.makeText(ConfirmOperation.this,
+                                "Student has been removed!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     if (operation.equals(EntityQuery.EDIT_OPERATION)) {
                         Intent intent = new Intent(ConfirmOperation.this,
-                                EditUser.class);
-                        intent.putExtra("User", userOperation);
+                                EditPractical.class);
+                        intent.putExtra("Practical", finalPractical);
                         startActivity(intent);
                     } else {
-                        assert finalStudentList != null;
-                        finalStudentList.remove((Student) userOperation);
+                        assert finalPracticalList != null;
+                        finalPracticalList.remove(finalPractical);
                         Toast.makeText(ConfirmOperation.this,
-                                "Student has been removed!", Toast.LENGTH_SHORT).show();
+                                "Practical has been removed!", Toast.LENGTH_SHORT).show();
                     }
                 }
                 finish();

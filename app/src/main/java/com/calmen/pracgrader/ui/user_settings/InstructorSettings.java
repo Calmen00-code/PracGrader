@@ -43,7 +43,7 @@ public class InstructorSettings extends AppCompatActivity {
                 Intent intent = new Intent(InstructorSettings.this,
                         EntityQuery.class);
                 intent.putExtra("Operation", EntityQuery.EDIT_OPERATION);
-                intent.putExtra("UserType", EntityQuery.USER_TYPE_INSTRUCTOR);
+                intent.putExtra("EntityType", EntityQuery.USER_TYPE_INSTRUCTOR);
                 startActivity(intent);
             }
         });
@@ -54,7 +54,7 @@ public class InstructorSettings extends AppCompatActivity {
                 Intent intent = new Intent(InstructorSettings.this,
                         EntityQuery.class);
                 intent.putExtra("Operation", EntityQuery.DELETE_OPERATION);
-                intent.putExtra("UserType", EntityQuery.USER_TYPE_INSTRUCTOR);
+                intent.putExtra("EntityType", EntityQuery.USER_TYPE_INSTRUCTOR);
                 startActivity(intent);
                 finish();
             }

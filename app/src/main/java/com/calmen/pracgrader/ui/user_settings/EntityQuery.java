@@ -104,6 +104,8 @@ public class EntityQuery extends AppCompatActivity {
                             Intent intent = new Intent(EntityQuery.this, ConfirmOperation.class);
                             intent.putExtra("Entity", entityTxt.getText().toString());
 
+                            intent.putExtra("EntityType", ENTITY_TYPE_PRACTICAL);
+
                             if (operation.equals(EDIT_OPERATION)) {
                                 intent.putExtra("Operation", EDIT_OPERATION);
                             } else {

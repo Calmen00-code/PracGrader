@@ -1,6 +1,8 @@
 package com.calmen.pracgrader.models;
 
-public class Practical {
+import java.io.Serializable;
+
+public class Practical implements Serializable {
     private String title;
     private String desc;
     private double studentMark;
