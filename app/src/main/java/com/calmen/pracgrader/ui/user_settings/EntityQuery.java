@@ -69,8 +69,31 @@ public class EntityQuery extends AppCompatActivity {
                     Toast.makeText(EntityQuery.this, "Username is empty!",
                             Toast.LENGTH_SHORT).show();
                 } else {
-                    // Edit/Delete for student or instructor
-                    if (entityType.equals(USER_TYPE_INSTRUCTOR) || entityType.equals(USER_TYPE_STUDENT)) {
+                    if (entityType.equals(ENTITY_TYPE_PRACTICAL)) {
+                        // Edit or Delete for practical
+                        if (finalPracticalList.isExist(entityTxt.getText().toString())) {
+                            Intent intent = new Intent(EntityQuery.this, ConfirmOperation.class);
+                            intent.putExtra("Entity", entityTxt.getText().toString());
+
+                            intent.putExtra("EntityType", ENTITY_TYPE_PRACTICAL);
+
+                            if (operation.equals(EDIT_OPERATION)) {
+                                intent.putExtra("Operation", EDIT_OPERATION);
+                            } else {
+                                // Performing deletion
+                                intent.putExtra("Operation", DELETE_OPERATION);
+                            }
+                            startActivity(intent);
+
+                            // reload the DB again after delete or edit
+                            finalPracticalList.load(EntityQuery.this);
+                            finish();
+                        } else {
+                            Toast.makeText(EntityQuery.this, "Practical does not exist!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        // Edit or Delete for student or instructor
                         if (finalUserList.isExist(entityTxt.getText().toString())) {
                             Intent intent = new Intent(EntityQuery.this, ConfirmOperation.class);
                             intent.putExtra("Entity", entityTxt.getText().toString());
@@ -97,29 +120,6 @@ public class EntityQuery extends AppCompatActivity {
                             finish();
                         } else {
                             Toast.makeText(EntityQuery.this, "Username does not exist!",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        // Edit or Delete for practical
-                        if (finalPracticalList.isExist(entityTxt.getText().toString())) {
-                            Intent intent = new Intent(EntityQuery.this, ConfirmOperation.class);
-                            intent.putExtra("Entity", entityTxt.getText().toString());
-
-                            intent.putExtra("EntityType", ENTITY_TYPE_PRACTICAL);
-
-                            if (operation.equals(EDIT_OPERATION)) {
-                                intent.putExtra("Operation", EDIT_OPERATION);
-                            } else {
-                                // Performing deletion
-                                intent.putExtra("Operation", DELETE_OPERATION);
-                            }
-                            startActivity(intent);
-
-                            // reload the DB again after delete or edit
-                            finalPracticalList.load(EntityQuery.this);
-                            finish();
-                        } else {
-                            Toast.makeText(EntityQuery.this, "Practical does not exist!",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }

@@ -93,6 +93,7 @@ public class ConfirmOperation extends AppCompatActivity {
         yesOpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Edit or Delete for Instructor
                 if (finalUserOperation instanceof Instructor) {
                     if (operation.equals(EntityQuery.EDIT_OPERATION)) {
                         Intent intent = new Intent(ConfirmOperation.this,
@@ -106,6 +107,7 @@ public class ConfirmOperation extends AppCompatActivity {
                                 "Instructor has been removed!", Toast.LENGTH_SHORT).show();
                     }
                 } else if (finalUserOperation instanceof Student) {
+                    // Edit or Delete for Student
                     if (operation.equals(EntityQuery.EDIT_OPERATION)) {
                         Intent intent = new Intent(ConfirmOperation.this,
                                 EditEntity.class);
@@ -118,12 +120,14 @@ public class ConfirmOperation extends AppCompatActivity {
                                 "Student has been removed!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
+                    // Edit or Delete for Practical
                     if (operation.equals(EntityQuery.EDIT_OPERATION)) {
                         Intent intent = new Intent(ConfirmOperation.this,
                                 EditEntity.class);
                         intent.putExtra("Practical", finalPractical);
                         startActivity(intent);
                     } else {
+                        // for delete
                         assert finalPracticalList != null;
                         finalPracticalList.remove(finalPractical);
                         Toast.makeText(ConfirmOperation.this,
