@@ -35,7 +35,7 @@
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/edit_attribute_page.xml" value="0.264" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/edit_attribute_row.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/edit_country_page.xml" value="0.18072916666666666" />
-        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/edit_practical_page.xml" value="0.26811594202898553" />
+        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/edit_practical_page.xml" value="0.176" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/edit_user_page.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/entity_query_page.xml" value="0.18072916666666666" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/entity_settings.xml" value="0.18072916666666666" />
@@ -47,6 +47,8 @@
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/instructor_registration_page.xml" value="0.264" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/instructor_settings.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/login_page.xml" value="0.19882246376811594" />
+        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/new_student_practical_page.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/new_student_practical_row.xml" value="0.4" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/practical_registration_page.xml" value="0.264" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/registration_page.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/calme/OneDrive - student.curtin.edu.my/Degree (Second Year)/Sem 2/Mobile App/Assignment 1/PracGrader/app/src/main/res/layout/user_delete_page.xml" value="0.2" />

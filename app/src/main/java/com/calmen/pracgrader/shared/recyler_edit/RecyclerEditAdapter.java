@@ -1,3 +1,7 @@
+/***
+ * @field edits refer to the items that is editable for each Instructor, Student, Practical
+ * @field activity can help us to refer to the parent activity
+ */
 package com.calmen.pracgrader.shared.recyler_edit;
 
 import android.app.Activity;

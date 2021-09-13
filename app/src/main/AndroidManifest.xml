@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PracGrader">
         <activity
+            android:name=".ui.user_settings.NewStudentPractical"
+            android:exported="true" />
+        <activity
             android:name=".shared.EditPractical"
             android:exported="true" />
         <activity
