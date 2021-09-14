@@ -1,5 +1,6 @@
 package com.calmen.pracgrader.ui.student_practical_recycler;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,10 @@ import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Practical;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.shared.EditEntity;
+import com.calmen.pracgrader.shared.EditStudentPractical;
+import com.calmen.pracgrader.shared.Validation;
 import com.calmen.pracgrader.ui.entity_settings.NewStudentPractical;
+import com.calmen.pracgrader.ui.entity_settings.PracticalMarkInput;
 
 import java.util.ArrayList;
 
@@ -42,23 +46,46 @@ public class EditStudentPracticalRecylerAdapter extends RecyclerView.Adapter<Edi
         holder.selStudentPracticalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // adding new practical to the student
                 if (operation.equals(NewStudentPractical.NEW_PRACTICAL)) {
                     if (EditEntity.user instanceof Student) {
                         Student student = (Student) EditEntity.user;
                         student.getStudentPracticalList().load(view.getContext());
-                        student.getStudentPracticalList().add(new Practical(singlePractical.getTitle(),
-                                singlePractical.getDesc(), singlePractical.getMark(), 0.0,
-                                student.getUniqueID()));
+
                         ArrayList<Practical> practicals = student.getStudentPracticalList().
                                 getStudentPracticals(student.getUniqueID());
-                        for (Practical practical: practicals) {
-                            System.out.println(practical.getTitle());
+                        // check for duplication practical register on student
+                        if (Validation.checkDuplicateTitle(practicals, singlePractical.getTitle())) {
+                            Toast.makeText(view.getContext(),
+                                    "Current student has already register to the practical!",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            // adding new practical to student
+                            student.getStudentPracticalList().add(new Practical(singlePractical.getTitle(),
+                                    singlePractical.getDesc(), singlePractical.getMark(), 0.0,
+                                    student.getUniqueID()));
+                            Toast.makeText( view.getContext(), "Practical Added to "
+                                    + student.getUsername() + "!", Toast.LENGTH_SHORT).show();
                         }
-                        Toast.makeText( view.getContext(), "Practical Added to "
-                                + student.getUsername() + "!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
+                    // input mark to current selected practical of a student
+                    if (EditEntity.user instanceof Student) {
+                        Student student = (Student) EditEntity.user;
 
+                        ArrayList<Practical> practicals = student.getStudentPracticalList().
+                                getStudentPracticals(student.getUniqueID());
+                        Practical studentPractical = student.getStudentPracticalByTitle(practicals,
+                                singlePractical.getTitle());
+
+                        if (studentPractical != null) {
+                            Intent intent = new Intent(view.getContext(), PracticalMarkInput.class);
+                            intent.putExtra("studentPractical", studentPractical);
+                            intent.putExtra("studentUniqueID", student.getUniqueID());
+                            intent.putExtra("studentPracticalList", student.getStudentPracticalList());
+                            view.getContext().startActivity(intent);
+                        }
+                    }
                 }
             }
         });

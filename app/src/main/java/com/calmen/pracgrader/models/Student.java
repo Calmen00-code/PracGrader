@@ -1,5 +1,7 @@
 package com.calmen.pracgrader.models;
 
+import java.util.ArrayList;
+
 /***
  * Has-A Relationship with PracticalList
  */
@@ -66,6 +68,15 @@ public class Student extends User {
 
     public StudentPracticalList getStudentPracticalList() {
         return studentPracticalList;
+    }
+
+    public Practical getStudentPracticalByTitle(ArrayList<Practical> findPracticals, String title) {
+        for (Practical practical: findPracticals) {
+            if (practical.getTitle().equals(title)) {
+                return practical;
+            }
+        }
+        return null;
     }
 
     public int getUniqueID() {

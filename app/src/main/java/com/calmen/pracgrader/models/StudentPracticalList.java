@@ -31,6 +31,16 @@ public class StudentPracticalList implements Serializable {
         }
     }
 
+    public void edit(Practical updatePractical, int inUniqueID) {
+        for (Practical practical: practicals) {
+            if (practical.getUniqueRefID() == inUniqueID &&
+                    practical.getTitle().equals(updatePractical.getTitle())) {
+                practical = updatePractical;
+                dbModel.updatePracticalByID(practical, practical.getTitle(), inUniqueID);
+            }
+        }
+    }
+
     public ArrayList<Practical> getStudentPracticals(int findID) {
         practicals = dbModel.getAllStudentPracticals(findID);
         return practicals;

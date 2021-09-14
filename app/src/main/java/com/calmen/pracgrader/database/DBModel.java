@@ -174,6 +174,27 @@ public class DBModel {
         }
     }
 
+    /***
+     * @param uniqueID to search for practical that belongs to the student
+     */
+    public void updatePracticalByID(Practical practical, int uniqueID, String title) {
+        String[] whereVal = {String.valueOf(uniqueID), String.valueOf(title)};
+        ContentValues cv = new ContentValues();
+        cv.put(PracticalTable.Cols.TITLE, practical.getTitle());
+        cv.put(PracticalTable.Cols.DESC, practical.getDesc());
+        cv.put(PracticalTable.Cols.MARK, practical.getMark());
+        cv.put(PracticalTable.Cols.STUDENT_MARK, practical.getStudentMark());
+        cv.put(PracticalTable.Cols.REF_ID, practical.getUniqueRefID());
+
+        int updated = db.update(PracticalTable.NAME, cv, PracticalTable.Cols.REF_ID +
+                " =? AND " + PracticalTable.Cols.TITLE + " =?", whereVal);
+        if (updated > 0 ) {
+            System.out.println("Practical updated");
+        } else {
+            System.out.println("Practical NOT UPDATED");
+        }
+    }
+
     public ArrayList<User> getAllAdmins() {
         ArrayList<User> admins = new ArrayList<>();
         Cursor cursor = db.query(AdminTable.NAME, null, null,null,null,null,null);

@@ -45,7 +45,8 @@ public class PracticalList implements Serializable {
             System.out.println("Student is NOT EMPTY");
         }
         for (Practical practical: practicals) {
-            if (practical.getTitle().equals(oldPrac.getTitle())) {
+            if (practical.getTitle().equals(oldPrac.getTitle()) &&
+                    practical.getUniqueRefID() == DEFAULT_PRACTICAL_LIST_ID) {
                 practical = newPrac;
                 dbModel.updatePractical(practical, oldPrac.getTitle());
             }
