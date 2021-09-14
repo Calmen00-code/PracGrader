@@ -17,6 +17,10 @@ public class Practical implements Serializable {
         this.uniqueRefID = inUniqueRefID;
     }
 
+    public void setStudentMark(double studentMark) {
+        this.studentMark = studentMark;
+    }
+
     public void setMark(double mark) {
         this.mark = mark;
     }
