@@ -18,6 +18,7 @@ import com.calmen.pracgrader.shared.Validation;
 import com.calmen.pracgrader.ui.entity_settings.NewStudentPractical;
 import com.calmen.pracgrader.ui.entity_settings.PracticalMarkInput;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -73,6 +74,7 @@ public class EditStudentPracticalRecylerAdapter extends RecyclerView.Adapter<Edi
                     if (EditEntity.user instanceof Student) {
                         Student student = (Student) EditEntity.user;
 
+                        student.getStudentPracticalList().load(view.getContext());
                         ArrayList<Practical> practicals = student.getStudentPracticalList().
                                 getStudentPracticals(student.getUniqueID());
                         Practical studentPractical = student.getStudentPracticalByTitle(practicals,
@@ -82,7 +84,7 @@ public class EditStudentPracticalRecylerAdapter extends RecyclerView.Adapter<Edi
                             Intent intent = new Intent(view.getContext(), PracticalMarkInput.class);
                             intent.putExtra("studentPractical", studentPractical);
                             intent.putExtra("studentUniqueID", student.getUniqueID());
-                            intent.putExtra("studentPracticalList", student.getStudentPracticalList());
+                            intent.putExtra("studentPracticalList", (Serializable) student.getStudentPracticalList());
                             view.getContext().startActivity(intent);
                         }
                     }

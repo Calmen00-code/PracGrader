@@ -1,5 +1,6 @@
 package com.calmen.pracgrader.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /***
@@ -23,6 +24,7 @@ public class Student extends User {
         this.countryName = inCountryName;
         this.countryFlag = inCountryFlag;
         this.uniqueID = nextId + 2;
+        nextId = this.uniqueID;
         this.studentPracticalList = new StudentPracticalList(this.uniqueID);
     }
 

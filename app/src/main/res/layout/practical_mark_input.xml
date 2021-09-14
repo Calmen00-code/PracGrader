@@ -13,14 +13,15 @@
         android:layout_marginBottom="340dp"
         android:text="confirm"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="158dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/markInputTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="textPersonName"
         android:text="Mark"
         app:layout_constraintBottom_toTopOf="@+id/inputMarkBtn"
         app:layout_constraintEnd_toEndOf="parent"

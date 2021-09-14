@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class StudentPracticalList implements Serializable {
-    DBModel dbModel;
+    transient DBModel dbModel; // DBModel contains SQLLiteDatabase which cannot be serialized
     private ArrayList<Practical> practicals;
     private int uniqueID;
 
@@ -35,8 +35,9 @@ public class StudentPracticalList implements Serializable {
         for (Practical practical: practicals) {
             if (practical.getUniqueRefID() == inUniqueID &&
                     practical.getTitle().equals(updatePractical.getTitle())) {
+                System.out.println("ID in edit: " + practical.getUniqueRefID());
                 practical = updatePractical;
-                dbModel.updatePracticalByID(practical, practical.getTitle(), inUniqueID);
+                dbModel.updatePracticalByID(practical, inUniqueID, practical.getTitle());
             }
         }
     }

@@ -13,6 +13,7 @@ import com.calmen.pracgrader.models.PracticalList;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.User;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class DBModel {

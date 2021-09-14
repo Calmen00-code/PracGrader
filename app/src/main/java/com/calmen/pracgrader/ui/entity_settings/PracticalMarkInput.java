@@ -13,6 +13,8 @@ import com.calmen.pracgrader.models.Practical;
 import com.calmen.pracgrader.models.StudentPracticalList;
 import com.calmen.pracgrader.shared.Validation;
 
+import java.util.ArrayList;
+
 public class PracticalMarkInput extends AppCompatActivity {
 
     @Override
@@ -37,10 +39,28 @@ public class PracticalMarkInput extends AppCompatActivity {
                 } else {
                     String mark = markInput.getText().toString();
                     if (Validation.isDouble(mark)) {
+                        studentPracticalList.load(view.getContext());
+
+                        System.out.println("BEFORE");
+                        ArrayList<Practical> studentPracs =  studentPracticalList.getStudentPracticals(uniqueID);
+                        for (Practical practical: studentPracs) {
+                            System.out.println("Practical title: " + practical.getTitle() +
+                                    ",  Mark: " + practical.getStudentMark());
+                        }
+
                         studentPractical.setMark(Double.parseDouble(mark));
+                        System.out.println("ID before changes: " + studentPractical.getUniqueRefID());
                         studentPracticalList.edit(studentPractical, uniqueID);
                         Toast.makeText(PracticalMarkInput.this,
                                 "Student mark has been updated!", Toast.LENGTH_SHORT).show();
+                        studentPracticalList.load(view.getContext());
+
+                        System.out.println("AFTER");
+                        studentPracs =  studentPracticalList.getStudentPracticals(uniqueID);
+                        for (Practical practical: studentPracs) {
+                            System.out.println("Practical title: " + practical.getTitle() +
+                                    ",  Mark: " + practical.getStudentMark());
+                        }
                     } else {
                         Toast.makeText(PracticalMarkInput.this,
                                 "Mark must be decimal values!", Toast.LENGTH_SHORT).show();

@@ -13,7 +13,9 @@ import com.calmen.pracgrader.models.StudentPracticalList;
 import com.calmen.pracgrader.shared.EditEntity;
 import com.calmen.pracgrader.ui.student_practical_recycler.EditStudentPracticalRecylerAdapter;
 
-public class MarkStudentPractical extends AppCompatActivity {
+import java.io.Serializable;
+
+public class MarkStudentPractical extends AppCompatActivity implements Serializable {
     public static final String MARK_OPERATION = "MARK";
 
     @Override
