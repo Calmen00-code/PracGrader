@@ -9,7 +9,7 @@ import android.os.Bundle;
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.InstructorList;
 import com.calmen.pracgrader.models.User;
-import com.calmen.pracgrader.ui.view_list.list_recycler.UserListRecyclerAdapter;
+import com.calmen.pracgrader.ui.view_list.list_recycler.InsturctorListRecyclerAdapter;
 
 import java.util.ArrayList;
 
@@ -19,12 +19,12 @@ public class ViewInstructorList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_user_list);
+        setContentView(R.layout.view_instructor_list);
 
         loadInstructors();
         RecyclerView rv = findViewById(R.id.listViewRecycler);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        UserListRecyclerAdapter listRecyclerAdapter = new UserListRecyclerAdapter(this, instructors, false);
+        InsturctorListRecyclerAdapter listRecyclerAdapter = new InsturctorListRecyclerAdapter(this, instructors);
         rv.setAdapter(listRecyclerAdapter);
     }
 

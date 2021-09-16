@@ -18,28 +18,26 @@ import com.calmen.pracgrader.shared.EditStudentPractical;
 
 import java.util.ArrayList;
 
-public class UserListRecyclerAdapter extends RecyclerView.Adapter<UserListViewHolder> {
+public class InsturctorListRecyclerAdapter extends RecyclerView.Adapter<InstructorListViewHolder> {
     ArrayList<User> users;
     Activity activity;
-    boolean isGrade;
 
-    public UserListRecyclerAdapter(Activity inActivity, ArrayList<User> inUsers, boolean inGrade) {
+    public InsturctorListRecyclerAdapter(Activity inActivity, ArrayList<User> inUsers) {
         this.activity = inActivity;
         this.users = inUsers;
-        this.isGrade = inGrade;
     }
 
     @NonNull
     @Override
-    public UserListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public InstructorListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.view_user_list_row, parent, false);
-        UserListViewHolder listViewHolder = new UserListViewHolder(view);
+        View view = inflater.inflate(R.layout.view_instructor_list_row, parent, false);
+        InstructorListViewHolder listViewHolder = new InstructorListViewHolder(view);
         return listViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull InstructorListViewHolder holder, int position) {
         User user = users.get(position);
 
         holder.usernameView.setText(user.getUsername());
@@ -48,18 +46,6 @@ public class UserListRecyclerAdapter extends RecyclerView.Adapter<UserListViewHo
             public void onClick(View view) {
                 if (user instanceof Instructor) {
 
-                } else if (user instanceof Student) {
-                    Intent intent;
-                    if (isGrade) {
-                        intent = new Intent(view.getContext(), EditStudentPractical.class);
-                        EditEntity.user = user; // setting user directly
-                    } else {
-                        // display the detail of the editing for student
-                        intent = new Intent(view.getContext(), EditEntity.class);
-                        intent.putExtra("User", user);
-                    }
-                    view.getContext().startActivity(intent);
-                    ((Activity) view.getContext()).finish();
                 }
             }
         });

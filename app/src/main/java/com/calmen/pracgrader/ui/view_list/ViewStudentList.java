@@ -9,7 +9,8 @@ import android.os.Bundle;
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.StudentList;
 import com.calmen.pracgrader.models.User;
-import com.calmen.pracgrader.ui.view_list.list_recycler.UserListRecyclerAdapter;
+import com.calmen.pracgrader.ui.view_list.list_recycler.InsturctorListRecyclerAdapter;
+import com.calmen.pracgrader.ui.view_list.list_recycler.StudentListRecyclerAdapter;
 
 import java.util.ArrayList;
 
@@ -19,19 +20,19 @@ public class ViewStudentList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_user_list);
+        setContentView(R.layout.view_student_list);
 
         loadStudent();
         String grade = getIntent().getStringExtra("Grading");
 
-        RecyclerView rv = findViewById(R.id.listViewRecycler);
+        RecyclerView rv = findViewById(R.id.listStudentRecycler);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        UserListRecyclerAdapter listRecyclerAdapter;
+        StudentListRecyclerAdapter listRecyclerAdapter;
         // check if viewing student list from grading option
         if (grade == null) {
-            listRecyclerAdapter = new UserListRecyclerAdapter(this, students, false);
+            listRecyclerAdapter = new StudentListRecyclerAdapter(this, students, false);
         } else {
-            listRecyclerAdapter = new UserListRecyclerAdapter(this, students, true);
+            listRecyclerAdapter = new StudentListRecyclerAdapter(this, students, true);
         }
         rv.setAdapter(listRecyclerAdapter);
     }
