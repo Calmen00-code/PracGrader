@@ -75,6 +75,18 @@ public class Validation {
         }
     }
 
+    public static boolean validMark(String input) {
+        if (isDouble(input)) {
+            if (Double.parseDouble(input) >= 0 && Double.parseDouble(input) <= 100) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
     public static boolean checkDuplicateTitle(ArrayList<Practical> practicals, String title) {
         for (Practical practical: practicals) {
             if (practical.getTitle().equals(title)) {

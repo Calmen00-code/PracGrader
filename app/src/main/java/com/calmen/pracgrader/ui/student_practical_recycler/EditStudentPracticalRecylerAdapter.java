@@ -1,5 +1,6 @@
 package com.calmen.pracgrader.ui.student_practical_recycler;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,6 +68,7 @@ public class EditStudentPracticalRecylerAdapter extends RecyclerView.Adapter<Edi
                                     student.getUniqueID()));
                             Toast.makeText( view.getContext(), "Practical Added to "
                                     + student.getUsername() + "!", Toast.LENGTH_SHORT).show();
+                            student.getStudentPracticalList().load(view.getContext());
                         }
                     }
                 } else {
@@ -87,6 +89,8 @@ public class EditStudentPracticalRecylerAdapter extends RecyclerView.Adapter<Edi
                             intent.putExtra("studentPracticalList", (Serializable) student.getStudentPracticalList());
                             view.getContext().startActivity(intent);
                         }
+                        student.getStudentPracticalList().load(view.getContext());
+                        ((Activity) view.getContext()).finish();
                     }
                 }
             }

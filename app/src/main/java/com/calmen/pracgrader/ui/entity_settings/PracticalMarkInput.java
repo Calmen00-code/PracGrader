@@ -39,17 +39,22 @@ public class PracticalMarkInput extends AppCompatActivity {
                 } else {
                     String mark = markInput.getText().toString();
                     if (Validation.isDouble(mark)) {
-                        studentPractical.setStudentMark(Double.parseDouble(mark));
-                        studentPracticalList.load(view.getContext());
-                        studentPracticalList.edit(studentPractical, uniqueID);
-                        Toast.makeText(PracticalMarkInput.this,
-                                "Student mark has been updated!", Toast.LENGTH_SHORT).show();
-                        studentPracticalList.load(view.getContext());
+                        if (Validation.validMark(mark)) {
+                            studentPractical.setStudentMark(Double.parseDouble(mark));
+                            studentPracticalList.load(view.getContext());
+                            studentPracticalList.edit(studentPractical, uniqueID);
+                            Toast.makeText(PracticalMarkInput.this,
+                                    "Student mark has been updated!", Toast.LENGTH_SHORT).show();
+                            studentPracticalList.load(view.getContext());
+                            finish();
+                        } else {
+                            Toast.makeText(PracticalMarkInput.this, "Mark is not within 0 to 100!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
                     } else {
                         Toast.makeText(PracticalMarkInput.this,
                                 "Mark must be decimal values!", Toast.LENGTH_SHORT).show();
                     }
-                    finish();
                 }
             }
         });
