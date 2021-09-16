@@ -30,12 +30,6 @@ public class MarkStudentPractical extends AppCompatActivity implements Serializa
 
         RecyclerView rv = findViewById(R.id.editStudentPracticalRecyler);
         rv.setLayoutManager(new LinearLayoutManager(this));
-
-        ArrayList<Practical> practicals = studentPracticalList.getStudentPracticals(((Student) EditEntity.user).getUniqueID());
-        for (Practical practical: practicals) {
-            System.out.println("Practical in Adapter: " + practical.getTitle());
-        }
-
         EditStudentPracticalRecylerAdapter adapter = new EditStudentPracticalRecylerAdapter(
                 studentPracticalList.getStudentPracticals(((Student) EditEntity.user).getUniqueID())
                 , MARK_OPERATION);
