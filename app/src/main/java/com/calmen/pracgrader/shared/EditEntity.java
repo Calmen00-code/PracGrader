@@ -42,6 +42,7 @@ public class EditEntity extends AppCompatActivity implements Serializable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_user_page);
 
+        // Determine edit for practical or edit for user
         user = (User) getIntent().getSerializableExtra("User");
         practical = (Practical) getIntent().getSerializableExtra("Practical");
         createEditData();

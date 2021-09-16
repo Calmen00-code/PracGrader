@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.ui.entity_settings.GradingSettings;
 import com.calmen.pracgrader.ui.entity_settings.InstructorSettings;
 import com.calmen.pracgrader.ui.Login;
 import com.calmen.pracgrader.models.Admin;
@@ -55,6 +56,9 @@ public class FeatureRecyclerAdapter extends RecyclerView.Adapter<FeatureViewHold
                         view.getContext().startActivity(intent);
                     } else if (position == Admin.PRACTICAL_SETTINGS) {
                         Intent intent = new Intent(view.getContext(), PracticalSettings.class);
+                        view.getContext().startActivity(intent);
+                    } else if (position == Admin.MARKING_SETTINGS) {
+                        Intent intent = new Intent(view.getContext(), GradingSettings.class);
                         view.getContext().startActivity(intent);
                     } else if (position == Admin.VIEW_INSTRUCTOR_LIST) {
                         Intent intent = new Intent(view.getContext(), ViewInstructorList.class);

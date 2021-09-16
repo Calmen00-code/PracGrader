@@ -24,7 +24,7 @@ public class ViewInstructorList extends AppCompatActivity {
         loadInstructors();
         RecyclerView rv = findViewById(R.id.listViewRecycler);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        UserListRecyclerAdapter listRecyclerAdapter = new UserListRecyclerAdapter(this, instructors);
+        UserListRecyclerAdapter listRecyclerAdapter = new UserListRecyclerAdapter(this, instructors, false);
         rv.setAdapter(listRecyclerAdapter);
     }
 

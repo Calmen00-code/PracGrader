@@ -49,6 +49,7 @@ public class PracticalMarkInput extends AppCompatActivity {
                         Toast.makeText(PracticalMarkInput.this,
                                 "Mark must be decimal values!", Toast.LENGTH_SHORT).show();
                     }
+                    finish();
                 }
             }
         });

@@ -22,10 +22,17 @@ public class ViewStudentList extends AppCompatActivity {
         setContentView(R.layout.view_user_list);
 
         loadStudent();
+        String grade = getIntent().getStringExtra("Grading");
 
         RecyclerView rv = findViewById(R.id.listViewRecycler);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        UserListRecyclerAdapter listRecyclerAdapter = new UserListRecyclerAdapter(this, students);
+        UserListRecyclerAdapter listRecyclerAdapter;
+        // check if viewing student list from grading option
+        if (grade == null) {
+            listRecyclerAdapter = new UserListRecyclerAdapter(this, students, false);
+        } else {
+            listRecyclerAdapter = new UserListRecyclerAdapter(this, students, true);
+        }
         rv.setAdapter(listRecyclerAdapter);
     }
 

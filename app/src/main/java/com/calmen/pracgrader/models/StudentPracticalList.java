@@ -35,7 +35,6 @@ public class StudentPracticalList implements Serializable {
         for (Practical practical: practicals) {
             if (practical.getUniqueRefID() == inUniqueID &&
                     practical.getTitle().equals(updatePractical.getTitle())) {
-                System.out.println("ID in edit: " + practical.getUniqueRefID());
                 practical = updatePractical;
                 dbModel.updatePracticalByID(practical, inUniqueID, practical.getTitle());
             }
