@@ -45,7 +45,7 @@ public class StudentListRecyclerAdapter extends RecyclerView.Adapter<StudentList
 
         holder.studentNameView.setText(user.getUsername());
         // TODO: using practical list instead of student since we only want NAME, MARK, IMAGE
-        holder.studentMarkView.setText(((Student) user).getStudentPracticalList().g);
+        holder.studentMarkView.setText(String.valueOf(((Student) user).getTotalMark(activity)));
         holder.viewStudentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

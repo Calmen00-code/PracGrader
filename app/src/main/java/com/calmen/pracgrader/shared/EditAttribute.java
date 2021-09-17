@@ -146,6 +146,7 @@ public class EditAttribute extends AppCompatActivity {
                 param[3] = user.getEmail();
                 param[4] = user.getCountryName();
                 param[5] = String.valueOf(user.getCountryFlag());
+                param[6] = String.valueOf(user.getUniqueID());
 
                 // choose which attributes to be updated
             }
@@ -197,7 +198,7 @@ public class EditAttribute extends AppCompatActivity {
                 assert false;
                 Student updateStudent = new Student((String) param[0], (String) param[1],
                         Integer.parseInt((String) param[2]), (String) param[3], (String) param[4],
-                        Integer.parseInt((String) param[5]));
+                        Integer.parseInt((String) param[5]), Integer.parseInt((String) param[6]));
                 StudentList studentList = new StudentList();
                 studentList.load(EditAttribute.this);
 

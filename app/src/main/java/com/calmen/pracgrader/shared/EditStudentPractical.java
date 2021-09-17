@@ -24,7 +24,7 @@ public class EditStudentPractical extends AppCompatActivity {
         setContentView(R.layout.edit_practical_page);
 
         Button addNewBtn = findViewById(R.id.addNewPracBtn);
-        Button markPracBtn = findViewById(R.id.markingPracBtn);
+        Button markPracticalBtn = findViewById(R.id.markingPracBtn);
 
         addNewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +34,7 @@ public class EditStudentPractical extends AppCompatActivity {
             }
         });
 
-        markPracBtn.setOnClickListener(new View.OnClickListener() {
+        markPracticalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EditStudentPractical.this, MarkStudentPractical.class);

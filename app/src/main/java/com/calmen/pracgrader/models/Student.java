@@ -1,5 +1,7 @@
 package com.calmen.pracgrader.models;
 
+import android.content.Context;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -25,6 +27,17 @@ public class Student extends User {
         this.countryFlag = inCountryFlag;
         this.uniqueID = nextId + 2;
         nextId = this.uniqueID;
+        this.studentPracticalList = new StudentPracticalList(this.uniqueID);
+    }
+
+    public Student(String inName, String inUsername, int inPin, String inEmail,
+                   String inCountryName, int inCountryFlag, int inUniqueID) {
+        super(inUsername, inPin);
+        this.name = inName;
+        this.email = inEmail;
+        this.countryName = inCountryName;
+        this.countryFlag = inCountryFlag;
+        this.uniqueID = inUniqueID;
         this.studentPracticalList = new StudentPracticalList(this.uniqueID);
     }
 
@@ -83,5 +96,15 @@ public class Student extends User {
 
     public int getUniqueID() {
         return uniqueID;
+    }
+
+    public double getTotalMark(Context context) {
+        double totalMark = 0.0;
+        this.studentPracticalList.load(context);
+        for (Practical practical: this.studentPracticalList
+                .getStudentPracticals(this.uniqueID)) {
+            totalMark += practical.getMark();
+        }
+        return totalMark;
     }
 }

@@ -64,8 +64,8 @@ public class EditStudentPracticalRecylerAdapter extends RecyclerView.Adapter<Edi
                         } else {
                             // adding new practical to student
                             student.getStudentPracticalList().add(new Practical(singlePractical.getTitle(),
-                                    singlePractical.getDesc(), singlePractical.getStudentName(),
-                                    singlePractical.getMark(), 0.0, student.getUniqueID()));
+                                    singlePractical.getDesc(), singlePractical.getMark(),
+                                    0.0, student.getUniqueID()));
                             Toast.makeText( view.getContext(), "Practical Added to "
                                     + student.getUsername() + "!", Toast.LENGTH_SHORT).show();
                             student.getStudentPracticalList().load(view.getContext());
