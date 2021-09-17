@@ -27,8 +27,12 @@ public class MarkStudentPractical extends AppCompatActivity implements Serializa
         setContentView(R.layout.edit_student_practical_page);
 
         User student = (User) getIntent().getSerializableExtra("Student");
-        StudentPracticalList studentPracticalList = new StudentPracticalList(
-                ((Student) student).getUniqueID());
+        StudentPracticalList studentPracticalList;
+        if (student == null) {
+            studentPracticalList = new StudentPracticalList(((Student) EditEntity.user).getUniqueID());
+        } else {
+            studentPracticalList = new StudentPracticalList(((Student) student).getUniqueID());
+        }
         studentPracticalList.load(MarkStudentPractical.this);
 
         RecyclerView rv = findViewById(R.id.editStudentPracticalRecyler);

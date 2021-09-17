@@ -44,7 +44,6 @@ public class StudentListRecyclerAdapter extends RecyclerView.Adapter<StudentList
         User user = students.get(position);
 
         holder.studentNameView.setText(user.getUsername());
-        // TODO: using practical list instead of student since we only want NAME, MARK, IMAGE
         holder.studentMarkView.setText(String.valueOf(((Student) user).getTotalMark(activity)));
         holder.viewStudentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +51,8 @@ public class StudentListRecyclerAdapter extends RecyclerView.Adapter<StudentList
                 Intent intent;
                 if (isGrade) {
                     intent = new Intent(view.getContext(), EditStudentPractical.class);
-                    intent.putExtra("Student", user);
+                    // intent.putExtra("Student", user);
+                    EditEntity.user = user; // setting user directly
                 } else {
                     // display the detail of the editing for student
                     intent = new Intent(view.getContext(), EditEntity.class);
