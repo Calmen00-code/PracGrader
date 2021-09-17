@@ -51,7 +51,6 @@ public class StudentListRecyclerAdapter extends RecyclerView.Adapter<StudentList
                 Intent intent;
                 if (isGrade) {
                     intent = new Intent(view.getContext(), EditStudentPractical.class);
-                    // intent.putExtra("Student", user);
                     EditEntity.user = user; // setting user directly
                 } else {
                     // display the detail of the editing for student

@@ -44,6 +44,7 @@ public class ViewStudentList extends AppCompatActivity {
         StudentList studentList = new StudentList();
         studentList.load(ViewStudentList.this);
         students = studentList.getStudents();
+        students.so
 
         for (User student: students) {
             StudentPracticalList studentPracList = ((Student) student).getStudentPracticalList();
