@@ -24,7 +24,7 @@ public class EditAttribute extends AppCompatActivity {
     // number of params for Instructor is 6
     public static final int INSTRUCTOR_PARAM = 6;
     // number of params for Student is 6 (include practicalList)
-    public static final int STUDENT_PARAM = 6;
+    public static final int STUDENT_PARAM = 7;
     // number of params for Practical is 5
     public static final int PRACTICAL_PARAM = 5;
 
@@ -195,7 +195,6 @@ public class EditAttribute extends AppCompatActivity {
                 }
             } else {
                 // Edit for student
-                assert false;
                 Student updateStudent = new Student((String) param[0], (String) param[1],
                         Integer.parseInt((String) param[2]), (String) param[3], (String) param[4],
                         Integer.parseInt((String) param[5]), Integer.parseInt((String) param[6]));

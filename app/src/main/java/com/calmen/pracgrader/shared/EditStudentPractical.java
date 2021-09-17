@@ -13,8 +13,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.models.Practical;
+import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.ui.entity_settings.MarkStudentPractical;
 import com.calmen.pracgrader.ui.entity_settings.NewStudentPractical;
+
+import java.util.ArrayList;
 
 public class EditStudentPractical extends AppCompatActivity {
 
@@ -39,6 +43,16 @@ public class EditStudentPractical extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(EditStudentPractical.this, MarkStudentPractical.class);
                 startActivity(intent);
+
+                ((Student) EditEntity.user).getStudentPracticalList().load(view.getContext());
+                ArrayList<Practical> practicals = ((Student) EditEntity.user).
+                        getStudentPracticalList().getStudentPracticals(((Student) EditEntity.user).getUniqueID());
+                double mark = 0.0;
+                for (Practical practical: practicals) {
+                    mark += practical.getMark();
+                }
+                System.out.println("Student name: " + ((Student) EditEntity.user).getName());
+                System.out.println("Student mark: " + mark);
             }
         });
     }
