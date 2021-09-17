@@ -16,19 +16,24 @@ public class Student extends User {
     private StudentPracticalList studentPracticalList;
     private int countryFlag;
     private int uniqueID;
-    private static int nextId = 0;
+    Context context;
 
     public Student(String inName, String inUsername, int inPin, String inEmail,
-                   String inCountryName, int inCountryFlag, ) {
+                   String inCountryName, int inCountryFlag, Context context) {
         super(inUsername, inPin);
         this.name = inName;
         this.email = inEmail;
         this.countryName = inCountryName;
         this.countryFlag = inCountryFlag;
-        if (nextId + 2)
-        this.uniqueID = nextId + 2;
-        nextId = this.uniqueID;
-        this.studentPracticalList = new StudentPracticalList(this.uniqueID);
+        // retrieve last ID of student to define new ID
+        StudentList studentList = new StudentList();
+        studentList.load(context);
+        ArrayList<User> students = studentList.getStudents();
+        Student lastStudent = (Student) students.get(students.size() - 1);
+        int lastID = lastStudent.getUniqueID();
+
+        this.uniqueID = lastID + 2;
+        this.studentPracticalList = new StudentPracticalList(uniqueID);
     }
 
     public Student(String inName, String inUsername, int inPin, String inEmail,

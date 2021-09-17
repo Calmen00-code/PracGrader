@@ -76,7 +76,7 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
                         } else {
                             PracticalList practicalList = new PracticalList();
                             studentList.add(new Student(name, username, pin,
-                                    email, country.getName(), country.getFlag()));
+                                    email, country.getName(), country.getFlag(), view.getContext()));
                             // only admin can add a new instructor, therefore we do not need to check for other user menu
                             Intent intent = new Intent(ConfirmRegistration.this, MenuPage.class);
                             // finish() all the parent activities
