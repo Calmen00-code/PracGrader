@@ -45,11 +45,14 @@ public class EditStudentPractical extends AppCompatActivity {
                 startActivity(intent);
 
                 ((Student) EditEntity.user).getStudentPracticalList().load(view.getContext());
-                ArrayList<Practical> practicals = ((Student) EditEntity.user).
-                        getStudentPracticalList().getStudentPracticals(((Student) EditEntity.user).getUniqueID());
+
+                ArrayList<Practical> practicals = ((Student) EditEntity.user)
+                        .getStudentPracticalList()
+                        .getStudentPracticals(((Student) EditEntity.user).getUniqueID());
                 double mark = 0.0;
                 for (Practical practical: practicals) {
-                    mark += practical.getMark();
+                    System.out.println("Practical Title: " + practical.getTitle());
+                    mark += practical.getStudentMark();
                 }
                 System.out.println("Student name: " + ((Student) EditEntity.user).getName());
                 System.out.println("Student mark: " + mark);

@@ -283,6 +283,12 @@ public class DBModel {
         } finally {
             dbCursor.close();
         }
+
+        System.out.println("in DB");
+        System.out.println("ID: " + findID);
+        for (Practical practical: practicals) {
+            System.out.println(practical.getTitle());
+        }
         return practicals;
     }
 }

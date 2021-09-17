@@ -54,8 +54,8 @@ public class EditStudentPracticalRecylerAdapter extends RecyclerView.Adapter<Edi
                         Student student = (Student) EditEntity.user;
                         student.getStudentPracticalList().load(view.getContext());
 
-                        ArrayList<Practical> practicals = student.getStudentPracticalList().
-                                getStudentPracticals(student.getUniqueID());
+                        ArrayList<Practical> practicals = student.getStudentPracticalList()
+                                .getStudentPracticals(student.getUniqueID());
                         // check for duplication practical register on student
                         if (Validation.checkDuplicateTitle(practicals, singlePractical.getTitle())) {
                             Toast.makeText(view.getContext(),
@@ -66,7 +66,7 @@ public class EditStudentPracticalRecylerAdapter extends RecyclerView.Adapter<Edi
                             student.getStudentPracticalList().add(new Practical(singlePractical.getTitle(),
                                     singlePractical.getDesc(), singlePractical.getMark(),
                                     0.0, student.getUniqueID()));
-                            Toast.makeText( view.getContext(), "Practical Added to "
+                            Toast.makeText(view.getContext(), "Practical Added to "
                                     + student.getUsername() + "!", Toast.LENGTH_SHORT).show();
                             student.getStudentPracticalList().load(view.getContext());
                         }

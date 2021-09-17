@@ -103,7 +103,7 @@ public class Student extends User {
         this.studentPracticalList.load(context);
         for (Practical practical: this.studentPracticalList
                 .getStudentPracticals(this.uniqueID)) {
-            totalMark += practical.getMark();
+            totalMark += practical.getStudentMark();
         }
         return totalMark;
     }

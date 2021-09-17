@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.models.Practical;
+import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.StudentList;
+import com.calmen.pracgrader.models.StudentPracticalList;
 import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.ui.view_list.list_recycler.InsturctorListRecyclerAdapter;
 import com.calmen.pracgrader.ui.view_list.list_recycler.StudentListRecyclerAdapter;
@@ -22,8 +25,8 @@ public class ViewStudentList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_student_list);
 
-        loadStudent();
         String grade = getIntent().getStringExtra("Grading");
+        loadStudent();
 
         RecyclerView rv = findViewById(R.id.listStudentRecycler);
         rv.setLayoutManager(new LinearLayoutManager(this));
@@ -41,5 +44,18 @@ public class ViewStudentList extends AppCompatActivity {
         StudentList studentList = new StudentList();
         studentList.load(ViewStudentList.this);
         students = studentList.getStudents();
+
+        for (User student: students) {
+            StudentPracticalList studentPracList = ((Student) student).getStudentPracticalList();
+            studentPracList.load(this);
+            ArrayList<Practical> pracs = studentPracList.getStudentPracticals(
+                    ((Student) student).getUniqueID());
+            System.out.print("Username: " + student.getUsername() + "-> ");
+            System.out.println("ID in loadStudent: " + ((Student) student).getUniqueID());
+            for (Practical practical: pracs) {
+                System.out.print(practical.getTitle() + ", ");
+            }
+            System.out.println();
+        }
     }
 }

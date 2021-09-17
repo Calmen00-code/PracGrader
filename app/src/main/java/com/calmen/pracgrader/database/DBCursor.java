@@ -60,7 +60,7 @@ public class DBCursor extends CursorWrapper {
             }
         }
 
-        return new Student(name, username, pin, email, countryName, countryFlag);
+        return new Student(name, username, pin, email, countryName, countryFlag, uniqueRefID);
     }
 
     public Practical getPractical() {
