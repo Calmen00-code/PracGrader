@@ -16,6 +16,9 @@ import com.calmen.pracgrader.ui.view_list.list_recycler.InsturctorListRecyclerAd
 import com.calmen.pracgrader.ui.view_list.list_recycler.StudentListRecyclerAdapter;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ViewStudentList extends AppCompatActivity {
     public ArrayList<User> students;
@@ -45,6 +48,21 @@ public class ViewStudentList extends AppCompatActivity {
         studentList.load(ViewStudentList.this);
         students = studentList.getStudents();
 
+        /***
+         * @Sort
+         * algorithm taken from StackOverflow
+         * https://stackoverflow.com/questions/18895915/how-to-sort-an-array-of-objects-in-java
+         */
+        Collections.sort(students, new Comparator<User>() {
+            @Override
+            public int compare(User u1, User u2) {
+                return u1.getUsername().compareTo(u2.getUsername());
+            }
+        });
+
+        /**
+         * @Test below code for testing purpose only, not involve in the App
+         */
         for (User student: students) {
             StudentPracticalList studentPracList = ((Student) student).getStudentPracticalList();
             studentPracList.load(this);
