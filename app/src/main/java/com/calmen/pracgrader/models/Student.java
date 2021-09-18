@@ -9,6 +9,8 @@ import java.util.ArrayList;
  * Has-A Relationship with PracticalList
  */
 public class Student extends User {
+    public static final int INSTRUCTOR_REG_TRUE = 1;
+    public static final int INSTRUCTOR_REG_FALSE = 0;
 
     private String name;
     private String email;
@@ -16,15 +18,18 @@ public class Student extends User {
     private StudentPracticalList studentPracticalList;
     private int countryFlag;
     private int uniqueID;
+    private int regByInstructor;
     Context context;
 
     public Student(String inName, String inUsername, int inPin, String inEmail,
-                   String inCountryName, int inCountryFlag, Context context) {
+                   String inCountryName, int inCountryFlag, int inReg, Context context) {
         super(inUsername, inPin);
         this.name = inName;
         this.email = inEmail;
         this.countryName = inCountryName;
         this.countryFlag = inCountryFlag;
+        this.regByInstructor = inReg;
+
         // retrieve last ID of student to define new ID
         StudentList studentList = new StudentList();
         studentList.load(context);
@@ -40,12 +45,13 @@ public class Student extends User {
     }
 
     public Student(String inName, String inUsername, int inPin, String inEmail,
-                   String inCountryName, int inCountryFlag, int inUniqueID) {
+                   String inCountryName, int inCountryFlag, int inReg, int inUniqueID) {
         super(inUsername, inPin);
         this.name = inName;
         this.email = inEmail;
         this.countryName = inCountryName;
         this.countryFlag = inCountryFlag;
+        this.regByInstructor = inReg;
         this.uniqueID = inUniqueID;
         this.studentPracticalList = new StudentPracticalList(this.uniqueID);
     }
@@ -105,6 +111,10 @@ public class Student extends User {
 
     public int getUniqueID() {
         return uniqueID;
+    }
+
+    public int isRegByInstructor() {
+        return this.regByInstructor;
     }
 
     public double getTotalMark(Context context) {

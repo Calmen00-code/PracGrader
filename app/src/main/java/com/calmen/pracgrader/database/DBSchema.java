@@ -29,6 +29,7 @@ public class DBSchema {
             public static final String EMAIL = "email";
             public static final String PIN = "pin";
             public static final String REF_ID = "refID";
+            public static final String IS_INSTRUCTOR_REG = "regStatus";
             public static final String COUNTRY = "country";
             public static final String COUNTRY_FLAG = "flag";
         }

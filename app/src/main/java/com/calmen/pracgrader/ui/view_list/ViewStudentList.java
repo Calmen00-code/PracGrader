@@ -7,11 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.Practical;
 import com.calmen.pracgrader.models.Student;
 import com.calmen.pracgrader.models.StudentList;
 import com.calmen.pracgrader.models.StudentPracticalList;
 import com.calmen.pracgrader.models.User;
+import com.calmen.pracgrader.ui.Login;
 import com.calmen.pracgrader.ui.view_list.list_recycler.InsturctorListRecyclerAdapter;
 import com.calmen.pracgrader.ui.view_list.list_recycler.StudentListRecyclerAdapter;
 
@@ -47,6 +49,20 @@ public class ViewStudentList extends AppCompatActivity {
         StudentList studentList = new StudentList();
         studentList.load(ViewStudentList.this);
         students = studentList.getStudents();
+
+        if (Login.getUser() instanceof Instructor) {
+            ArrayList<User> instructorStudents = new ArrayList<>();
+            // retrieve all students which is only register by the instructor
+            for (User student: students) {
+                System.out.println("Instructor state: " + ((Student) student).isRegByInstructor());
+                if (((Student) student).isRegByInstructor() == Student.INSTRUCTOR_REG_TRUE) {
+                    instructorStudents.add(student);
+                    System.out.println("Added Instructor - Students");
+                }
+            }
+            System.out.println("Change to instructor registered student");
+            students = instructorStudents;
+        }
 
         /***
          * @Sort

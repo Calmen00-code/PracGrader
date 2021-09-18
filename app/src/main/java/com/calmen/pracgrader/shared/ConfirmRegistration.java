@@ -74,9 +74,8 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
                             Toast.makeText(view.getContext(), "Username has already been taken!",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            PracticalList practicalList = new PracticalList();
                             studentList.add(new Student(name, username, pin,
-                                    email, country.getName(), country.getFlag(), view.getContext()));
+                                    email, country.getName(), country.getFlag(), Student.INSTRUCTOR_REG_FALSE, view.getContext()));
                             // only admin can add a new instructor, therefore we do not need to check for other user menu
                             Intent intent = new Intent(ConfirmRegistration.this, MenuPage.class);
                             // finish() all the parent activities
@@ -88,6 +87,24 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
                     }
                 } else if (Login.getUser() instanceof Instructor) {
                     // Instructor register new Student
+                    StudentList studentList = new StudentList();
+                    studentList.load(view.getContext());
+                    ArrayList<User> students = studentList.getStudents();
+
+                    if (Validation.checkDuplicateName(students, username)) {
+                        Toast.makeText(view.getContext(), "Username has already been taken!",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        // only admin can add a new instructor, therefore we do not need to check for other user menu
+                        studentList.add(new Student(name, username, pin,
+                                email, country.getName(), country.getFlag(), Student.INSTRUCTOR_REG_TRUE, view.getContext()));
+                        Intent intent = new Intent(ConfirmRegistration.this, MenuPage.class);
+                        // finish() all the parent activities
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        Toast.makeText(view.getContext(), "Student has been created!",
+                                Toast.LENGTH_SHORT).show();
+                        startActivity(intent);
+                    }
                 }
             }
         });
