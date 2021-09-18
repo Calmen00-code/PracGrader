@@ -54,13 +54,10 @@ public class ViewStudentList extends AppCompatActivity {
             ArrayList<User> instructorStudents = new ArrayList<>();
             // retrieve all students which is only register by the instructor
             for (User student: students) {
-                System.out.println("Instructor state: " + ((Student) student).isRegByInstructor());
                 if (((Student) student).isRegByInstructor() == Student.INSTRUCTOR_REG_TRUE) {
                     instructorStudents.add(student);
-                    System.out.println("Added Instructor - Students");
                 }
             }
-            System.out.println("Change to instructor registered student");
             students = instructorStudents;
         }
 
