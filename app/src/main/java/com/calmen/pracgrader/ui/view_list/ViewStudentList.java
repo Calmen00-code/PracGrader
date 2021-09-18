@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.calmen.pracgrader.R;
@@ -31,6 +32,7 @@ public class ViewStudentList extends AppCompatActivity {
         setContentView(R.layout.view_student_list);
 
         String grade = getIntent().getStringExtra("Grading");
+        ArrayList<User> searchStudent = (ArrayList<User>) getIntent().getSerializableExtra("SearchStudentList");
         loadStudent();
 
         RecyclerView rv = findViewById(R.id.listStudentRecycler);

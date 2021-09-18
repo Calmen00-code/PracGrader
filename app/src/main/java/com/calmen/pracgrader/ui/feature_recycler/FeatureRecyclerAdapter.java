@@ -16,6 +16,7 @@ import com.calmen.pracgrader.ui.entity_settings.InstructorSettings;
 import com.calmen.pracgrader.ui.Login;
 import com.calmen.pracgrader.models.Admin;
 import com.calmen.pracgrader.ui.entity_settings.PracticalSettings;
+import com.calmen.pracgrader.ui.entity_settings.SearchStudent;
 import com.calmen.pracgrader.ui.entity_settings.StudentSettings;
 import com.calmen.pracgrader.ui.view_list.ViewInstructorList;
 import com.calmen.pracgrader.ui.view_list.ViewPracticalList;
@@ -78,8 +79,7 @@ public class FeatureRecyclerAdapter extends RecyclerView.Adapter<FeatureViewHold
                     } else if (position == Instructor.VIEW_STUDENT_LIST) {
                         intent = new Intent(view.getContext(), ViewStudentList.class);
                     } else {
-                        // TODO: Search Student List
-                        intent = null;
+                        intent = new Intent(view.getContext(), SearchStudent.class);
                     }
                     view.getContext().startActivity(intent);
                 }
