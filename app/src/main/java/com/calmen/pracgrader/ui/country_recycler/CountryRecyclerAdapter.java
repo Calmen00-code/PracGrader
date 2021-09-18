@@ -16,7 +16,9 @@ import com.calmen.pracgrader.models.User;
 import com.calmen.pracgrader.shared.ConfirmRegistration;
 import com.calmen.pracgrader.shared.EditCountry;
 import com.calmen.pracgrader.shared.Validation;
+import com.calmen.pracgrader.ui.Login;
 import com.calmen.pracgrader.ui.entity_settings.EntityQuery;
+import com.calmen.pracgrader.ui.entity_settings.SelectStudentImage;
 import com.calmen.pracgrader.ui.entity_settings.UserRegistration;
 
 import java.io.Serializable;
@@ -66,7 +68,14 @@ public class CountryRecyclerAdapter extends RecyclerView.Adapter<CountryViewHold
                             String email = getEmail();
                             String pin = getPin();
 
-                            Intent intent = new Intent(view.getContext(), ConfirmRegistration.class);
+                            // check if registration is on student
+                            Intent intent;
+                            if (CountryView.userRoles.equals(Login.STUDENT)) {
+                                intent = new Intent(view.getContext(), SelectStudentImage.class);
+                            } else {
+                                // if instructor, proceed to register
+                                intent = new Intent(view.getContext(), ConfirmRegistration.class);
+                            }
                             intent.putExtra("Name", name);
                             intent.putExtra("Username", username);
                             intent.putExtra("Email", email);
