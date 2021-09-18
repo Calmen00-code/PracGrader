@@ -18,19 +18,15 @@ import java.util.ArrayList;
 /**
  * Display all functionalities of Admin
  */
-public class AdminMenu extends Fragment {
-    public ArrayList<String> adminMenus;
+public class InstructorMenu extends Fragment {
+    public ArrayList<String> instructorMenus;
 
-    public AdminMenu() {
-        adminMenus = new ArrayList<String>();
-        adminMenus.add("Instructor");
-        adminMenus.add("Student");
-        adminMenus.add("Practical");
-        adminMenus.add("Marking/Grading");
-        adminMenus.add("View Instructor List");
-        adminMenus.add("View Practical List");
-        adminMenus.add("View Student List");
-        adminMenus.add("Search Student List");
+    public InstructorMenu() {
+        instructorMenus = new ArrayList<String>();
+        instructorMenus.add("Student");
+        instructorMenus.add("Marking/Grading");
+        instructorMenus.add("View Student List");
+        instructorMenus.add("Search Student List");
     }
 
     @Override
@@ -39,7 +35,7 @@ public class AdminMenu extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user_menu, container, false);
         RecyclerView rv = view.findViewById(R.id.recyclerFeature);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        FeatureRecyclerAdapter featureRecyclerAdapter = new FeatureRecyclerAdapter(this.adminMenus, Login.ADMIN);
+        FeatureRecyclerAdapter featureRecyclerAdapter = new FeatureRecyclerAdapter(this.instructorMenus, Login.INSTRUCTOR);
         rv.setAdapter(featureRecyclerAdapter);
         return view;
     }

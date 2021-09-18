@@ -29,6 +29,11 @@ public class FeatureRecyclerAdapter extends RecyclerView.Adapter<FeatureViewHold
     public FeatureRecyclerAdapter(ArrayList<String> inFeatures, String inUserRole) {
         this.features = inFeatures;
         this.userRole = inUserRole;
+
+        System.out.println("Features");
+        for (String feature: features) {
+            System.out.println(feature);
+        }
     }
 
     @NonNull

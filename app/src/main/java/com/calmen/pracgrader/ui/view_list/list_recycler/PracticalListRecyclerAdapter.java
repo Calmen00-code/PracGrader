@@ -1,6 +1,7 @@
 package com.calmen.pracgrader.ui.view_list.list_recycler;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Practical;
+import com.calmen.pracgrader.shared.EditEntity;
 
 import java.util.ArrayList;
 
@@ -33,13 +35,17 @@ public class PracticalListRecyclerAdapter extends RecyclerView.Adapter<Practical
 
     @Override
     public void onBindViewHolder(@NonNull PracticalListViewHolder holder, int position) {
-        Practical singlePractical = practicals.get(position);
+        Practical practical = practicals.get(position);
 
-        holder.practicalTitleView.setText(singlePractical.getTitle());
+        holder.practicalTitleView.setText(practical.getTitle());
         holder.viewPracticalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: implement viewing of practical
+                // display the detail of the editing for student
+                Intent intent = new Intent(view.getContext(), EditEntity.class);
+                intent.putExtra("Practical", practical);
+                view.getContext().startActivity(intent);
+                ((Activity) view.getContext()).finish();
             }
         });
 

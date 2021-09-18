@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.models.Admin;
+import com.calmen.pracgrader.models.Instructor;
+import com.calmen.pracgrader.models.Student;
 
 public class MenuPage extends AppCompatActivity {
 
@@ -25,6 +27,14 @@ public class MenuPage extends AppCompatActivity {
                 adminMenu = new AdminMenu();
                 fm.beginTransaction()
                         .add(R.id.frag_menu, adminMenu).commit();
+            }
+        } else if (Login.getUser() instanceof Instructor) {
+            // Load menu list for instructor
+            InstructorMenu instructorMenu = (InstructorMenu) fm.findFragmentById(R.id.frag_menu);
+            if (instructorMenu == null) {
+                instructorMenu = new InstructorMenu();
+                fm.beginTransaction()
+                        .add(R.id.frag_menu, instructorMenu).commit();
             }
         }
     }

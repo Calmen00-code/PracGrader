@@ -45,7 +45,11 @@ public class InsturctorListRecyclerAdapter extends RecyclerView.Adapter<Instruct
             @Override
             public void onClick(View view) {
                 if (user instanceof Instructor) {
-
+                    // display the detail of the editing for student
+                    Intent intent = new Intent(view.getContext(), EditEntity.class);
+                    intent.putExtra("User", user);
+                    view.getContext().startActivity(intent);
+                    ((Activity) view.getContext()).finish();
                 }
             }
         });
