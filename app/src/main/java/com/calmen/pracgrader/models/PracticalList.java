@@ -49,6 +49,7 @@ public class PracticalList implements Serializable {
                     practical.getUniqueRefID() == DEFAULT_PRACTICAL_LIST_ID) {
                 practical = newPrac;
                 dbModel.updatePractical(practical, oldPrac.getTitle());
+                break;
             }
         }
     }

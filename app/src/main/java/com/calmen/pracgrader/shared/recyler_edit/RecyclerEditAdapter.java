@@ -17,7 +17,6 @@ import com.calmen.pracgrader.R;
 import com.calmen.pracgrader.shared.EditAttribute;
 import com.calmen.pracgrader.shared.EditCountry;
 import com.calmen.pracgrader.shared.EditEntity;
-import com.calmen.pracgrader.shared.EditPractical;
 import com.calmen.pracgrader.shared.EditStudentPractical;
 
 import java.util.ArrayList;
@@ -59,6 +58,7 @@ public class RecyclerEditAdapter extends RecyclerView.Adapter<EditDataViewHolder
                     System.out.println("Edit Student Practical List");
                 } else {
                     intent = new Intent(activity, EditAttribute.class);
+                    System.out.println("Update practical in Adapter");
                 }
                 intent.putExtra("EditTitle", editTitle);
                 intent.putExtra("OldValue", oldVal);
