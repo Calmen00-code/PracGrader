@@ -3,6 +3,9 @@ package com.calmen.pracgrader.models;
 public class Instructor extends User {
     // features associated to instructor
     public static final int STUDENT_SETTINGS = 0;
+    public static final int MARKING_SETTINGS = 1;
+    public static final int VIEW_STUDENT_LIST = 2;
+    public static final int SEARCH_STUDENT_LIST = 3;
 
     private String name;
     private String email;

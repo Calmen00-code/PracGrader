@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.ui.entity_settings.GradingSettings;
 import com.calmen.pracgrader.ui.entity_settings.InstructorSettings;
 import com.calmen.pracgrader.ui.Login;
@@ -53,28 +54,39 @@ public class FeatureRecyclerAdapter extends RecyclerView.Adapter<FeatureViewHold
             @Override
             public void onClick(View view) {
                 if (userRole.equals(Login.ADMIN)) {
+                    Intent intent;
                     if (position == Admin.INSTRUCTOR_SETTINGS) {
-                        Intent intent = new Intent(view.getContext(), InstructorSettings.class);
-                        view.getContext().startActivity(intent);
+                        intent = new Intent(view.getContext(), InstructorSettings.class);
                     } else if (position == Admin.STUDENT_SETTINGS) {
-                        Intent intent = new Intent(view.getContext(), StudentSettings.class);
-                        view.getContext().startActivity(intent);
+                        intent = new Intent(view.getContext(), StudentSettings.class);
                     } else if (position == Admin.PRACTICAL_SETTINGS) {
-                        Intent intent = new Intent(view.getContext(), PracticalSettings.class);
-                        view.getContext().startActivity(intent);
+                        intent = new Intent(view.getContext(), PracticalSettings.class);
                     } else if (position == Admin.MARKING_SETTINGS) {
-                        Intent intent = new Intent(view.getContext(), GradingSettings.class);
-                        view.getContext().startActivity(intent);
+                        intent = new Intent(view.getContext(), GradingSettings.class);
                     } else if (position == Admin.VIEW_INSTRUCTOR_LIST) {
-                        Intent intent = new Intent(view.getContext(), ViewInstructorList.class);
-                        view.getContext().startActivity(intent);
+                        intent = new Intent(view.getContext(), ViewInstructorList.class);
                     } else if (position == Admin.VIEW_PRACTICAL_LIST) {
-                        Intent intent = new Intent(view.getContext(), ViewPracticalList.class);
-                        view.getContext().startActivity(intent);
+                        intent = new Intent(view.getContext(), ViewPracticalList.class);
                     } else if (position == Admin.VIEW_STUDENT_LIST) {
-                        Intent intent = new Intent(view.getContext(), ViewStudentList.class);
-                        view.getContext().startActivity(intent);
+                        intent = new Intent(view.getContext(), ViewStudentList.class);
+                    } else {
+                        // TODO: Search Student List
+                        intent = null;
                     }
+                    view.getContext().startActivity(intent);
+                } else if (userRole.equals(Login.INSTRUCTOR)) {
+                    Intent intent;
+                    if (position == Instructor.STUDENT_SETTINGS) {
+                        intent = new Intent(view.getContext(), StudentSettings.class);
+                    } else if (position == Instructor.MARKING_SETTINGS) {
+                        intent = new Intent(view.getContext(), GradingSettings.class);
+                    } else if (position == Instructor.VIEW_STUDENT_LIST) {
+                        intent = new Intent(view.getContext(), ViewStudentList.class);
+                    } else {
+                        // TODO: Search Student List
+                        intent = null;
+                    }
+                    view.getContext().startActivity(intent);
                 }
             }
         });
