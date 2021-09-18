@@ -66,8 +66,7 @@ public class FeatureRecyclerAdapter extends RecyclerView.Adapter<FeatureViewHold
                     } else if (position == Admin.VIEW_STUDENT_LIST) {
                         intent = new Intent(view.getContext(), ViewStudentList.class);
                     } else {
-                        // TODO: Search Student List
-                        intent = null;
+                        intent = new Intent(view.getContext(), SearchStudent.class);
                     }
                     view.getContext().startActivity(intent);
                 } else if (userRole.equals(Login.INSTRUCTOR)) {

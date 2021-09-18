@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.calmen.pracgrader.R;
+import com.calmen.pracgrader.models.Admin;
 import com.calmen.pracgrader.models.Instructor;
 import com.calmen.pracgrader.models.Practical;
 import com.calmen.pracgrader.models.Student;
@@ -32,8 +33,8 @@ public class ViewStudentList extends AppCompatActivity {
         setContentView(R.layout.view_student_list);
 
         String grade = getIntent().getStringExtra("Grading");
-        ArrayList<User> searchStudent = (ArrayList<User>) getIntent().getSerializableExtra("SearchStudentList");
-        loadStudent();
+        ArrayList<User> searchStudents = (ArrayList<User>) getIntent().getSerializableExtra("SearchStudentList");
+        loadStudent(searchStudents);
 
         RecyclerView rv = findViewById(R.id.listStudentRecycler);
         rv.setLayoutManager(new LinearLayoutManager(this));
@@ -47,20 +48,41 @@ public class ViewStudentList extends AppCompatActivity {
         rv.setAdapter(listRecyclerAdapter);
     }
 
-    public void loadStudent() {
+    /***
+     * @param searchStudents is NULL if the user select ViewStudent
+     *                       not NULL if the user select SearchStudentList
+     */
+    public void loadStudent(ArrayList<User> searchStudents) {
         StudentList studentList = new StudentList();
         studentList.load(ViewStudentList.this);
-        students = studentList.getStudents();
 
-        if (Login.getUser() instanceof Instructor) {
-            ArrayList<User> instructorStudents = new ArrayList<>();
-            // retrieve all students which is only register by the instructor
-            for (User student: students) {
-                if (((Student) student).isRegByInstructor() == Student.INSTRUCTOR_REG_TRUE) {
-                    instructorStudents.add(student);
-                }
+        if (Login.getUser() instanceof Admin) {
+            if (searchStudents == null) {
+                // retrieve all students without choosing as admin can see whole list of students
+                students = studentList.getStudents();
+            } else {
+                students = searchStudents;
             }
-            students = instructorStudents;
+        } else if (Login.getUser() instanceof Instructor) {
+            if (searchStudents == null) {
+                System.out.println("SearchStudent is NULL in loadStudents");
+                ArrayList<User> instructorStudents = new ArrayList<>();
+                // retrieve all students which is only register by the instructor
+                for (User student: students) {
+                    if (((Student) student).isRegByInstructor() == Student.INSTRUCTOR_REG_TRUE) {
+                        instructorStudents.add(student);
+                    }
+                }
+                students = instructorStudents;
+            } else {
+                ArrayList<User> searchStudentsByInstructor = new ArrayList<>();
+                for (User student: searchStudents) {
+                    if (((Student) student).isRegByInstructor() == Student.INSTRUCTOR_REG_TRUE) {
+                        searchStudentsByInstructor.add(student);
+                    }
+                }
+                students = searchStudentsByInstructor;
+            }
         }
 
         /***

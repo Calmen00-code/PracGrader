@@ -44,7 +44,7 @@ public class SearchStudent extends AppCompatActivity {
                      * @Search for all relevant username and add to searchStudents
                      */
                     for (User student: students) {
-                        if (student.getUsername().contains(searchName.getText().toString())) {
+                        if (student.getUsername().startsWith(searchName.getText().toString())) {
                             searchStudents.add(student);
                         }
                     }
