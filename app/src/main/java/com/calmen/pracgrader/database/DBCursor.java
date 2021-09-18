@@ -49,6 +49,7 @@ public class DBCursor extends CursorWrapper {
         int countryFlag = getInt(getColumnIndex(StudentTable.Cols.COUNTRY_FLAG));
         String countryName = getString(getColumnIndex(StudentTable.Cols.COUNTRY));
         int isRegByInstructor = getInt(getColumnIndex(StudentTable.Cols.IS_INSTRUCTOR_REG));
+        int studentImage = getInt(getColumnIndex(StudentTable.Cols.IMAGE));
 
         PracticalList existingPracticalList = new PracticalList();
         existingPracticalList.load(context);
@@ -61,7 +62,7 @@ public class DBCursor extends CursorWrapper {
             }
         }
 
-        return new Student(name, username, pin, email, countryName, countryFlag, isRegByInstructor, uniqueRefID);
+        return new Student(name, username, pin, email, countryName, countryFlag, studentImage, isRegByInstructor, uniqueRefID);
     }
 
     public Practical getPractical() {

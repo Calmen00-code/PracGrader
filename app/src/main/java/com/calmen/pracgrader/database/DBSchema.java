@@ -32,6 +32,7 @@ public class DBSchema {
             public static final String IS_INSTRUCTOR_REG = "regStatus";
             public static final String COUNTRY = "country";
             public static final String COUNTRY_FLAG = "flag";
+            public static final String IMAGE = "image";
         }
     }
 

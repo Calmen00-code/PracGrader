@@ -34,6 +34,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 StudentTable.Cols.PIN + " INTEGER," +
                 StudentTable.Cols.IS_INSTRUCTOR_REG + " INTEGER," +
                 StudentTable.Cols.COUNTRY_FLAG + " INTEGER," +
+                StudentTable.Cols.IMAGE + " INTEGER," +
                 StudentTable.Cols.COUNTRY + " TEXT);");
 
         db.execSQL("CREATE TABLE " + DBSchema.PracticalTable.NAME + "(" +

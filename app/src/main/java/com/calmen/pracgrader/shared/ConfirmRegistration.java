@@ -38,6 +38,7 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
         String username = getIntent().getStringExtra("Username");
         String email = getIntent().getStringExtra("Email");
         int pin = Integer.parseInt(getIntent().getStringExtra("Pin"));
+        int studentImage = getIntent().getIntExtra("StudentImage", -1);
         Country country = (Country) getIntent().getSerializableExtra("Country");
 
         yesRegBtn.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +76,7 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             studentList.add(new Student(name, username, pin,
-                                    email, country.getName(), country.getFlag(), Student.INSTRUCTOR_REG_FALSE, view.getContext()));
+                                    email, country.getName(), country.getFlag(), studentImage, Student.INSTRUCTOR_REG_FALSE, view.getContext()));
                             // only admin can add a new instructor, therefore we do not need to check for other user menu
                             Intent intent = new Intent(ConfirmRegistration.this, MenuPage.class);
                             // finish() all the parent activities
@@ -97,7 +98,7 @@ public class ConfirmRegistration extends AppCompatActivity implements Serializab
                     } else {
                         // only admin can add a new instructor, therefore we do not need to check for other user menu
                         studentList.add(new Student(name, username, pin,
-                                email, country.getName(), country.getFlag(), Student.INSTRUCTOR_REG_TRUE, view.getContext()));
+                                email, country.getName(), country.getFlag(), studentImage, Student.INSTRUCTOR_REG_TRUE, view.getContext()));
                         Intent intent = new Intent(ConfirmRegistration.this, MenuPage.class);
                         // finish() all the parent activities
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

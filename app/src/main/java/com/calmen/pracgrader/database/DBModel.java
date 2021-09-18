@@ -87,6 +87,7 @@ public class DBModel {
         cv.put(StudentTable.Cols.COUNTRY, student.getCountryName());
         cv.put(StudentTable.Cols.COUNTRY_FLAG, student.getCountryFlag());
         cv.put(StudentTable.Cols.IS_INSTRUCTOR_REG, student.isRegByInstructor());
+        cv.put(StudentTable.Cols.IMAGE, student.getStudentImg());
         db.insert(StudentTable.NAME, null, cv);
     }
 
@@ -117,6 +118,7 @@ public class DBModel {
         cv.put(StudentTable.Cols.REF_ID, student.getUniqueID());
         cv.put(StudentTable.Cols.COUNTRY, student.getCountryName());
         cv.put(StudentTable.Cols.COUNTRY_FLAG, student.getCountryFlag());
+        cv.put(StudentTable.Cols.IMAGE, student.getStudentImg());
 
         int updated = db.update(StudentTable.NAME, cv, StudentTable.Cols.USERNAME + " =?", whereVal);
         if (updated > 0 ) {

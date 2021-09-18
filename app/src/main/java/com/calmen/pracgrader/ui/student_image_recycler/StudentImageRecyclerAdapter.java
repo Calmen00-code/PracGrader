@@ -39,10 +39,9 @@ public class StudentImageRecyclerAdapter extends RecyclerView.Adapter<StudentIma
         holder.selImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: Add image to student here
-                // TODO: need to implement a new image field in student model
-                // TODO: reflect the changes in DB too
                 Intent intent = new Intent(view.getContext(), ConfirmRegistration.class);
+                intent.putExtra("StudentImage", image);
+                view.getContext().startActivity(intent);
             }
         });
     }

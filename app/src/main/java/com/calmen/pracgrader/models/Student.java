@@ -18,17 +18,19 @@ public class Student extends User {
     private StudentPracticalList studentPracticalList;
     private int countryFlag;
     private int uniqueID;
+    private int studentImg;
     private int regByInstructor;
     Context context;
 
     public Student(String inName, String inUsername, int inPin, String inEmail,
-                   String inCountryName, int inCountryFlag, int inReg, Context context) {
+                   String inCountryName, int inCountryFlag, int inStudentImg, int inReg, Context context) {
         super(inUsername, inPin);
         this.name = inName;
         this.email = inEmail;
         this.countryName = inCountryName;
         this.countryFlag = inCountryFlag;
         this.regByInstructor = inReg;
+        this.studentImg = inStudentImg;
 
         // retrieve last ID of student to define new ID
         StudentList studentList = new StudentList();
@@ -44,13 +46,15 @@ public class Student extends User {
         this.studentPracticalList = new StudentPracticalList(uniqueID);
     }
 
+    // This constructor is used when data was retrieved back from DB
     public Student(String inName, String inUsername, int inPin, String inEmail,
-                   String inCountryName, int inCountryFlag, int inReg, int inUniqueID) {
+                   String inCountryName, int inCountryFlag, int inImage, int inReg, int inUniqueID) {
         super(inUsername, inPin);
         this.name = inName;
         this.email = inEmail;
         this.countryName = inCountryName;
         this.countryFlag = inCountryFlag;
+        this.studentImg = inImage;
         this.regByInstructor = inReg;
         this.uniqueID = inUniqueID;
         this.studentPracticalList = new StudentPracticalList(this.uniqueID);
@@ -115,6 +119,10 @@ public class Student extends User {
 
     public int isRegByInstructor() {
         return this.regByInstructor;
+    }
+
+    public int getStudentImg() {
+        return studentImg;
     }
 
     public double getTotalMark(Context context) {

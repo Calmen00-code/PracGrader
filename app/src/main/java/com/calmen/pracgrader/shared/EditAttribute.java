@@ -23,8 +23,8 @@ import com.calmen.pracgrader.models.StudentList;
 public class EditAttribute extends AppCompatActivity {
     // number of params for Instructor is 6
     public static final int INSTRUCTOR_PARAM = 6;
-    // number of params for Student is 8
-    public static final int STUDENT_PARAM = 8;
+    // number of params for Student is 9
+    public static final int STUDENT_PARAM = 9;
     // number of params for Practical is 5
     public static final int PRACTICAL_PARAM = 5;
 
@@ -145,8 +145,9 @@ public class EditAttribute extends AppCompatActivity {
                 param[3] = user.getEmail();
                 param[4] = user.getCountryName();
                 param[5] = String.valueOf(user.getCountryFlag());
-                param[6] = user.isRegByInstructor();
-                param[7] = String.valueOf(user.getUniqueID());
+                param[6] = String.valueOf(user.getStudentImg());
+                param[7] = String.valueOf(user.isRegByInstructor());
+                param[8] = String.valueOf(user.getUniqueID());
             }
 
             switch (editTitle) {
@@ -196,7 +197,7 @@ public class EditAttribute extends AppCompatActivity {
                 Student updateStudent = new Student((String) param[0], (String) param[1],
                         Integer.parseInt((String) param[2]), (String) param[3], (String) param[4],
                         Integer.parseInt((String) param[5]), Integer.parseInt((String) param[6]),
-                        Integer.parseInt((String) param[7]));
+                        Integer.parseInt((String) param[7]), Integer.parseInt((String) param[8]));
                 StudentList studentList = new StudentList();
                 studentList.load(EditAttribute.this);
 
