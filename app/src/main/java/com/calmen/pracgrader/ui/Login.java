@@ -78,10 +78,10 @@ public class Login extends AppCompatActivity implements Serializable {
             users = instructorList.getInstructors();
         } else {
             StudentList studentList = new StudentList();
-            // FIXME: have yet to implement load function for StudentList
-            users = null;
+            studentList.load(this);
+            users = studentList.getStudents();
         }
-        user = getUserByName(users);
+        user = getUserByNameInput(users);
         if (user == null) {
             Toast.makeText(this, "Username does not exist!",
                     Toast.LENGTH_SHORT).show();
@@ -90,7 +90,6 @@ public class Login extends AppCompatActivity implements Serializable {
             if (pin == user.getPin()) {
                 // successfully login
                 Intent intent = new Intent(Login.this, MenuPage.class);
-                // intent.putExtra("Roles", ADMIN);
                 startActivity(intent);
             } else {
                 Toast.makeText(Login.this, "PIN is incorrect!",
@@ -103,7 +102,7 @@ public class Login extends AppCompatActivity implements Serializable {
      * @param users is the list of currently checked user type
      * @return will be null if the user does not exist in the DB
      */
-    public User getUserByName(List<User> users) {
+    public User getUserByNameInput(List<User> users) {
         for (User user: users) {
             if (user.getUsername().equals(userNameTxt
                     .getText().toString())) {
