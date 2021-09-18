@@ -29,6 +29,7 @@ public class CountryView extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         CountryRecyclerAdapter countryRecyclerAdapter;
+        System.out.println("Operation: " + operation);
         if (operation.equals(EntityQuery.REGISTER_OPERATION)) {
             if (userRoles.equals(Login.INSTRUCTOR)) {
                 // Admin register for Instructor

@@ -2,6 +2,7 @@ package com.calmen.pracgrader.ui.view_list.list_recycler;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ public class StudentListViewHolder extends RecyclerView.ViewHolder {
     TextView studentNameView, studentMarkView;
     Button viewStudentBtn;
     View view;
+    ImageView studentImageView;
 
     public StudentListViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -20,6 +22,7 @@ public class StudentListViewHolder extends RecyclerView.ViewHolder {
         studentNameView = itemView.findViewById(R.id.nameStudentView);
         studentMarkView = itemView.findViewById(R.id.totalMarkStudentView);
         viewStudentBtn = itemView.findViewById(R.id.viewStudentBtn);
+        studentImageView = itemView.findViewById(R.id.viewStudentImage);
     }
 
     public View getView() {

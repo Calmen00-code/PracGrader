@@ -53,6 +53,7 @@ public class StudentListRecyclerAdapter extends RecyclerView.Adapter<StudentList
         } else if (student.getTotalMark(activity) >= 81 && student.getTotalMark(activity) <= 100) {
             view.setBackgroundColor(0xFF06730A);
         }
+        holder.studentImageView.setImageResource(student.getStudentImg());
         holder.studentNameView.setText(user.getUsername());
         holder.studentMarkView.setText(String.valueOf(((Student) user).getTotalMark(activity)));
         holder.viewStudentBtn.setOnClickListener(new View.OnClickListener() {
