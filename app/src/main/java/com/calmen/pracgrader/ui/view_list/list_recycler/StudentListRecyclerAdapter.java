@@ -1,6 +1,7 @@
 package com.calmen.pracgrader.ui.view_list.list_recycler;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -43,6 +44,15 @@ public class StudentListRecyclerAdapter extends RecyclerView.Adapter<StudentList
     public void onBindViewHolder(@NonNull StudentListViewHolder holder, int position) {
         User user = students.get(position);
 
+        Student student = ((Student) user);
+        View view = holder.getView();
+        if (student.getTotalMark(activity) >= 0 && student.getTotalMark(activity) <= 50) {
+            view.setBackgroundColor(0xFFFF1100);
+        } else if (student.getTotalMark(activity) >= 51 && student.getTotalMark(activity) <= 80) {
+            view.setBackgroundColor(0xFFFFE500);
+        } else if (student.getTotalMark(activity) >= 81 && student.getTotalMark(activity) <= 100) {
+            view.setBackgroundColor(0xFF06730A);
+        }
         holder.studentNameView.setText(user.getUsername());
         holder.studentMarkView.setText(String.valueOf(((Student) user).getTotalMark(activity)));
         holder.viewStudentBtn.setOnClickListener(new View.OnClickListener() {

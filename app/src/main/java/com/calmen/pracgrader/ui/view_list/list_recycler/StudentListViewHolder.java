@@ -12,11 +12,17 @@ import com.calmen.pracgrader.R;
 public class StudentListViewHolder extends RecyclerView.ViewHolder {
     TextView studentNameView, studentMarkView;
     Button viewStudentBtn;
+    View view;
 
     public StudentListViewHolder(@NonNull View itemView) {
         super(itemView);
+        view = itemView; // will be used to changed background color in onBindViewHolder (Adapter)
         studentNameView = itemView.findViewById(R.id.nameStudentView);
         studentMarkView = itemView.findViewById(R.id.totalMarkStudentView);
         viewStudentBtn = itemView.findViewById(R.id.viewStudentBtn);
+    }
+
+    public View getView() {
+        return view;
     }
 }

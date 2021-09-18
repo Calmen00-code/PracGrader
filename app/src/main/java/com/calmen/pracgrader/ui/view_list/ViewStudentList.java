@@ -55,12 +55,11 @@ public class ViewStudentList extends AppCompatActivity {
     public void loadStudent(ArrayList<User> searchStudents) {
         StudentList studentList = new StudentList();
         studentList.load(ViewStudentList.this);
+        students = studentList.getStudents();
 
         if (Login.getUser() instanceof Admin) {
-            if (searchStudents == null) {
-                // retrieve all students without choosing as admin can see whole list of students
-                students = studentList.getStudents();
-            } else {
+            // retrieve all search students without any choosing as admin can see whole students list
+            if (searchStudents != null) {
                 students = searchStudents;
             }
         } else if (Login.getUser() instanceof Instructor) {
