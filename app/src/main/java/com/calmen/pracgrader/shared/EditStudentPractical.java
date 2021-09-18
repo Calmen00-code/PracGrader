@@ -26,7 +26,7 @@ public class EditStudentPractical extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit_practical_page);
+        setContentView(R.layout.edit_student_practical_menu_page);
 
         User student = (User) getIntent().getSerializableExtra("Student");
         Button addNewBtn = findViewById(R.id.addNewPracBtn);

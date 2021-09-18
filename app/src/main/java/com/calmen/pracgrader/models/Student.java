@@ -29,10 +29,13 @@ public class Student extends User {
         StudentList studentList = new StudentList();
         studentList.load(context);
         ArrayList<User> students = studentList.getStudents();
-        Student lastStudent = (Student) students.get(students.size() - 1);
-        int lastID = lastStudent.getUniqueID();
-
-        this.uniqueID = lastID + 2;
+        if (students.size() == 0) {
+            this.uniqueID = 1;
+        } else {
+            Student lastStudent = (Student) students.get(students.size() - 1);
+            int lastID = lastStudent.getUniqueID();
+            this.uniqueID = lastID + 2;
+        }
         this.studentPracticalList = new StudentPracticalList(uniqueID);
     }
 
