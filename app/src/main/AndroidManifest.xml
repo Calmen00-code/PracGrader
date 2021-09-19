@@ -11,87 +11,115 @@
         android:theme="@style/Theme.PracGrader">
         <activity
             android:name=".ui.entity_settings.SelectStudentImage"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.StudentMenu"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.SearchStudent"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.GradingSettings"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.PracticalMarkInput"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.MarkStudentPractical"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.view_list.ViewPracticalList"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.NewStudentPractical"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".shared.EditStudentPractical"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.PracticalRegistration"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.PracticalSettings"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.view_list.ViewStudentList"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.view_list.ViewInstructorList"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.StudentRegistration"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.StudentSettings"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".shared.EditCountry"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".shared.EditAttribute"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".shared.EditEntity"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".shared.ConfirmOperation"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.EntityQuery"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".shared.ConfirmRegistration"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.InstructorRegistration"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.InstructorSettings"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.MenuPage"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.UserSelection"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.Login"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".ui.entity_settings.AdminRegistration"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
+            android:configChanges="screenLayout|orientation|screenSize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
